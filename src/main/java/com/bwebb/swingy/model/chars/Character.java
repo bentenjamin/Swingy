@@ -36,7 +36,7 @@ public class Character {
         return this.characterDefense + this.artifacts.get("armour").getStatBoost();
     }
 
-    private int getEffectiveHp() {
+    private int getEffectiveHealth() {
         return this.characterHealth + this.artifacts.get("helm").getStatBoost();
     }
 
