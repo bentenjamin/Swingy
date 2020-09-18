@@ -2,17 +2,16 @@ package com.bwebb.swingy.model.artifacts;
 
 import com.github.javafaker.Faker;
 
-import java.util.Random;
-import static java.lang.Math;
+import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public abstract class Artifact {
     //needs to be adjusted depending on the balance of the player stats
     private final static int characterStatBoostBase = 3;
     private final static int characterStatBoostRange = 3;
 
-    private String type = "defaultType";
-    private String name = "defaultName";
-    private String statModifier = "defaultStatModifier";
+    private String type = "fillerType";
+    private String name = "fillerName";
+    private String statModifier = "fillerStatModifier";
     private int statBoost = 0;
 
     //should be updated with new artifacts, generally just for debugging
@@ -30,10 +29,10 @@ public abstract class Artifact {
     }
 
     private int calcStatBoost(int characterLuck) {
-        Random random = new Random();
-        return characterStatBoostBase +
-                random.nextInt(characterStatBoostRange + 1) +
-                (int) Math.ceil(luck / 30);
+        double skew = 1.7 - ((double) characterLuck / 100);
+        int statBoost = rand_gaus(0, characterStatBoostRange, skew);
+
+        return characterStatBoostBase + statBoost;
     }
 
     public int getStatBoost() {
