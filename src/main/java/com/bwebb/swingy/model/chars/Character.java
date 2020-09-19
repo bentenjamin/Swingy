@@ -10,10 +10,11 @@ public class Character {
     private int level = 0;
     private int experience = 0;
     private int luck = 0;
+
+    //artifacts
     private int weapon = 0;
     private int armour = 0;
     private int helm = 0;
-//    private HashMap<String, Artifact> characterArtifacts = new HashMap<String, Artifact>(3);
 
     public Character(String name, ClassesBase characterClass) {
         this.name = name;
