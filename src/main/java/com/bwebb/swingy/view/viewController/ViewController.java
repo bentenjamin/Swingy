@@ -2,17 +2,18 @@ package com.bwebb.swingy.view.viewController;
 
 import com.bwebb.swingy.view.terminal.TerminalView;
 
-public abstract class ViewController {
-    private static int terminalSelector;
-    private static int guiSelector = 1;
+public class ViewController {
+    TerminalView terminal = new TerminalView();
+    private int terminalSelector;
+    private int guiSelector = 1;
 
-    public static void mainMenu(int view) {
+    public void mainMenu(int view) {
         if (view == terminalSelector)
-            TerminalView.terminalMainMenu();
+            terminal.terminalMainMenu();
     }
 
-    public static void hype(int view) {
+    public void hype(int view) {
         if (view == terminalSelector)
-            TerminalView.hype();
+            terminal.hype();
     }
 }

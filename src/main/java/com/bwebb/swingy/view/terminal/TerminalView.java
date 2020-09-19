@@ -1,7 +1,7 @@
 package com.bwebb.swingy.view.terminal;
 
-public abstract class TerminalView {
-    public static void terminalMainMenu() {
+public class TerminalView {
+    public void terminalMainMenu() {
         String mainMenu =
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
                 "|                         |\r\n" +
@@ -17,7 +17,7 @@ public abstract class TerminalView {
         System.out.println(mainMenu);
     }
 
-    public static void hype() {
+    public void hype() {
         String hype = "HYPE";
         System.out.println(hype);
     }

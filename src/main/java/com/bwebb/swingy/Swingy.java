@@ -4,7 +4,8 @@ import com.bwebb.swingy.controller.GameController;
 
 public class Swingy {
     public static void main(String[] args) {
-        GameController.startSwingy();
+        GameController game = new GameController();
+        game.startSwingy();
     }
     /* todo
         refactor classes again
