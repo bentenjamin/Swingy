@@ -6,16 +6,10 @@ import com.bwebb.swingy.view.ViewInterface;
 import static com.bwebb.swingy.controller.GameController.display;
 
 
-public class EndScreen extends GameStateParent implements GameState  {
-
-    @Override
-    public boolean evaluate(String userInput) {
-        return true;
-    }
+public class CreateCharacter extends GameStateParent implements GameState {
 
     @Override
     public GameState execute(String userInput) {
-        display.endScreen();
         return null;
     }
 }

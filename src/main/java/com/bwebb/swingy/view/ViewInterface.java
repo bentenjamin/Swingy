@@ -1,8 +1,9 @@
 package com.bwebb.swingy.view;
 
 public interface ViewInterface {
-    public void mainMenu();
-    public void hype();
-    public void invalidInput();
-
+    void mainMenu();
+    void hype();
+    void invalidInput();
+    void endScreen();
+    void createCharacter();
 }

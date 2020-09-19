@@ -1,10 +1,12 @@
 package com.bwebb.swingy;
 
 import com.bwebb.swingy.controller.GameController;
-import com.bwebb.swingy.controller.GameController.views;
+import com.bwebb.swingy.controller.views;
+
+import java.io.IOException;
 
 public class Swingy {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        try {
 //            views.valueOf(args[0]);
 //        } catch(IllegalArgumentException e) {

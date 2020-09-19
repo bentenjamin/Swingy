@@ -1,6 +1,8 @@
 package com.bwebb.swingy.controller;
 
+import com.bwebb.swingy.view.ViewInterface;
+
 public interface GameState {
-    public boolean evaluate(String userInput);
-    public GameState execute(String userInput);
+    boolean evaluate(String userInput);
+    GameState execute(String userInput);
 }

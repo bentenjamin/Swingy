@@ -28,11 +28,33 @@ public class TerminalView implements ViewInterface {
         String invalidInput = "That is not an option, please try again, or type quit to exit";
         System.out.println(invalidInput);
     }
+
+    public void endScreen() {
+        String endScreen= "Thank you for playing!";
+        System.out.println(endScreen);
+    }
+
+    public void createCharacter() {
+        String createCharacter =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                          |\r\n" +
+                "|     Create Character     |\r\n" +
+                "|                          |\r\n" +
+                "|                          |\r\n" +
+                "|     idk didnt think id   |\r\n" +
+                "|     get this far         |\r\n" +
+                "|                          |\r\n" +
+                "|                          |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+        System.out.println(createCharacter);
+    }
+
 }
 //    public void () {
 //        String = "";
 //        System.out.println();
 //    }
+
 
 // read input
 // send input to current game state

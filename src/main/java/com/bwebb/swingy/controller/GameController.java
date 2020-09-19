@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GameController {
-    private ViewInterface display;
+    public static ViewInterface display;
     private TerminalView terminalView = new TerminalView();
 
     public GameController(views argView) {
@@ -29,7 +29,7 @@ public class GameController {
         display.mainMenu();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while (!(currentState instanceof EndScreen)) {
+        while (currentState != null) {
             try {
                 String line = br.readLine();
                 if (currentState.evaluate(line))
