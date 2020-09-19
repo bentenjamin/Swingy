@@ -7,14 +7,10 @@ import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 public class Character {
     private String name = "defaultName";
     private ClassesBase characterClass = null;
-    private int level = 0;
-    private int experience = 0;
-    private int luck = 0;
+    private int level, experience, luck, x, y = 0;
 
     //artifacts
-    private int weapon = 0;
-    private int armour = 0;
-    private int helm = 0;
+    private int weapon, armour, helm = 0;
 
     public Character(String name, ClassesBase characterClass) {
         this.name = name;

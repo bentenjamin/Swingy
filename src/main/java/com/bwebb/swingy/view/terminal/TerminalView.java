@@ -34,16 +34,20 @@ public class TerminalView implements ViewInterface {
         System.out.println(endScreen);
     }
 
-    public void createCharacter() {
+    public void createCharacter(String[] classesList) {
         String createCharacter =
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
                 "|                          |\r\n" +
                 "|     Create Character     |\r\n" +
-                "|                          |\r\n" +
-                "|                          |\r\n" +
-                "|     idk didnt think id   |\r\n" +
-                "|     get this far         |\r\n" +
-                "|                          |\r\n" +
+                "|                          |\r\n";
+        for (int i = 0; i < classesList.length; i++) {
+            String line =  "| " + i + ". " + classesList[i];
+            while (line.length() < 27)
+                line += " ";
+            line += "|\n";
+            createCharacter += line;
+        }
+        createCharacter +=
                 "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);

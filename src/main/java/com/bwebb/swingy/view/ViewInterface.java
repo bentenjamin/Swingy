@@ -5,5 +5,5 @@ public interface ViewInterface {
     void hype();
     void invalidInput();
     void endScreen();
-    void createCharacter();
+    void createCharacter(String[] classesList);
 }

@@ -2,9 +2,10 @@ package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.controller.GameState;
 import com.bwebb.swingy.controller.GameStateParent;
+import com.bwebb.swingy.controller.GameStatesContainer;
 import com.bwebb.swingy.view.ViewInterface;
 
-import static com.bwebb.swingy.controller.GameController.display;
+import static com.bwebb.swingy.controller.GameController.*;
 
 public class MainMenu extends GameStateParent {
     public MainMenu() {
@@ -12,7 +13,10 @@ public class MainMenu extends GameStateParent {
     }
 
     private void loadCreateCharacter() {
-        display.createCharacter();
-        localGameState = new CreateCharacter();
+        currentState = gameStates.charCreation;
+    }
+
+    public void printMe() {
+        display.mainMenu();
     }
 }

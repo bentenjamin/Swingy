@@ -1,6 +1,5 @@
 package com.bwebb.swingy.controller;
 
-import com.bwebb.swingy.controller.gameStates.EndScreen;
 import com.bwebb.swingy.controller.gameStates.MainMenu;
 import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
@@ -9,13 +8,14 @@ import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
 import com.github.javafaker.Faker;
 
-import javax.swing.text.View;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GameController {
-    public static ViewInterface display;
+    public static GameStatesContainer gameStates = new GameStatesContainer();
+    public static ViewInterface display = null ;
+    public static GameState currentState = null;
     private TerminalView terminalView = new TerminalView();
 
     public GameController(views argView) {
@@ -25,15 +25,18 @@ public class GameController {
     }
 
     public void startSwingy() throws IOException {
-        GameState currentState = new MainMenu();
-        display.mainMenu();
+        currentState = gameStates.menu;
+        currentState.printMe();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (currentState != null) {
             try {
                 String line = br.readLine();
-                if (currentState.evaluate(line))
-                    currentState = currentState.execute(line);
+                if (currentState.evaluate(line)) {
+                    currentState.execute(line);
+                    if (currentState != null)
+                        currentState.printMe();
+                }
                 else
                     display.invalidInput();
             } catch (IOException e) {
