@@ -2,6 +2,8 @@ package com.bwebb.swingy.view.terminal;
 
 import com.bwebb.swingy.view.ViewInterface;
 
+import java.util.Arrays;
+
 public class TerminalView implements ViewInterface {
     public void mainMenu() {
         String mainMenu =
@@ -34,23 +36,62 @@ public class TerminalView implements ViewInterface {
         System.out.println(endScreen);
     }
 
-    public void createCharacter(String[] classesList) {
+    public void createCharacter() {
         String createCharacter =
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
                 "|                          |\r\n" +
                 "|     Create Character     |\r\n" +
-                "|                          |\r\n";
-        for (int i = 0; i < classesList.length; i++) {
-            String line =  "| " + i + ". " + classesList[i];
-            while (line.length() < 27)
-                line += " ";
-            line += "|\n";
-            createCharacter += line;
-        }
-        createCharacter +=
+                "|                          |\r\n" +
+                "| 1. Warrior               |\r\n" +
+                "| 2. Mage                  |\r\n" +
                 "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
+    }
+
+    public void generalPrint(String input) {
+        System.out.println(input);
+    }
+
+    public void exploring(int[][] mapArr) {
+        System.out.println(arrMapToStrMap(mapArr));
+    }
+
+    private String arrMapToStrMap(int[][] mapArr) {
+        String[] legend = {"$", "X", "O", "-"};
+        String strMap;
+        int mapWidth = mapArr.length;
+        int mapHeight = mapArr[0].length;
+        int fillerSizeToMakeItLookGood = ((mapWidth + 1) * 2) + 1;
+
+        strMap = filler(fillerSizeToMakeItLookGood, '~', '*');
+        strMap += filler(fillerSizeToMakeItLookGood, ' ', '|');
+
+        for (int y = mapHeight - 1; y >= 0; y--) {
+            strMap += "|  ";
+            for (int x = 0; x < mapWidth; x++) {
+                strMap += legend[mapArr[x][y]] + ' ';
+            }
+            strMap += " |\r\n";
+        }
+
+        strMap += filler(fillerSizeToMakeItLookGood, ' ', '|');
+        strMap += filler(fillerSizeToMakeItLookGood, '~', '*');
+
+        return strMap;
+    }
+
+    private String filler(int length, char innerChar, char outerChar) {
+        String filler = "" + outerChar;
+        for (int i = 0; i < length; i++) {
+            filler += innerChar;
+        }
+        filler += outerChar + "\r\n";
+        return filler;
+    }
+
+    public void twoDArray(Object[][] arr) {
+        System.out.println(Arrays.deepToString(arr).replace("], ", "]\n"));
     }
 
 }

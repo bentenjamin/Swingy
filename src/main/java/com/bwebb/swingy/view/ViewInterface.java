@@ -5,5 +5,7 @@ public interface ViewInterface {
     void hype();
     void invalidInput();
     void endScreen();
-    void createCharacter(String[] classesList);
+    void createCharacter();
+    void generalPrint(String input);
+    void exploring(int[][] curMap);
 }

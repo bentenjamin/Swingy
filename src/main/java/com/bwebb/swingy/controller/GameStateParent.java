@@ -22,7 +22,7 @@ public abstract class GameStateParent implements GameState {
     }
 
     public GameStateParent() {
-        commands.put("quit", this::quitGame);
+        commands.put("q", this::quitGame);
     }
 
     private void quitGame() {

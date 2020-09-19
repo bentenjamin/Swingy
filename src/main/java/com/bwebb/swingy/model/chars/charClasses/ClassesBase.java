@@ -1,6 +1,6 @@
 package com.bwebb.swingy.model.chars.charClasses;
 
-public abstract class ClassesBase {
+public class ClassesBase {
     protected String className = "defaultClass";
     protected int attack, defense, health = 0;
 
