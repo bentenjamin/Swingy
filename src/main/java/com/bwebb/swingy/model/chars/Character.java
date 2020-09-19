@@ -36,6 +36,20 @@ public class Character {
         return this.characterClass.getHealth() + this.helm;
     }
 
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", characterClass=" + characterClass +
+                ", level=" + level +
+                ", experience=" + experience +
+                ", luck=" + luck +
+                ", weapon=" + weapon +
+                ", armour=" + armour +
+                ", helm=" + helm +
+                '}';
+    }
+
     /* todo
         character toString
         */

@@ -6,6 +6,13 @@ public abstract class ClassesBase {
     protected int defense = 0;
     protected int health = 0;
 
+    public ClassesBase(String className, int attack, int defense, int health) {
+        this.className = className;
+        this.attack = attack;
+        this.defense = defense;
+        this.health = health;
+    }
+
     public int getAttack() {
         return this.attack;
     }
@@ -22,7 +29,16 @@ public abstract class ClassesBase {
         return this.className;
     }
 
-    /* todo
-    *   toString for classes*/
+    @Override
+    public String toString() {
+        return "ClassesBase{" +
+                "className='" + className + '\'' +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                ", health=" + health +
+                '}';
+    }
+
+    /* todo */
 }
 

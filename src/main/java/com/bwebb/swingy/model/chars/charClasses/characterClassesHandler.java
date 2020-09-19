@@ -1,8 +1,12 @@
 package com.bwebb.swingy.model.chars.charClasses;
 
+import com.bwebb.swingy.model.chars.charClasses.classList.Mage;
+import com.bwebb.swingy.model.chars.charClasses.classList.Warrior;
+
 public abstract class characterClassesHandler {
-    private static ClassesBase[] classesList = {
-            new Warrior()
+    private final static ClassesBase[] classesList = {
+            new Warrior(),
+            new Mage()
     };
 
     public static String[] getClassesList() {
