@@ -30,7 +30,7 @@ public class TerminalView implements ViewInterface {
     }
 
     public void endScreen() {
-        String endScreen= "Thank you for playing!";
+        String endScreen = "Thank you for playing!";
         System.out.println(endScreen);
     }
 

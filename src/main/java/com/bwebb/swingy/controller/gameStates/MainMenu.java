@@ -6,19 +6,13 @@ import com.bwebb.swingy.view.ViewInterface;
 
 import static com.bwebb.swingy.controller.GameController.display;
 
-public class MainMenu extends GameStateParent implements GameState {
+public class MainMenu extends GameStateParent {
     public MainMenu() {
         commands.put("1", this::loadCreateCharacter);
     }
 
-    public void loadCreateCharacter() {
+    private void loadCreateCharacter() {
         display.createCharacter();
         localGameState = new CreateCharacter();
-    }
-
-    @Override
-    public GameState execute(String userInput) {
-        commands.get(userInput).run();
-        return localGameState;
     }
 }

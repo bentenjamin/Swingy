@@ -6,7 +6,7 @@ import com.bwebb.swingy.view.ViewInterface;
 import static com.bwebb.swingy.controller.GameController.display;
 
 
-public class EndScreen extends GameStateParent implements GameState  {
+public class EndScreen extends GameStateParent {
 
     @Override
     public boolean evaluate(String userInput) {
