@@ -1,5 +1,6 @@
 package com.bwebb.swingy.view.terminal;
 
+import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.view.ViewInterface;
 
 import java.util.Arrays;
@@ -37,13 +38,26 @@ public class TerminalView implements ViewInterface {
     }
 
     public void createCharacter() {
+        String[] classList = ClassesHandler.getClassList();
         String createCharacter =
+
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
                 "|                          |\r\n" +
                 "|     Create Character     |\r\n" +
-                "|                          |\r\n" +
-                "| 1. Warrior               |\r\n" +
-                "| 2. Mage                  |\r\n" +
+                "|                          |\r\n";
+
+
+        for (int i = 0; i < classList.length; i++) {
+            String line = "|  " + (i + 1) + ". " + classList[i];
+            for (int j = 0; line.length() < 27; j++) {
+                line += " ";
+            }
+            line += "|\r\n";
+            createCharacter += line;
+        }
+
+
+        createCharacter +=
                 "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
