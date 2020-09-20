@@ -23,10 +23,14 @@ public class CreateCharacter extends GameStateParent {
         } catch (NumberFormatException e) {
             return false;
         }
-        if (selection < 1 || selection > ClassesHandler.getClassList().length)
-            return false;
 
-        return true;
+        if (selection >= 1 && selection <= ClassesHandler.getClassList().length)
+            return true;
+
+        if ((commands.get(userInput) != null))
+            return true;
+
+        return false;
     }
 
     @Override
