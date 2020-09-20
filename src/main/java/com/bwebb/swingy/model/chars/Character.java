@@ -1,13 +1,15 @@
 package com.bwebb.swingy.model.chars;
 
 import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
+import com.bwebb.swingy.model.map.Coordinates;
 
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
     private String name = "defaultName";
     private ClassesBase characterClass = null;
-    private int level = 0, experience = 0, luck = 0, x = -1, y = -1;
+    private Coordinates pos = null;
+    private int level = 0, experience = 0, luck = 0;
 
     //artifacts
     private int weapon, armour, helm = 0;
@@ -15,6 +17,7 @@ public class Character {
     public Character(String name, ClassesBase characterClass) {
         this.name = name;
         this.characterClass = characterClass;
+        this.pos = new Coordinates(-1,-1);
 
         //luck is random between 0-100 and has a bias to lower ranges (0-40~)
         this.luck = rand_gaus(0, 100);
@@ -51,19 +54,19 @@ public class Character {
     }
 
     public int getX() {
-        return x;
+        return pos.getX();
     }
 
     public int getY() {
-        return y;
+        return pos.getY();
     }
 
     public void setX(int x) {
-        this.x = x;
+        pos.setX(x);
     }
 
     public void setY(int y) {
-        this.y = y;
+        setY(y);
     }
 
     /* todo
