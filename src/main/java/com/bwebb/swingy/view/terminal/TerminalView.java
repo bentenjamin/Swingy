@@ -62,10 +62,10 @@ public class TerminalView implements ViewInterface {
         String strMap;
         int mapWidth = mapArr.length;
         int mapHeight = mapArr[0].length;
-        int fillerSizeToMakeItLookGood = ((mapWidth + 1) * 2) + 1;
+        int fillerSize = ((mapWidth + 1) * 2) + 1;
 
-        strMap = filler(fillerSizeToMakeItLookGood, '~', '*');
-        strMap += filler(fillerSizeToMakeItLookGood, ' ', '|');
+        strMap = filler(fillerSize, '~', '*');
+        strMap += filler(fillerSize, ' ', '|');
 
         for (int y = mapHeight - 1; y >= 0; y--) {
             strMap += "|  ";
@@ -75,8 +75,8 @@ public class TerminalView implements ViewInterface {
             strMap += " |\r\n";
         }
 
-        strMap += filler(fillerSizeToMakeItLookGood, ' ', '|');
-        strMap += filler(fillerSizeToMakeItLookGood, '~', '*');
+        strMap += filler(fillerSize, ' ', '|');
+        strMap += filler(fillerSize, '~', '*');
 
         return strMap;
     }
@@ -92,6 +92,10 @@ public class TerminalView implements ViewInterface {
 
     public void twoDArray(Object[][] arr) {
         System.out.println(Arrays.deepToString(arr).replace("], ", "]\n"));
+    }
+
+    public void loadingPlayer() {
+        System.out.println("Loading player...");
     }
 
 }

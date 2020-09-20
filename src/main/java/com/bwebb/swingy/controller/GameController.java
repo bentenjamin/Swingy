@@ -19,6 +19,7 @@ public class GameController {
     public static GameState currentState = null;
     private TerminalView terminalView = new TerminalView();
     public static Character player = null;
+    public static MapHandler mapHandler = new MapHandler(0);
 
     public GameController(views argView) {
         switch (argView) {

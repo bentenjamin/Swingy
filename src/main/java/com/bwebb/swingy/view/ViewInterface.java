@@ -8,4 +8,5 @@ public interface ViewInterface {
     void createCharacter();
     void generalPrint(String input);
     void exploring(int[][] curMap);
+    void loadingPlayer();
 }

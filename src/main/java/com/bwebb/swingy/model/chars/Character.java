@@ -46,6 +46,10 @@ public class Character {
                 '}';
     }
 
+    public int getLevel() {
+        return this.level;
+    }
+
     /* todo
         character toString
         */
