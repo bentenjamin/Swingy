@@ -3,6 +3,7 @@ package com.bwebb.swingy.controller.gameStates;
 import com.bwebb.swingy.controller.GameStateParent;
 import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
+import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.github.javafaker.Faker;
 
 import static com.bwebb.swingy.controller.GameController.*;
@@ -22,7 +23,7 @@ public class CreateCharacter extends GameStateParent {
         } catch (NumberFormatException e) {
             return false;
         }
-        if (selection < 1 || selection > 2)
+        if (selection < 1 || selection > ClassesHandler.getClassList().length)
             return false;
 
         return true;
@@ -30,14 +31,7 @@ public class CreateCharacter extends GameStateParent {
 
     @Override
     public void execute(String userInput) {
-        int classIndex = 0;
-        try {
-            classIndex = Integer.parseInt(userInput);
-        } catch (NullPointerException  e) {
-            System.out.println("no input: " + e);
-        } catch (NumberFormatException e) {
-            System.out.println("not an int: " + e);
-        }
+        int classIndex = (this.evaluate(userInput)) ? Integer.parseInt(userInput) : 0;
         player = createCharacter(classIndex);
 
         currentState = gameStates.loadingPlayer;
