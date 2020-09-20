@@ -6,6 +6,7 @@ import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
 import com.github.javafaker.Faker;
 
 import static com.bwebb.swingy.controller.GameController.*;
+import static com.bwebb.swingy.model.chars.charClasses.ClassesHandler.getClassObj;
 
 public class CreateCharacter extends GameStateParent {
     Faker faker = new Faker();
@@ -16,7 +17,9 @@ public class CreateCharacter extends GameStateParent {
 
         try {
             selection = Integer.parseInt(userInput);
-        } catch (NullPointerException NumberFormatException) {
+        } catch (NullPointerException  e) {
+            return false;
+        } catch (NumberFormatException e) {
             return false;
         }
         if (selection < 1 || selection > 2)
@@ -27,25 +30,21 @@ public class CreateCharacter extends GameStateParent {
 
     @Override
     public void execute(String userInput) {
+        int classIndex = 0;
         try {
-            player = new Character(faker.name().firstName(), new ClassesBase("warrior", 5, 5, 5));
-        } catch (NullPointerException e) {
-            System.err.println("attempted to execute a command that doesnt exist: " + e);
+            classIndex = Integer.parseInt(userInput);
+        } catch (NullPointerException  e) {
+            System.out.println("no input: " + e);
+        } catch (NumberFormatException e) {
+            System.out.println("not an int: " + e);
         }
+        player = createCharacter(classIndex);
     }
 
-    public CreateCharacter() {
-        commands.put("1", this::setPlayerWarrior);
-        commands.put("2", this::setPlayerMage);
-    }
-
-    private void setPlayerWarrior() {
-        player = new Character(faker.name().firstName(), new ClassesBase("warrior", 5, 5, 5));
-//        currentState = gameStates
-    }
-
-    private void setPlayerMage() {
-        player = new Character(faker.name().firstName(), new ClassesBase("mage", 5, 5, 5));
+    private Character createCharacter(int classIndex) {
+        Object[] classObj = getClassObj(classIndex);
+        ClassesBase myClass = new ClassesBase((String) classObj[0], (int) classObj[1], (int) classObj[2], (int) classObj[3]);
+        return new Character(faker.name().firstName(), myClass);
     }
 
     public void printMe() {

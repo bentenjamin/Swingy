@@ -6,7 +6,7 @@ public abstract class ClassesHandler {
             {"Mage", 4, 4, 4}
     };
 
-    public static Object[] getClass(int classIndex) {
+    public static Object[] getClassObj(int classIndex) {
         return classArr[classIndex];
     }
 
