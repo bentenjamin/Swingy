@@ -6,7 +6,7 @@ import java.util.Random;
 public class MapHandler {
     public int[][] arrMap = null;
 
-    private final int nothing = 3, blockage = 2, enemy = 1, player = 0;
+    public static final int mapNothing = 3, mapBlockage = 2, mapEnemy = 1, mapPlayer = 0;
 
     public MapHandler(int characterLevel) {
         genMap(characterLevel);
@@ -21,7 +21,7 @@ public class MapHandler {
         arrMap = new int[mapSize][mapSize];
 
         for (int[] arr: arrMap) {
-            Arrays.fill(arr, nothing);
+            Arrays.fill(arr, mapNothing);
         }
         
         for (int x = 0; x < mapSize; x++) {
@@ -36,15 +36,19 @@ public class MapHandler {
 
         int i = random.nextInt(100);
         if (i < 60)
-            return nothing;
+            return mapNothing;
         if (i < 80)
-            return blockage;
-        return enemy;
+            return mapNothing;
+        return mapEnemy;
     }
 
     public void setPlayerPos(int x, int y) {
         if (arrMap != null) {
-            arrMap[x][y] = player;
+            arrMap[x][y] = mapPlayer;
         }
+    }
+
+    public int getTile(int x, int y) {
+        return arrMap[x][y];
     }
 }

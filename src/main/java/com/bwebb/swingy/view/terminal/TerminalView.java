@@ -58,11 +58,11 @@ public class TerminalView implements ViewInterface {
     }
 
     private String arrMapToStrMap(int[][] mapArr) {
-        String[] legend = {"$", "X", "O", "-"};
         String strMap;
         int mapWidth = mapArr.length;
         int mapHeight = mapArr[0].length;
         int fillerSize = ((mapWidth + 1) * 2) + 1;
+        String[] legend = {"$", "X", "O", "-"};
 
         strMap = filler(fillerSize, '~', '*');
         strMap += filler(fillerSize, ' ', '|');
