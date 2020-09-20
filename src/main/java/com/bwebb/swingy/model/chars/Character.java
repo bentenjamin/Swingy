@@ -23,15 +23,15 @@ public class Character {
         this.luck = rand_gaus(0, 100);
     }
 
-    private int getEffectiveAttack() {
+    public int getEffectiveAttack() {
         return this.characterClass.getAttack() + this.weapon;
     }
 
-    private int getEffectiveDefense() {
+    public int getEffectiveDefense() {
         return this.characterClass.getDefense() + this.armour;
     }
 
-    private int getEffectiveHealth() {
+    public int getEffectiveHealth() {
         return this.characterClass.getHealth() + this.helm;
     }
 
