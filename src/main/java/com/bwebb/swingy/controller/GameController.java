@@ -46,10 +46,6 @@ public class GameController {
                 System.out.println(e);
             }
         }
-
-        MapHandler aMap = new MapHandler(0);
-        display.exploring(aMap.arrMap);
-//
     }
 
     private void evaluateExecuteRepeat() {

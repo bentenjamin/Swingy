@@ -6,10 +6,7 @@ import java.util.Random;
 public class MapHandler {
     public int[][] arrMap = null;
 
-    private final int nothing = 3;
-    private final int blockage = 2;
-    private final int enemy = 1;
-    private final int player = 0;
+    private final int nothing = 3, blockage = 2, enemy = 1, player = 0;
 
     public MapHandler(int characterLevel) {
         genMap(characterLevel);
@@ -43,5 +40,11 @@ public class MapHandler {
         if (i < 80)
             return blockage;
         return enemy;
+    }
+
+    public void setPlayerPos(int x, int y) {
+        if (arrMap != null) {
+            arrMap[x][y] = player;
+        }
     }
 }

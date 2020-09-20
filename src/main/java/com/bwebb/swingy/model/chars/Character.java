@@ -7,7 +7,7 @@ import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 public class Character {
     private String name = "defaultName";
     private ClassesBase characterClass = null;
-    private int level, experience, luck, x, y = 0;
+    private int level = 0, experience = 0, luck = 0, x = -1, y = -1;
 
     //artifacts
     private int weapon, armour, helm = 0;
@@ -50,8 +50,25 @@ public class Character {
         return this.level;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     /* todo
         character toString
+        set player x, y to -1 when finish mission
         */
 
 }

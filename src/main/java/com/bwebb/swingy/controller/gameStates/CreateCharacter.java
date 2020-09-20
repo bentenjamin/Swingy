@@ -39,6 +39,9 @@ public class CreateCharacter extends GameStateParent {
             System.out.println("not an int: " + e);
         }
         player = createCharacter(classIndex);
+
+        currentState = gameStates.loadingPlayer;
+        currentState.execute("big sad");
     }
 
     private Character createCharacter(int classIndex) {
