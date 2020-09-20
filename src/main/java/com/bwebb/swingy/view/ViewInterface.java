@@ -9,4 +9,5 @@ public interface ViewInterface {
     void generalPrint(String input);
     void exploring(int[][] curMap);
     void loadingPlayer();
+    void blockage();
 }

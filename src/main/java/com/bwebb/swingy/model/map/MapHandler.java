@@ -38,7 +38,7 @@ public class MapHandler {
         if (i < 60)
             return mapNothing;
         if (i < 80)
-            return mapNothing;
+            return mapBlockage;
         return mapEnemy;
     }
 

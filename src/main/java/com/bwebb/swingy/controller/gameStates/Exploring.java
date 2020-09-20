@@ -40,7 +40,7 @@ public class Exploring extends GameStateParent {
     }
 
     public void runBlockage() {
-
+        display.blockage();
     }
 
     public void runEndOfMap() {

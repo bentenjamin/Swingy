@@ -2,6 +2,7 @@ package com.bwebb.swingy.view.terminal;
 
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.view.ViewInterface;
+import com.github.javafaker.Faker;
 
 import java.util.Arrays;
 
@@ -110,6 +111,13 @@ public class TerminalView implements ViewInterface {
 
     public void loadingPlayer() {
         System.out.println("Loading player...");
+    }
+
+    @Override
+    public void blockage() {
+        Faker faker = new Faker();
+        String monster = (System.currentTimeMillis() % 2 == 1) ? faker.elderScrolls().creature() : faker.witcher().monster();
+        System.out.println("A " + monster + " blocks your path!");
     }
 
 }
