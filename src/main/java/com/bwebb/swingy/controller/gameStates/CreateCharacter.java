@@ -16,6 +16,9 @@ public class CreateCharacter extends GameStateParent {
     public boolean evaluate(String userInput) {
         int selection;
 
+        if (commands.containsKey(userInput))
+            return true;
+
         try {
             selection = Integer.parseInt(userInput);
         } catch (NullPointerException  e) {
@@ -27,9 +30,6 @@ public class CreateCharacter extends GameStateParent {
         if (selection >= 1 && selection <= ClassesHandler.getClassList().length)
             return true;
 
-        if ((commands.get(userInput) != null))
-            return true;
-
         return false;
     }
 
@@ -39,7 +39,7 @@ public class CreateCharacter extends GameStateParent {
             commands.get(userInput).run();
             return ;
         }
-        int classIndex = (this.evaluate(userInput)) ? Integer.parseInt(userInput) : 0;
+        int classIndex = (this.evaluate(userInput)) ? (Integer.parseInt(userInput) - 1) : 0;
         player = createCharacter(classIndex);
 
         currentState = gameStates.loadingPlayer;
