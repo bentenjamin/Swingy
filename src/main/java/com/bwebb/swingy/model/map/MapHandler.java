@@ -53,4 +53,8 @@ public class MapHandler {
             return -1;
         return arrMap[x][y];
     }
+
+    public void setClearedTile(Coordinates coords) {
+        arrMap[coords.getX()][coords.getY()] = mapNothing;
+    }
 }

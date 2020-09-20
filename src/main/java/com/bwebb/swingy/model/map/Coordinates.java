@@ -1,7 +1,7 @@
 package com.bwebb.swingy.model.map;
 
 public class Coordinates {
-    private int x, y;
+    private int x = -1, y = -1;
 
     public Coordinates(int x, int y) {
         this.x = x;
@@ -24,8 +24,8 @@ public class Coordinates {
         this.x = x;
     }
 
-    public void moveCoords(Coordinates offset) {
-        x += offset.x;
-        y += offset.y;
+    public void moveBy(Coordinates offset) {
+        this.x += offset.x;
+        this.y += offset.y;
     }
 }

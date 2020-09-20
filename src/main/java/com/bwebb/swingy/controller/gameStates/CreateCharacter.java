@@ -35,15 +35,15 @@ public class CreateCharacter extends GameStateParent {
 
     @Override
     public void execute(String userInput) {
-        if (userInput.equals("q"))
+        if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
-        else {
-            int classIndex = (this.evaluate(userInput)) ? Integer.parseInt(userInput) : 0;
-            player = createCharacter(classIndex);
-
-            currentState = gameStates.loadingPlayer;
-            currentState.execute("big sad");
+            return ;
         }
+        int classIndex = (this.evaluate(userInput)) ? Integer.parseInt(userInput) : 0;
+        player = createCharacter(classIndex);
+
+        currentState = gameStates.loadingPlayer;
+        currentState.execute("big sad");
     }
 
     private Character createCharacter(int classIndex) {
