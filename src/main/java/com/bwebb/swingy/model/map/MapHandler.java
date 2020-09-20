@@ -42,9 +42,9 @@ public class MapHandler {
         return mapEnemy;
     }
 
-    public void setPlayerPos(int x, int y) {
+    public void setPlayerPos(Coordinates coords) {
         if (arrMap != null) {
-            arrMap[x][y] = mapPlayer;
+            arrMap[coords.getX()][coords.getY()] = mapPlayer;
         }
     }
 

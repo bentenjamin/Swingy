@@ -53,20 +53,12 @@ public class Character {
         return this.level;
     }
 
-    public int getX() {
-        return pos.getX();
+    public Coordinates getPos() {
+        return pos;
     }
 
-    public int getY() {
-        return pos.getY();
-    }
-
-    public void setX(int x) {
-        pos.setX(x);
-    }
-
-    public void setY(int y) {
-        setY(y);
+    public void setPos(Coordinates coords) {
+        this.pos = coords;
     }
 
     /* todo

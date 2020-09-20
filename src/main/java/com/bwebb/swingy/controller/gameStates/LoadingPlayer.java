@@ -1,6 +1,7 @@
 package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.controller.GameStateParent;
+import com.bwebb.swingy.model.map.Coordinates;
 
 import static com.bwebb.swingy.controller.GameController.*;
 
@@ -15,12 +16,11 @@ public class LoadingPlayer extends GameStateParent {
 
     private void initPlay() {
         mapHandler.genMap(player.getLevel());
-        if (player.getX() == -1) {
+        if (player.getPos().getX() == -1) {
             int defaultPlayerPos = (mapHandler.calcMapSize(player.getLevel()) % 2) + 1;
-            player.setX(defaultPlayerPos);
-            player.setY(defaultPlayerPos);
+            player.setPos(new Coordinates(defaultPlayerPos, defaultPlayerPos));
         }
-        mapHandler.setPlayerPos(player.getX(), player.getY());
+        mapHandler.setPlayerPos(player.getPos());
     }
 
     @Override
