@@ -49,6 +49,8 @@ public class MapHandler {
     }
 
     public int getTile(int x, int y) {
+        if (x < 0 || x > arrMap.length - 1 || y < 0 || y > arrMap.length - 1)
+            return -1;
         return arrMap[x][y];
     }
 }
