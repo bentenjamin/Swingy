@@ -226,7 +226,7 @@ public class TerminalView implements ViewInterface {
 
 // read input
 // send input to current game state
-// current game state evauluates
+// current game state evaluates
 // state executes its code
 // state decides next state
 // state returns current state

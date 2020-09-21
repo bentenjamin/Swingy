@@ -25,24 +25,18 @@ public class GameController {
         }
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public void startSwingy() throws IOException {
         currentState = gameStates.menu;
-        currentState.printMe();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (currentState != null) {
-            try {
-                String line = br.readLine();
-                if (currentState.evaluate(line)) {
-                    currentState.execute(line);
-                    if (currentState != null)
-                        currentState.printMe();
-                }
-                else
-                    display.invalidInput();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
+            currentState.printMe();
+            String line = br.readLine();
+            if (currentState.evaluate(line))
+                currentState.execute(line);
+            else
+                display.invalidInput();
         }
     }
 
