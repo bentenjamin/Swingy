@@ -23,7 +23,7 @@ public class Fight extends GameStateParent {
         if (rumble(player, enemy))
             fightWon(enemy.getExp(player.getLevel()));
         else
-            currentState = gameStates.death();
+            currentState = gameStates.death;
     }
 
     private void fightWon(int enemyExp) {

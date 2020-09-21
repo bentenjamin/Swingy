@@ -199,8 +199,25 @@ public class TerminalView implements ViewInterface {
         System.out.println("Equipped your new loot :D");
     }
 
-    ;
+    @Override
+    public void death() {
+        String rip =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                         |\r\n" +
+                "|      YOU HAVE DIED      |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|    Press any key to     |\r\n" +
+                "|     return to the       |\r\n" +
+                "|      main menu...       |\r\n" +
+                "|                         |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
+        System.out.println(rip);
+    }
 }
 //    public void () {
 //        String = "";

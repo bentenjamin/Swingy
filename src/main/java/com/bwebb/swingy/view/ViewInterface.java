@@ -16,4 +16,5 @@ public interface ViewInterface {
     void fightWon();
     void fled();
     void equippedArtifact();
+    void death();
 }
