@@ -178,11 +178,6 @@ public class TerminalView implements ViewInterface {
 
     public void fight() {
         System.out.println("You engage in BATTLE! Pain is temporary, GLORY IS FOREVER!");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void fightWon() {
