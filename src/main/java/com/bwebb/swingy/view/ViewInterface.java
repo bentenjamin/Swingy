@@ -10,4 +10,5 @@ public interface ViewInterface {
     void exploring(int[][] curMap);
     void loadingPlayer();
     void blockage();
+    void artifactFound();
 }

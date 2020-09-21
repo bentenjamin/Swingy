@@ -1,10 +1,10 @@
 package com.bwebb.swingy.model.chars.charClasses;
 
-public class ClassesBase {
+public class playerClass {
     protected String className = "defaultClass";
     protected int attack, defense, health = 0;
 
-    public ClassesBase(String className, int attack, int defense, int health) {
+    public playerClass(String className, int attack, int defense, int health) {
         this.className = className;
         this.attack = attack;
         this.defense = defense;

@@ -2,7 +2,7 @@ package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.controller.GameStateParent;
 import com.bwebb.swingy.model.chars.Character;
-import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
+import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.github.javafaker.Faker;
 
@@ -48,7 +48,7 @@ public class CreateCharacter extends GameStateParent {
 
     private Character createCharacter(int classIndex) {
         Object[] classObj = getClassObj(classIndex);
-        ClassesBase myClass = new ClassesBase((String) classObj[0], (int) classObj[1], (int) classObj[2], (int) classObj[3]);
+        playerClass myClass = new playerClass((String) classObj[0], (int) classObj[1], (int) classObj[2], (int) classObj[3]);
         return new Character(faker.name().firstName(), myClass);
     }
 

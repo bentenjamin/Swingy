@@ -5,6 +5,7 @@ import com.bwebb.swingy.view.ViewInterface;
 import com.github.javafaker.Faker;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class TerminalView implements ViewInterface {
     public void mainMenu() {
@@ -116,8 +117,13 @@ public class TerminalView implements ViewInterface {
     @Override
     public void blockage() {
         Faker faker = new Faker();
-        String monster = (System.currentTimeMillis() % 2 == 1) ? faker.elderScrolls().creature() : faker.witcher().monster();
+        Random random = new Random();
+        String monster = (random.nextBoolean()) ? faker.elderScrolls().creature() : faker.witcher().monster();
         System.out.println("A " + monster + " blocks your path!");
+    }
+
+    public void artifactFound() {
+        System.out.println("You have found and Artifact!");
     }
 
 }

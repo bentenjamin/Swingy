@@ -1,7 +1,6 @@
 package com.bwebb.swingy.model.chars;
 
 import com.bwebb.swingy.model.artifacts.Artifacts;
-import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
 import com.bwebb.swingy.model.chars.player.Level;
 import com.bwebb.swingy.model.map.Coordinates;
 
@@ -9,7 +8,7 @@ import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
     private String name = "defaultName";
-    private ClassesBase playerClass = null;
+    private com.bwebb.swingy.model.chars.charClasses.playerClass playerClass = null;
     private Coordinates pos = null;
     //offset is used to keep track of where the player wants to go
     private Coordinates offSet = null;
@@ -19,7 +18,7 @@ public class Character {
 
     //artifacts
 
-    public Character(String name, ClassesBase playerClass) {
+    public Character(String name, com.bwebb.swingy.model.chars.charClasses.playerClass playerClass) {
         this.name = name;
         this.playerClass = playerClass;
         this.pos = new Coordinates(-1,-1);
@@ -64,6 +63,14 @@ public class Character {
 
     public void setOffSet(Coordinates offSet) {
         this.offSet = offSet;
+    }
+
+    public int getLuck() {
+        return luck;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /* todo

@@ -51,7 +51,7 @@ public class Exploring extends GameStateParent {
     }
 
     public void runEnemy() {
-
+        currentState = gameStates.fight;
     }
 
     public void runNothing() {

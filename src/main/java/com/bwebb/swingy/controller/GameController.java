@@ -1,8 +1,7 @@
 package com.bwebb.swingy.controller;
 
-import com.bwebb.swingy.controller.gameStates.MainMenu;
 import com.bwebb.swingy.model.chars.Character;
-import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
+import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
@@ -11,7 +10,6 @@ import com.github.javafaker.Faker;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class GameController {
     public static GameStatesContainer gameStates = new GameStatesContainer();
@@ -67,7 +65,7 @@ public class GameController {
 
     public static void printRandomCharacter() {
         Faker faker = new Faker();
-        ClassesBase myClass = new ClassesBase("fillerClass", 5, 5, 5);
+        playerClass myClass = new playerClass("fillerClass", 5, 5, 5);
         Character hero = new Character(faker.name().firstName(), myClass);
         System.out.println(hero.toString());
     }
