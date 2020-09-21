@@ -1,7 +1,6 @@
-package com.bwebb.swingy.controller.gameStates;
+package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.GameState;
-import com.bwebb.swingy.controller.GameStateParent;
+import com.bwebb.swingy.controller.gameStates.GameStateParent;
 import com.bwebb.swingy.model.map.Coordinates;
 
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.bwebb.swingy.controller.GameController.*;
-import static com.bwebb.swingy.model.map.MapHandler.*;
 
 public class Exploring extends GameStateParent {
     private HashMap<String, Coordinates> keyCoordOffsets = new HashMap<String, Coordinates>();

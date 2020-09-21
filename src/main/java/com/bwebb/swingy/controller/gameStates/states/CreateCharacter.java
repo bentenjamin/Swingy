@@ -1,6 +1,6 @@
-package com.bwebb.swingy.controller.gameStates;
+package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.GameStateParent;
+import com.bwebb.swingy.controller.gameStates.GameStateParent;
 import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;

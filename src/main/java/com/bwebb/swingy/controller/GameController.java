@@ -1,11 +1,11 @@
 package com.bwebb.swingy.controller;
 
+import com.bwebb.swingy.controller.gameStates.GameState;
+import com.bwebb.swingy.controller.gameStates.GameStatesContainer;
 import com.bwebb.swingy.model.chars.Character;
-import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
-import com.github.javafaker.Faker;
 
 import java.io.BufferedReader;
 import java.io.IOException;

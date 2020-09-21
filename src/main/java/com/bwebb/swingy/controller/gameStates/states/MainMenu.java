@@ -1,15 +1,13 @@
-package com.bwebb.swingy.controller.gameStates;
+package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.GameState;
-import com.bwebb.swingy.controller.GameStateParent;
-import com.bwebb.swingy.controller.GameStatesContainer;
-import com.bwebb.swingy.view.ViewInterface;
+import com.bwebb.swingy.controller.gameStates.GameStateParent;
 
 import static com.bwebb.swingy.controller.GameController.*;
 
 public class MainMenu extends GameStateParent {
     public MainMenu() {
         commands.put("1", this::loadCreateCharacter);
+        player = null;
     }
 
     private void loadCreateCharacter() {

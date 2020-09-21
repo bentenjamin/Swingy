@@ -75,6 +75,8 @@ public class Character {
     }
 
     public void saveCharacter() {
+        pos.setX(-1);
+        pos.setY(-1);
         display.generalPrint("sAvEd ChArAcTeR");
     }
 

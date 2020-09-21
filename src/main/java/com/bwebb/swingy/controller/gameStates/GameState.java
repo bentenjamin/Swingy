@@ -1,4 +1,4 @@
-package com.bwebb.swingy.controller;
+package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.view.ViewInterface;
 

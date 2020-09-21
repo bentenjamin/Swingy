@@ -1,7 +1,6 @@
-package com.bwebb.swingy.controller.gameStates;
+package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.GameState;
-import com.bwebb.swingy.controller.GameStateParent;
+import com.bwebb.swingy.controller.gameStates.GameStateParent;
 
 import static com.bwebb.swingy.controller.GameController.*;
 

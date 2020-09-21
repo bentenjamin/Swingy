@@ -1,7 +1,6 @@
-package com.bwebb.swingy.controller;
+package com.bwebb.swingy.controller.gameStates;
 
-import com.bwebb.swingy.controller.GameState;
-import com.bwebb.swingy.controller.gameStates.*;
+import com.bwebb.swingy.controller.gameStates.states.*;
 
 public class GameStatesContainer {
     public GameState menu = new MainMenu();
