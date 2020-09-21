@@ -1,5 +1,6 @@
 package com.bwebb.swingy.model.npc;
 
+import static com.bwebb.swingy.model.chars.Character.levelUpThreshold;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 import static java.lang.Math.pow;
 
@@ -30,5 +31,11 @@ public class Enemy {
 
     public int getAttack() {
         return attack;
+    }
+
+    public int getExp(int playerLevel) {
+        int xp = (int) (levelUpThreshold(playerLevel) * 15/100);
+        xp += this.attack;
+        return xp;
     }
 }

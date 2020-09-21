@@ -17,6 +17,7 @@ public class Fight extends GameStateParent {
     private void fightEnemy() {
         Enemy enemy = new Enemy(player.getLevel());
         if (rumble(player, enemy)) {
+            player.addExp(enemy.getExp(player.getLevel()));
 
         }
     }

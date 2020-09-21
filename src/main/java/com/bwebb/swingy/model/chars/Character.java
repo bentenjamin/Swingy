@@ -4,6 +4,7 @@ import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
 import com.bwebb.swingy.model.map.Coordinates;
 
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
+import static java.lang.Math.pow;
 
 public class Character {
     private String name = "defaultName";
@@ -59,6 +60,26 @@ public class Character {
 
     public void setPos(Coordinates coords) {
         this.pos = coords;
+    }
+
+    public void addExp(int exp) {
+        experience += exp;
+        checkExp();
+    }
+
+    private void checkExp() {
+        int levelExp = levelUpThreshold(level);
+        if (levelExp > experience)
+            levelUp(experience - levelExp);
+    }
+
+    private void levelUp(int remainderExp) {
+        level += 1;
+        experience = remainderExp;
+    }
+
+    public static int levelUpThreshold(int playerLevel) {
+        return (int) ((playerLevel * 1000) + (pow((playerLevel - 1), 2) * 450));
     }
 
     /* todo
