@@ -28,6 +28,10 @@ public class GameController {
     @SuppressWarnings("SpellCheckingInspection")
     public void startSwingy() throws IOException {
         currentState = gameStates.menu;
+        evaluateExecuteRepeat();
+    }
+
+    private void evaluateExecuteRepeat() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (currentState != null) {
@@ -40,27 +44,4 @@ public class GameController {
         }
     }
 
-    private void evaluateExecuteRepeat() {
-
-    }
-
-    private void mainMenu() {
-        int result;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        display.mainMenu();
-        try {
-            result = Integer.parseInt(br.readLine());
-            if (result == 1)
-                display.hype();
-        } catch (IOException ioe) {
-            System.out.println(ioe);
-        }
-    }
-
-    public static void printRandomCharacter() {
-        Faker faker = new Faker();
-        playerClass myClass = new playerClass("fillerClass", 5, 5, 5);
-        Character hero = new Character(faker.name().firstName(), myClass);
-        System.out.println(hero.toString());
-    }
 }
