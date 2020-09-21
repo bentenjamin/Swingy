@@ -28,14 +28,17 @@ public class Exploring extends GameStateParent {
             return ;
         }
 
-        Coordinates offset = keyCoordOffsets.get(userInput);
-        int targetTile = mapHandler.getTile(player.getPos().getX() + offset.getX(), player.getPos().getY() + offset.getY());
+        player.setOffSet(keyCoordOffsets.get(userInput));
+
+        int targetX = player.getPos().getX() + player.getOffSet().getX();
+        int targetY = player.getPos().getY() + player.getOffSet().getY();
+        int targetTile = mapHandler.getTile(targetX, targetY);
 
         switch (targetTile) {
             case -1 -> runEndOfMap();
             case 1 -> runEnemy();
             case 2 -> runBlockage();
-            default -> runNothing(offset);
+            default -> runNothing();
         }
     }
 
@@ -51,16 +54,11 @@ public class Exploring extends GameStateParent {
 
     }
 
-    public void runNothing(Coordinates offset) {
-        movePlayer(offset);
+    public void runNothing() {
+        mapHandler.movePlayer(player.getOffSet());
         display.exploring(mapHandler.arrMap);
     }
 
-    public void movePlayer(Coordinates offset) {
-        mapHandler.setClearedTile(player.getPos());
-        player.getPos().moveBy(offset);
-        mapHandler.setPlayerPos(player.getPos());
-    }
 
     public Exploring() {
         keyCoordOffsets.put("w", new Coordinates(0, 1));
@@ -68,9 +66,6 @@ public class Exploring extends GameStateParent {
         keyCoordOffsets.put("s", new Coordinates(0, -1));
         keyCoordOffsets.put("d", new Coordinates(1, 0));
     }
-
-
-
 
     public void printMe() {
         display.exploring(mapHandler.arrMap);
