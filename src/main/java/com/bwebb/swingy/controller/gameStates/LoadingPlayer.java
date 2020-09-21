@@ -17,7 +17,7 @@ public class LoadingPlayer extends GameStateParent {
     private void initPlay() {
         mapHandler.genMap(player.getLevel());
         if (player.getPos().getX() == -1) {
-            int defaultPlayerPos = (mapHandler.calcMapSize(player.getLevel()) % 2) + 1;
+            int defaultPlayerPos = (mapHandler.calcMapSize(player.getLevel()) / 2);
             player.setPos(new Coordinates(defaultPlayerPos, defaultPlayerPos));
         }
         mapHandler.setPlayerPos(player.getPos());
