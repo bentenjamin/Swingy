@@ -217,6 +217,26 @@ public class TerminalView implements ViewInterface {
     public void levelUp(int playerLevel) {
         System.out.println("You have levelled up to Level " + playerLevel + "!");
     }
+
+    @Override
+    public void win() {
+        String ftw =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                         |\r\n" +
+                "|    MISSION COMPLETE     |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|                         |\r\n" +
+                "|    Press any key to     |\r\n" +
+                "|     return to the       |\r\n" +
+                "|      main menu...       |\r\n" +
+                "|                         |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+
+        System.out.println(ftw);
+    }
 }
 //    public void () {
 //        String = "";

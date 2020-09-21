@@ -11,4 +11,5 @@ public class GameStatesContainer {
     public GameState artifact = new Artifact();
     public GameState fight = new Fight();
     public GameState death = new Death();
+    public GameState win = new Win();
 }

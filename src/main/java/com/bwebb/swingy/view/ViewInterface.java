@@ -18,4 +18,5 @@ public interface ViewInterface {
     void equippedArtifact();
     void death();
     void levelUp(int playerLevel);
+    void win();
 }

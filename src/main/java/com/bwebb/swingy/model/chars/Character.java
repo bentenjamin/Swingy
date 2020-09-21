@@ -4,6 +4,7 @@ import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.player.Level;
 import com.bwebb.swingy.model.map.Coordinates;
 
+import static com.bwebb.swingy.controller.GameController.display;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
@@ -73,9 +74,14 @@ public class Character {
         return name;
     }
 
+    public void saveCharacter() {
+        display.generalPrint("sAvEd ChArAcTeR");
+    }
+
     /* todo
         character toString
         set player x, y to -1 when finish mission
+        save
         */
 
 }

@@ -47,7 +47,7 @@ public class Exploring extends GameStateParent {
     }
 
     public void runEndOfMap() {
-//        gamestate
+        currentState = gameStates.win;
     }
 
     public void runEnemy() {
