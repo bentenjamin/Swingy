@@ -20,6 +20,6 @@ public class Death extends GameStateParent {
         if (commands.containsKey(userInput))
             commands.get(userInput).run();
         else
-            currentState = gameStates.exploring;
+            currentState = gameStates.menu;
     }
 }
