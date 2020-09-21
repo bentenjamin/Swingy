@@ -1,6 +1,6 @@
 package com.bwebb.swingy.model.npc;
 
-import static com.bwebb.swingy.model.chars.Character.levelUpThreshold;
+import static com.bwebb.swingy.model.chars.player.Level.levelUpThreshold;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 import static java.lang.Math.pow;
 

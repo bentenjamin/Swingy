@@ -1,57 +1,47 @@
 package com.bwebb.swingy.model.chars;
 
+import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.charClasses.ClassesBase;
+import com.bwebb.swingy.model.chars.player.Level;
 import com.bwebb.swingy.model.map.Coordinates;
 
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
-import static java.lang.Math.pow;
 
 public class Character {
     private String name = "defaultName";
-    private ClassesBase characterClass = null;
+    private ClassesBase playerClass = null;
     private Coordinates pos = null;
-    private int level = 0, experience = 0, luck = 0;
+    private int luck = 0;
+    public Artifacts artifacts = null;
+    private Level lvl = null;
 
     //artifacts
-    private int weapon, armour, helm = 0;
 
-    public Character(String name, ClassesBase characterClass) {
+    public Character(String name, ClassesBase playerClass) {
         this.name = name;
-        this.characterClass = characterClass;
+        this.playerClass = playerClass;
         this.pos = new Coordinates(-1,-1);
+        this.artifacts = new Artifacts();
+        this.lvl = new Level();
 
         //luck is random between 0-100 and has a bias to lower ranges (0-40~)
         this.luck = rand_gaus(0, 100);
     }
 
     public int getEffectiveAttack() {
-        return this.characterClass.getAttack() + this.weapon;
+        return this.playerClass.getAttack() + artifacts.getWeapon();
     }
 
     public int getEffectiveDefense() {
-        return this.characterClass.getDefense() + this.armour;
+        return this.playerClass.getDefense() + artifacts.getArmour();
     }
 
     public int getEffectiveHealth() {
-        return this.characterClass.getHealth() + this.helm;
-    }
-
-    @Override
-    public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                ", characterClass=" + characterClass +
-                ", level=" + level +
-                ", experience=" + experience +
-                ", luck=" + luck +
-                ", weapon=" + weapon +
-                ", armour=" + armour +
-                ", helm=" + helm +
-                '}';
+        return this.playerClass.getHealth() + artifacts.getHelm();
     }
 
     public int getLevel() {
-        return this.level;
+        return this.lvl.getLevel();
     }
 
     public Coordinates getPos() {
@@ -62,24 +52,8 @@ public class Character {
         this.pos = coords;
     }
 
-    public void addExp(int exp) {
-        experience += exp;
-        checkExp();
-    }
-
-    private void checkExp() {
-        int levelExp = levelUpThreshold(level);
-        if (levelExp > experience)
-            levelUp(experience - levelExp);
-    }
-
-    private void levelUp(int remainderExp) {
-        level += 1;
-        experience = remainderExp;
-    }
-
-    public static int levelUpThreshold(int playerLevel) {
-        return (int) ((playerLevel * 1000) + (pow((playerLevel - 1), 2) * 450));
+    public Level getLvl() {
+        return lvl;
     }
 
     /* todo
