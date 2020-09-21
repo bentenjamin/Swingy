@@ -11,6 +11,8 @@ public class Character {
     private String name = "defaultName";
     private ClassesBase playerClass = null;
     private Coordinates pos = null;
+    //offset is used to keep track of where the player wants to go
+    private Coordinates offSet = null;
     private int luck = 0;
     public Artifacts artifacts = null;
     private Level lvl = null;
@@ -54,6 +56,14 @@ public class Character {
 
     public Level getLvl() {
         return lvl;
+    }
+
+    public Coordinates getOffSet() {
+        return offSet;
+    }
+
+    public void setOffSet(Coordinates offSet) {
+        this.offSet = offSet;
     }
 
     /* todo
