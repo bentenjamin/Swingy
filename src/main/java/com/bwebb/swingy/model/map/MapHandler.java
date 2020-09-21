@@ -3,6 +3,9 @@ package com.bwebb.swingy.model.map;
 import java.util.Arrays;
 import java.util.Random;
 
+import static com.bwebb.swingy.controller.GameController.mapHandler;
+import static com.bwebb.swingy.controller.GameController.player;
+
 public class MapHandler {
     public int[][] arrMap = null;
 
@@ -56,5 +59,11 @@ public class MapHandler {
 
     public void setClearedTile(Coordinates coords) {
         arrMap[coords.getX()][coords.getY()] = mapNothing;
+    }
+
+    public void movePlayer(Coordinates offset) {
+        mapHandler.setClearedTile(player.getPos());
+        player.getPos().moveBy(offset);
+        mapHandler.setPlayerPos(player.getPos());
     }
 }
