@@ -34,7 +34,7 @@ public class Fight extends GSTemplate {
     }
 
     private void flee() {
-        if (random.nextBoolean()) {
+        if (game.random.nextBoolean()) {
             game.display.fled();
             game.state = game.states.exploring;
         } else

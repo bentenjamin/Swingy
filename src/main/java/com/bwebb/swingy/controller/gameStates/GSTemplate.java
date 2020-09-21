@@ -1,6 +1,7 @@
 package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.model.chars.Character;
 import com.github.javafaker.Faker;
 
 import java.util.HashMap;
@@ -9,11 +10,9 @@ import java.util.Random;
 public abstract class GSTemplate implements GameState {
     protected HashMap<String, Runnable> commands = new HashMap<>();
     protected GameAssets game = null;
-    protected Faker faker = new Faker();
-    protected Random random = new Random();
 
     public boolean evaluate(String userInput) {
-        return (commands.get(userInput) != null);
+        return (commands.containsKey(userInput));
     };
 
     public void execute(String userInput) {
@@ -28,6 +27,12 @@ public abstract class GSTemplate implements GameState {
         this.game = game;
 
         commands.put("q", this::quitGame);
+        commands.put("i", this::viewStats);
+    }
+
+    private void viewStats() {
+        if (game.player != null)
+            game.display.stats(game.player);
     }
 
     private void quitGame() {

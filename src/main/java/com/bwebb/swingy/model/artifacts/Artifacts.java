@@ -63,4 +63,8 @@ public class Artifacts {
 
         return artifactBaseStat + statBoost;
     }
+
+    public Object[][] getArtifacts() {
+        return artifacts;
+    }
 }

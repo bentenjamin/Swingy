@@ -1,5 +1,7 @@
 package com.bwebb.swingy.view;
 
+import com.bwebb.swingy.model.chars.Character;
+
 public interface ViewInterface {
     void mainMenu();
     void hype();
@@ -19,4 +21,5 @@ public interface ViewInterface {
     void death();
     void levelUp(int playerLevel);
     void win();
+    void stats(Character player);
 }

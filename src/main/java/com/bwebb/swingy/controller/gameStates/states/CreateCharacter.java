@@ -52,7 +52,7 @@ public class CreateCharacter extends GSTemplate {
     private Character createCharacter(int classIndex) {
         Object[] classObj = getClassObj(classIndex);
         playerClass myClass = new playerClass((String) classObj[0], (int) classObj[1], (int) classObj[2], (int) classObj[3]);
-        return new Character(faker.name().firstName(), myClass);
+        return new Character(game.faker.name().firstName(), myClass);
     }
 
     public void printMe() {

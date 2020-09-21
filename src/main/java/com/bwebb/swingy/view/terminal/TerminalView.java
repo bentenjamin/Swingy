@@ -1,5 +1,6 @@
 package com.bwebb.swingy.view.terminal;
 
+import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.github.javafaker.Faker;
@@ -236,6 +237,21 @@ public class TerminalView implements ViewInterface {
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(ftw);
+    }
+
+    public void stats(Character player) {
+        String stats = "Name: " + player.getName() + "\r\n";
+        stats += "Class: " + player.getPlayerClass().getClassName() + "\r\n";
+        stats += "Attack: " + player.getPlayerClass().getAttack() + "\r\n";
+        stats += "Defense: " + player.getPlayerClass().getDefense() + "\r\n";
+        stats += "Health: " + player.getPlayerClass().getHealth() + "\r\n";
+        stats += "Level: " + player.getLevel() + "\r\n";
+        stats += "Exp: " + player.getLvl().getExperience() + "\r\n";
+        stats += "Luck: " + player.getLuck();
+
+        System.out.println(stats);
+        this.twoDArray(player.getArtifacts().getArtifacts());
+//        stats += ": " + player. + "\r\n";
     }
 }
 //    public void () {

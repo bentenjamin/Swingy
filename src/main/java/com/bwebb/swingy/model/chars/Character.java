@@ -1,6 +1,7 @@
 package com.bwebb.swingy.model.chars;
 
 import com.bwebb.swingy.model.artifacts.Artifacts;
+import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.chars.player.Level;
 import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.model.map.MapHandler;
@@ -15,7 +16,7 @@ public class Character {
     //offset is used to keep track of where the player wants to go
     private Coordinates offSet = null;
     private int luck = 0;
-    public Artifacts artifacts = null;
+    private Artifacts artifacts = null;
     private Level lvl = null;
 
     //artifacts
@@ -85,6 +86,14 @@ public class Character {
         map.setClearedTile(pos);
         pos.moveBy(offset);
         map.setPlayerPos(pos);
+    }
+
+    public Artifacts getArtifacts() {
+        return artifacts;
+    }
+
+    public com.bwebb.swingy.model.chars.charClasses.playerClass getPlayerClass() {
+        return playerClass;
     }
 
     /* todo

@@ -6,6 +6,9 @@ import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
+import com.github.javafaker.Faker;
+
+import java.util.Random;
 
 public class GameAssets {
     public GSContainer states = new GSContainer(this);
@@ -14,4 +17,6 @@ public class GameAssets {
     public Character player = null;
     public MapHandler mapHandler = new MapHandler();
     public TerminalView terminalView = new TerminalView();
+    public Faker faker = new Faker();
+    public Random random = new Random();
 }

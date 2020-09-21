@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Exploring extends GSTemplate {
     private HashMap<String, Coordinates> keyCoordOffsets = new HashMap<String, Coordinates>();
-    private static final Set<String> validKeys = new HashSet<String>(Arrays.asList("w", "a", "s", "d", "q"));
+    private static final Set<String> validKeys = new HashSet<String>(Arrays.asList("w", "a", "s", "d", "q", "i"));
 
     @Override
     public boolean evaluate(String userInput) {
@@ -58,6 +58,7 @@ public class Exploring extends GSTemplate {
 
     public Exploring(GameAssets game) {
         super(game);
+
         keyCoordOffsets.put("w", new Coordinates(0, 1));
         keyCoordOffsets.put("a", new Coordinates(-1, 0));
         keyCoordOffsets.put("s", new Coordinates(0, -1));

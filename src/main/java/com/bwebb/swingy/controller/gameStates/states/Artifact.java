@@ -17,7 +17,7 @@ public class Artifact extends GSTemplate {
     }
 
     private void pickUp() {
-        game.player.artifacts.setArtifactByIndex(artifactIndex, artifactStat);
+        game.player.getArtifacts().setArtifactByIndex(artifactIndex, artifactStat);
         game.display.equippedArtifact();
         leave();
     }
@@ -30,15 +30,15 @@ public class Artifact extends GSTemplate {
         }
 
         int luckModifier = findRange * game.player.getLuck() / 100;
-        if (random.nextInt(101) > findChance + luckModifier)
+        if (game.random.nextInt(101) > findChance + luckModifier)
             leave();
         else
             genArtifact();
     }
 
     public void genArtifact() {
-        artifactIndex = random.nextInt(3);
-        artifactStat = game.player.artifacts.calcStatBoost(game.player.getLuck());
+        artifactIndex = game.random.nextInt(3);
+        artifactStat = game.player.getArtifacts().calcStatBoost(game.player.getLuck());
     }
 
     public void leave() {
@@ -48,6 +48,6 @@ public class Artifact extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.artifactFound(game.player.artifacts.getArtifactList()[artifactIndex], artifactStat, game.player.artifacts.getArtifactByIndex(artifactIndex));
+        game.display.artifactFound(game.player.getArtifacts().getArtifactList()[artifactIndex], artifactStat, game.player.getArtifacts().getArtifactByIndex(artifactIndex));
     }
 }
