@@ -56,7 +56,6 @@ public class Exploring extends GameStateParent {
 
     public void runNothing() {
         mapHandler.movePlayer(player.getOffSet());
-        display.exploring(mapHandler.arrMap);
     }
 
 
