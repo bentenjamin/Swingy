@@ -1,23 +1,24 @@
 package com.bwebb.swingy.model.chars.player;
 
-import static com.bwebb.swingy.controller.GameController.display;
+import com.bwebb.swingy.view.ViewInterface;
+
 import static java.lang.Math.pow;
 
 public class Level {
     private int level = 1, experience = 0;
 
-    public void addExp(int exp) {
+    public void addExp(int exp, ViewInterface display) {
         experience += exp;
-        checkExp();
+        checkExp(display);
     }
 
-    public void checkExp() {
+    public void checkExp(ViewInterface display) {
         int levelExp = levelUpThreshold(level);
         if (levelExp < experience)
-            levelUp(experience - levelExp);
+            levelUp(experience - levelExp, display);
     }
 
-    public void levelUp(int remainderExp) {
+    public void levelUp(int remainderExp, ViewInterface display) {
         level += 1;
         experience = remainderExp;
         display.levelUp(level);

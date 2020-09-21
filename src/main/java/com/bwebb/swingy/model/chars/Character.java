@@ -3,8 +3,9 @@ package com.bwebb.swingy.model.chars;
 import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.player.Level;
 import com.bwebb.swingy.model.map.Coordinates;
+import com.bwebb.swingy.model.map.MapHandler;
+import com.bwebb.swingy.view.ViewInterface;
 
-import static com.bwebb.swingy.controller.GameController.display;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
@@ -74,10 +75,16 @@ public class Character {
         return name;
     }
 
-    public void saveCharacter() {
+    public void saveCharacter(ViewInterface display) {
         pos.setX(-1);
         pos.setY(-1);
         display.generalPrint("sAvEd ChArAcTeR");
+    }
+
+    public void movePlayer(Coordinates offset, MapHandler map) {
+        map.setClearedTile(pos);
+        pos.moveBy(offset);
+        map.setPlayerPos(pos);
     }
 
     /* todo

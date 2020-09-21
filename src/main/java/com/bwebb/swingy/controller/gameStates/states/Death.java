@@ -1,13 +1,16 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
-import static com.bwebb.swingy.controller.GameController.*;
+public class Death extends GSTemplate {
+    public Death(GameAssets game) {
+        super(game);
+    }
 
-public class Death extends GameStateParent {
     @Override
     public void printMe() {
-        display.death();
+        game.display.death();
     }
 
     @Override
@@ -20,6 +23,6 @@ public class Death extends GameStateParent {
         if (commands.containsKey(userInput))
             commands.get(userInput).run();
         else
-            currentState = gameStates.menu;
+            game.state = game.states.menu;
     }
 }

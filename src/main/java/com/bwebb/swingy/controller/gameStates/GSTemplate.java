@@ -1,13 +1,16 @@
 package com.bwebb.swingy.controller.gameStates;
 
+import com.bwebb.swingy.controller.GameAssets;
+import com.github.javafaker.Faker;
+
 import java.util.HashMap;
+import java.util.Random;
 
-import static com.bwebb.swingy.controller.GameController.currentState;
-import static com.bwebb.swingy.controller.GameController.display;
-
-
-public abstract class GameStateParent implements GameState {
+public abstract class GSTemplate implements GameState {
     protected HashMap<String, Runnable> commands = new HashMap<>();
+    protected GameAssets game = null;
+    protected Faker faker = new Faker();
+    protected Random random = new Random();
 
     public boolean evaluate(String userInput) {
         return (commands.get(userInput) != null);
@@ -21,12 +24,14 @@ public abstract class GameStateParent implements GameState {
         }
     }
 
-    public GameStateParent() {
+    public GSTemplate(GameAssets game) {
+        this.game = game;
+
         commands.put("q", this::quitGame);
     }
 
     private void quitGame() {
-        display.endScreen();
-        currentState = null;
+        game.display.endScreen();
+        game.state = null;
     }
 }

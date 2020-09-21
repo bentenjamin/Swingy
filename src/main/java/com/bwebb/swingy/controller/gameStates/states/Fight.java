@@ -1,42 +1,42 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.npc.Enemy;
 
 import java.util.Random;
 
-import static com.bwebb.swingy.controller.GameController.*;
 
+public class Fight extends GSTemplate {
 
-public class Fight extends GameStateParent {
-    private Random random = new Random();
+    public Fight(GameAssets game) {
+        super(game);
 
-    public Fight() {
         commands.put("1", this::fightEnemy);
         commands.put("2", this::flee);
     }
 
     private void fightEnemy() {
-        display.fight();
-        Enemy enemy = new Enemy(player.getLevel());
-        if (rumble(player, enemy))
-            fightWon(enemy.getExp(player.getLevel()));
+        game.display.fight();
+        Enemy enemy = new Enemy(game.player.getLevel());
+        if (rumble(game.player, enemy))
+            fightWon(enemy.getExp(game.player.getLevel()));
         else
-            currentState = gameStates.death;
+            game.state = game.states.death;
     }
 
     private void fightWon(int enemyExp) {
-        display.fightWon();
-        player.getLvl().addExp(enemyExp);
-        currentState = gameStates.artifact;
-        currentState.execute("");
+        game.display.fightWon();
+        game.player.getLvl().addExp(enemyExp, game.display);
+        game.state = game.states.artifact;
+        game.state.execute("");
     }
 
     private void flee() {
         if (random.nextBoolean()) {
-            display.fled();
-            currentState = gameStates.exploring;
+            game.display.fled();
+            game.state = game.states.exploring;
         } else
             fightEnemy();
     }
@@ -52,6 +52,6 @@ public class Fight extends GameStateParent {
 
     @Override
     public void printMe() {
-        display.enemyFound();
+        game.display.enemyFound();
     }
 }

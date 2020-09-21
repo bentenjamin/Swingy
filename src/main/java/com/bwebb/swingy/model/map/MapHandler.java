@@ -3,17 +3,10 @@ package com.bwebb.swingy.model.map;
 import java.util.Arrays;
 import java.util.Random;
 
-import static com.bwebb.swingy.controller.GameController.mapHandler;
-import static com.bwebb.swingy.controller.GameController.player;
-
 public class MapHandler {
     public int[][] arrMap = null;
 
     public static final int mapNothing = 3, mapBlockage = 2, mapEnemy = 1, mapPlayer = 0;
-
-    public MapHandler(int characterLevel) {
-        genMap(characterLevel);
-    }
 
     public int calcMapSize(int characterLevel) {
         return ((characterLevel - 1) * 5) + 10 - (characterLevel % 2);
@@ -59,11 +52,5 @@ public class MapHandler {
 
     public void setClearedTile(Coordinates coords) {
         arrMap[coords.getX()][coords.getY()] = mapNothing;
-    }
-
-    public void movePlayer(Coordinates offset) {
-        mapHandler.setClearedTile(player.getPos());
-        player.getPos().moveBy(offset);
-        mapHandler.setPlayerPos(player.getPos());
     }
 }

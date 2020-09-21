@@ -1,46 +1,37 @@
 package com.bwebb.swingy.controller;
 
-import com.bwebb.swingy.controller.gameStates.GameState;
-import com.bwebb.swingy.controller.gameStates.GameStatesContainer;
-import com.bwebb.swingy.model.chars.Character;
-import com.bwebb.swingy.model.map.MapHandler;
-import com.bwebb.swingy.view.ViewInterface;
-import com.bwebb.swingy.view.terminal.TerminalView;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GameController {
-    public static GameStatesContainer gameStates = new GameStatesContainer();
-    public static ViewInterface display = null ;
-    public static GameState currentState = null;
-    private TerminalView terminalView = new TerminalView();
-    public static Character player = null;
-    public static MapHandler mapHandler = new MapHandler(0);
+    public GameAssets game = null;
 
     public GameController(views argView) {
+        game = new GameAssets();
+
         switch (argView) {
-            default -> display = terminalView;
+            default -> game.display = game.terminalView;
         }
     }
 
     @SuppressWarnings("SpellCheckingInspection")
     public void startSwingy() throws IOException {
-        currentState = gameStates.menu;
+        game.state = game.states.menu;
         evaluateExecuteRepeat();
     }
 
     private void evaluateExecuteRepeat() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while (currentState != null) {
-            currentState.printMe();
+        while (game.state != null) {
+            game.state.printMe();
+
             String line = br.readLine();
-            if (currentState.evaluate(line))
-                currentState.execute(line);
+            if (game.state.evaluate(line))
+                game.state.execute(line);
             else
-                display.invalidInput();
+                game.display.invalidInput();
         }
     }
 

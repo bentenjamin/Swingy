@@ -1,13 +1,16 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
-import static com.bwebb.swingy.controller.GameController.*;
+public class Win extends GSTemplate {
+    public Win(GameAssets game) {
+        super(game);
+    }
 
-public class Win extends GameStateParent {
     @Override
     public void printMe() {
-        display.win();
+        game.display.win();
     }
 
     @Override
@@ -20,8 +23,8 @@ public class Win extends GameStateParent {
         if (commands.containsKey(userInput))
             commands.get(userInput).run();
         else {
-            player.saveCharacter();
-            currentState = gameStates.menu;
+            game.player.saveCharacter(game.display);
+            game.state = game.states.menu;
         }
     }
 }

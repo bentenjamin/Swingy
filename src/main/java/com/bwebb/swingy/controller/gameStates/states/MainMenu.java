@@ -1,20 +1,20 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
-import static com.bwebb.swingy.controller.GameController.*;
+public class MainMenu extends GSTemplate {
+    public MainMenu(GameAssets game) {
+        super(game);
 
-public class MainMenu extends GameStateParent {
-    public MainMenu() {
         commands.put("1", this::loadCreateCharacter);
-        player = null;
     }
 
     private void loadCreateCharacter() {
-        currentState = gameStates.charCreation;
+        game.state = game.states.charCreation;
     }
 
     public void printMe() {
-        display.mainMenu();
+        game.display.mainMenu();
     }
 }

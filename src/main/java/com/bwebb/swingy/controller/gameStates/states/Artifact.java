@@ -1,25 +1,24 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
 import java.util.Random;
 
-import static com.bwebb.swingy.controller.GameController.*;
-
-public class Artifact extends GameStateParent {
+public class Artifact extends GSTemplate {
     private int findChance = 30, findRange = 20;
-    Random random = new Random();
     private int artifactIndex;
     private int artifactStat;
 
-    public Artifact() {
+    public Artifact(GameAssets game) {
+        super(game);
         commands.put("1", this::pickUp);
         commands.put("2", this::leave);
     }
 
     private void pickUp() {
-        player.artifacts.setArtifactByIndex(artifactIndex, artifactStat);
-        display.equippedArtifact();
+        game.player.artifacts.setArtifactByIndex(artifactIndex, artifactStat);
+        game.display.equippedArtifact();
         leave();
     }
 
@@ -30,7 +29,7 @@ public class Artifact extends GameStateParent {
             return;
         }
 
-        int luckModifier = findRange * player.getLuck() / 100;
+        int luckModifier = findRange * game.player.getLuck() / 100;
         if (random.nextInt(101) > findChance + luckModifier)
             leave();
         else
@@ -39,16 +38,16 @@ public class Artifact extends GameStateParent {
 
     public void genArtifact() {
         artifactIndex = random.nextInt(3);
-        artifactStat = player.artifacts.calcStatBoost(player.getLuck());
+        artifactStat = game.player.artifacts.calcStatBoost(game.player.getLuck());
     }
 
     public void leave() {
-        mapHandler.movePlayer(player.getOffSet());
-        currentState = gameStates.exploring;
+        game.player.movePlayer(game.player.getOffSet(), game.mapHandler);
+        game.state = game.states.exploring;
     }
 
     @Override
     public void printMe() {
-        display.artifactFound(player.artifacts.getArtifactList()[artifactIndex], artifactStat, player.artifacts.getArtifactByIndex(artifactIndex));
+        game.display.artifactFound(game.player.artifacts.getArtifactList()[artifactIndex], artifactStat, game.player.artifacts.getArtifactByIndex(artifactIndex));
     }
 }

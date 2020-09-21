@@ -1,16 +1,19 @@
 package com.bwebb.swingy.controller.gameStates.states;
 
-import com.bwebb.swingy.controller.gameStates.GameStateParent;
+import com.bwebb.swingy.controller.GameAssets;
+import com.bwebb.swingy.controller.gameStates.GSTemplate;
 import com.bwebb.swingy.model.chars.Character;
-import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
+import com.bwebb.swingy.model.chars.charClasses.playerClass;
 import com.github.javafaker.Faker;
 
-import static com.bwebb.swingy.controller.GameController.*;
 import static com.bwebb.swingy.model.chars.charClasses.ClassesHandler.getClassObj;
 
-public class CreateCharacter extends GameStateParent {
-    Faker faker = new Faker();
+public class CreateCharacter extends GSTemplate {
+
+    public CreateCharacter(GameAssets game) {
+        super(game);
+    }
 
     @Override
     public boolean evaluate(String userInput) {
@@ -40,10 +43,10 @@ public class CreateCharacter extends GameStateParent {
             return ;
         }
         int classIndex = (this.evaluate(userInput)) ? (Integer.parseInt(userInput) - 1) : 0;
-        player = createCharacter(classIndex);
+        game.player = createCharacter(classIndex);
 
-        currentState = gameStates.loadingPlayer;
-        currentState.execute("big sad");
+        game.state = game.states.loadingPlayer;
+        game.state.execute("big sad");
     }
 
     private Character createCharacter(int classIndex) {
@@ -53,6 +56,6 @@ public class CreateCharacter extends GameStateParent {
     }
 
     public void printMe() {
-        display.createCharacter();
+        game.display.createCharacter();
     }
 }
