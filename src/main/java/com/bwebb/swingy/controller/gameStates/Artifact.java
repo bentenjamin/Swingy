@@ -19,7 +19,7 @@ public class Artifact extends GameStateParent {
 
     private void pickUp() {
         player.artifacts.setArtifactByIndex(artifactIndex, artifactStat);
-        display.equipedArtifact;
+        display.equippedArtifact();
         leave();
     }
 
@@ -30,8 +30,8 @@ public class Artifact extends GameStateParent {
             return;
         }
 
-        int luckModifier = (int) findRange * player.getLuck() / 100;
-        if (random.nextInt(100) > findChance + luckModifier)
+        int luckModifier = findRange * player.getLuck() / 100;
+        if (random.nextInt(101) > findChance + luckModifier)
             leave();
         else
             genArtifact();
@@ -49,6 +49,6 @@ public class Artifact extends GameStateParent {
 
     @Override
     public void printMe() {
-        display.artifactFound(gib me stats);
+        display.artifactFound(player.artifacts.getArtifactList()[artifactIndex], artifactStat, player.artifacts.getArtifactByIndex(artifactIndex));
     }
 }

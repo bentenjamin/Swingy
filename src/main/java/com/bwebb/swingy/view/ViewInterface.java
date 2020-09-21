@@ -10,5 +10,10 @@ public interface ViewInterface {
     void exploring(int[][] curMap);
     void loadingPlayer();
     void blockage();
-    void artifactFound();
+    void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat);
+    void enemyFound();
+    void fight();
+    void fightWon();
+    void fled();
+    void equippedArtifact();
 }

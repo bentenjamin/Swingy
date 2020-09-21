@@ -35,7 +35,7 @@ public class Fight extends GameStateParent {
 
     private void flee() {
         if (random.nextBoolean()) {
-            display.flead();
+            display.fled();
             currentState = gameStates.exploring;
         } else
             fightEnemy();
@@ -52,6 +52,6 @@ public class Fight extends GameStateParent {
 
     @Override
     public void printMe() {
-        display.enemyFound()
+        display.enemyFound();
     }
 }

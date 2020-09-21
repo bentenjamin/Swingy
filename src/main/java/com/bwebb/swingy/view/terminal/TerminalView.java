@@ -122,9 +122,84 @@ public class TerminalView implements ViewInterface {
         System.out.println("A " + monster + " blocks your path!");
     }
 
-    public void artifactFound() {
-        System.out.println("You have found and Artifact!");
+    @Override
+    public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
+        String newArtifact =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                         |\r\n";
+
+        String line = "|       " + artifactType;
+        for (int j = 0; line.length() < 27; j++)
+            line += " ";
+        line += "|\r\n";
+        newArtifact += line +
+
+                "|     Artifact Found!     |\r\n" +
+                "|                         |\r\n";
+
+        line = "|  Current Buff: " + currentArtifactStat;
+        for (int j = 0; line.length() < 27; j++)
+            line += " ";
+            line += "|\r\n";
+            newArtifact += line;
+
+        line = "|  Artifact Buff: " + newArtifactStat;
+        for (int j = 0; line.length() < 27; j++)
+            line += " ";
+            line += "|\r\n";
+            newArtifact += line +
+
+                "|                         |\r\n" +
+                "|  1. Equip               |\r\n" +
+                "|  2. Drop                |\r\n" +
+                "|                         |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+
+        System.out.println(newArtifact);
     }
+
+    @Override
+    public void enemyFound() {
+        String fightOrFlee =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                         |\r\n" +
+                "|   You have encountered  |\r\n" +
+                "|        an enemy!        |\r\n" +
+                "|                         |\r\n" +
+                "|   Do you Fight or       |\r\n" +
+                "|    attempt to Flee?     |\r\n" +
+                "|                         |\r\n" +
+                "|   1. FIGHT              |\r\n" +
+                "|   2. RUUUUUUUUNNNNNNN   |\r\n" +
+                "|                         |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+
+        System.out.println(fightOrFlee);
+    }
+
+    public void fight() {
+        System.out.println("You engage in BATTLE! Pain is temporary, GLORY IS FOREVER!");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void fightWon() {
+        System.out.println("You have triumphed over the heretic!");
+    };
+
+    public void fled() {
+        System.out.println("Successfully evaded the enemy!");
+    }
+
+    @Override
+    public void equippedArtifact() {
+        System.out.println("Equipped your new loot :D");
+    }
+
+    ;
 
 }
 //    public void () {
