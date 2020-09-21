@@ -1,5 +1,6 @@
 package com.bwebb.swingy.model.chars.player;
 
+import static com.bwebb.swingy.controller.GameController.display;
 import static java.lang.Math.pow;
 
 public class Level {
@@ -12,13 +13,14 @@ public class Level {
 
     public void checkExp() {
         int levelExp = levelUpThreshold(level);
-        if (levelExp > experience)
+        if (levelExp < experience)
             levelUp(experience - levelExp);
     }
 
     public void levelUp(int remainderExp) {
         level += 1;
         experience = remainderExp;
+        display.levelUp(level);
     }
 
     public static int levelUpThreshold(int playerLevel) {
