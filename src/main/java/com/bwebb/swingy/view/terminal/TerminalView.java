@@ -126,25 +126,24 @@ public class TerminalView implements ViewInterface {
     public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
         String newArtifact =
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n";
-
-        String line = "|       " + artifactType;
-        for (int j = 0; line.length() < 27; j++)
-            line += " ";
-        line += "|\r\n";
-        newArtifact += line +
-
+                "|                         |\r\n" +
                 "|     Artifact Found!     |\r\n" +
                 "|                         |\r\n";
 
+        String line = "|  Type: " + artifactType.toUpperCase();
+        for (int j = 0; line.length() < 26; j++)
+            line += " ";
+        line += "|\r\n";
+        newArtifact += line;
+
         line = "|  Current Buff: " + currentArtifactStat;
-        for (int j = 0; line.length() < 27; j++)
+        for (int j = 0; line.length() < 26; j++)
             line += " ";
             line += "|\r\n";
             newArtifact += line;
 
         line = "|  Artifact Buff: " + newArtifactStat;
-        for (int j = 0; line.length() < 27; j++)
+        for (int j = 0; line.length() < 26; j++)
             line += " ";
             line += "|\r\n";
             newArtifact += line +
