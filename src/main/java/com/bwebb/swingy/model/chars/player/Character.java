@@ -113,11 +113,4 @@ public class Character {
     public void setPlayerClass(PlayerClass playerClass) {
         this.playerClass = playerClass;
     }
-
-    /* todo
-        character toString
-        set player x, y to -1 when finish mission
-        save
-        */
-
 }

@@ -26,7 +26,5 @@ public class PlayerClass {
     public int getClassIndex() {
         return classIndex;
     }
-
-    /* todo */
 }
 

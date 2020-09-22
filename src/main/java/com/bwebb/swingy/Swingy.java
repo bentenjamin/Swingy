@@ -16,7 +16,6 @@ public class Swingy {
         game.startSwingy();
     }
     /* todo
-        refactor classes again
         handle invalid view input
      */
 }

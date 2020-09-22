@@ -59,9 +59,6 @@ public class TerminalView implements ViewInterface {
         System.out.println(createCharacter);
     }
 
-    /*todo
-     *  edit createchar to recieve a list instead of fetching*/
-
     public void generalPrint(String input) {
         System.out.println(input);
     }
