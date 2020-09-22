@@ -6,8 +6,6 @@ import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 
-import java.io.Serializable;
-
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {

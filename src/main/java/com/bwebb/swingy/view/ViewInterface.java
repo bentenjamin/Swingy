@@ -22,4 +22,5 @@ public interface ViewInterface {
     void levelUp(int playerLevel);
     void win();
     void stats(Character player);
+    void loadPlayer(String[] savedNamesList);
 }

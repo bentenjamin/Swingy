@@ -47,20 +47,10 @@ public class TerminalView implements ViewInterface {
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
                 "|                          |\r\n" +
                 "|     Create Character     |\r\n" +
-                "|                          |\r\n";
+                "|                          |\r\n" +
 
+                makeViewFromArr(classList) +
 
-        for (int i = 0; i < classList.length; i++) {
-            String line = "|  " + (i + 1) + ". " + classList[i];
-            for (int j = 0; line.length() < 27; j++) {
-                line += " ";
-            }
-            line += "|\r\n";
-            createCharacter += line;
-        }
-
-
-        createCharacter +=
                 "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
@@ -252,6 +242,37 @@ public class TerminalView implements ViewInterface {
         System.out.println(stats);
         this.twoDArray(player.getArtifacts().getArtifacts());
 //        stats += ": " + player. + "\r\n";
+    }
+
+    @Override
+    public void loadPlayer(String[] savedNamesList) {
+        String saveList =
+
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                          |\r\n" +
+                "|      Load Character      |\r\n" +
+                "|                          |\r\n" +
+
+                makeViewFromArr(savedNamesList) +
+
+                "|                          |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+        System.out.println(saveList);
+    }
+
+    private String makeViewFromArr(String[] list) {
+        String view = "";
+
+        for (int i = 0; i < list.length; i++) {
+            String line = "|  " + (i + 1) + ". " + list[i];
+            for (int j = 0; line.length() < 27; j++) {
+                line += " ";
+            }
+            line += "|\r\n";
+            view += line;
+        }
+
+        return (view);
     }
 }
 //    public void () {
