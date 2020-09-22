@@ -16,13 +16,14 @@ public class Save extends GSTemplate {
     public void execute(String userInput) {
         super.execute(userInput);
 
-        game.saveHandler.writeSaves();
         game.display.endScreen();
         game.state = null;
     }
 
     private void save() {
-        game.saveHandler.savePlayer(game.player);
+        if (!game.saveHandler.saveExists(game.player))
+            game.saveHandler.saveCharacter(game.player);
+        game.saveHandler.writeSaves();
     }
 
     public void printMe() {

@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SaveHandler {
-    private ArrayList<String[]> saves = null;
+    private ArrayList<Character> saves = null;
     private final static String saveFileName = "player_saves.txt";
 
     public SaveHandler() {
-        saves = new ArrayList<String[]>();
+        saves = new ArrayList<Character>();
         readSaves();
     }
 
@@ -61,7 +61,7 @@ public class SaveHandler {
         String[] list = new String[saves.size()];
 
         for (int i = 0; i < saves.size(); i++) {
-            list[i] = saves.get(i)[0];
+            list[i] = saves.get(i).getName();
         }
 
         return list;
@@ -73,7 +73,7 @@ public class SaveHandler {
         for (String character: characters) {
             String[] saveArr = character.split(",");
             if (validSave(saveArr))
-                saves.add(saveArr);
+                saves.add(loadCharacterFromArr(saveArr));
         }
     }
 
@@ -81,20 +81,15 @@ public class SaveHandler {
         return true;
     }
 
-    public void savePlayer(Character player) {
-        saves.add(playerToArr(player));
-    }
-
-    public String[] getSaveByIndex(int index) {
+    public Character getSaveByIndex(int index) {
         return saves.get(index);
     }
 
     public String savesToString() {
         String saveString = "";
 
-        for (String[] save: saves) {
-            saveString += String.join(",", save) + ";";
-        }
+        for (Character save: saves)
+            saveString += String.join(",", playerToArr(save)) + ";";
 
         return saveString;
     }
@@ -118,7 +113,7 @@ public class SaveHandler {
 
         File saveFile = new File(saveFileName);
 
-        if (saveFile.exists()) try {
+        if (saveFile.isFile()) try {
             Scanner scanner = new Scanner(saveFile);
 
             if (scanner.hasNextLine())
@@ -133,6 +128,14 @@ public class SaveHandler {
 
     public int countSaves(){
         return saves.size();
+    }
+
+    public boolean saveExists(Character player) {
+        return saves.contains(player);
+    }
+
+    public void saveCharacter(Character character) {
+        saves.add(character);
     }
 
     /* todo

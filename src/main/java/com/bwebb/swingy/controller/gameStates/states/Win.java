@@ -23,8 +23,11 @@ public class Win extends GSTemplate {
         if (commands.containsKey(userInput))
             commands.get(userInput).run();
         else {
+            //set player pos to spawn so it wont crash when saved
             game.player.setPos(game.mapHandler.getSpawn(game.player.getLevel()));
-            game.saveHandler.savePlayer(game.player);
+            if (!game.saveHandler.saveExists(game.player))
+                game.saveHandler.saveCharacter(game.player);
+
             game.player = null;
             game.state = game.states.menu;
         }

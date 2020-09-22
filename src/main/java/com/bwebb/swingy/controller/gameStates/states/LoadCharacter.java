@@ -48,8 +48,8 @@ public class LoadCharacter extends GSTemplate {
             commands.get(userInput).run();
             return ;
         }
-        game.player = game.saveHandler.loadCharacterFromArr(game.saveHandler.getSaveByIndex(Integer.parseInt(userInput) - 1));
 
+        game.player = game.saveHandler.getSaveByIndex(Integer.parseInt(userInput) - 1);
         game.state = game.states.loadingPlayer;
         game.state.execute("big sad");
     }
