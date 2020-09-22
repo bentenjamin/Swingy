@@ -24,7 +24,7 @@ public class GSContainer {
         fight = new Fight(game);
         death = new Death(game);
         win = new Win(game);
-        win = new Save(game);
+        save = new Save(game);
         loadSave = new LoadCharacter(game);
     }
 }
