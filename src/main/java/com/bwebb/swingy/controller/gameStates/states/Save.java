@@ -9,7 +9,7 @@ public class Save extends GSTemplate {
         super(game);
 
         commands.put("1", this::save);
-        commands.put("2", null);
+        commands.put("2", () -> {});
     }
 
     @Override
