@@ -8,6 +8,11 @@ public class MainMenu extends GSTemplate {
         super(game);
 
         commands.put("1", this::loadCreateCharacter);
+        commands.put("2", this::loadSave);
+    }
+
+    private void loadSave() {
+        game.state = game.states.loadSave;
     }
 
     private void loadCreateCharacter() {
