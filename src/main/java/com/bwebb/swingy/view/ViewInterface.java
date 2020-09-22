@@ -23,4 +23,5 @@ public interface ViewInterface {
     void win();
     void stats(Character player);
     void loadPlayer(String[] savedNamesList);
+    void askSave();
 }

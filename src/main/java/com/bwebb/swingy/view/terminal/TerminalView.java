@@ -260,6 +260,21 @@ public class TerminalView implements ViewInterface {
         System.out.println(saveList);
     }
 
+    @Override
+    public void askSave() {
+        String askSave =
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                         |\r\n" +
+                "|   Do you want to save?  |\r\n" +
+                "|                         |\r\n" +
+                "|   1. Yes                |\r\n" +
+                "|   2. No                 |\r\n" +
+                "|                         |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+
+        System.out.println(askSave);
+    }
+
     private String makeViewFromArr(String[] list) {
         String view = "";
 

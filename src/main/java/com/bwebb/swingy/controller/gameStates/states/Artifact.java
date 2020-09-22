@@ -3,8 +3,6 @@ package com.bwebb.swingy.controller.gameStates.states;
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
-import java.util.Random;
-
 public class Artifact extends GSTemplate {
     private int findChance = 30, findRange = 20;
     private int artifactIndex;

@@ -127,6 +127,10 @@ public class SaveHandler {
         }
     }
 
+    public int countSaves(){
+        return saves.size();
+    }
+
     /* todo
     *   validSave*/
 }

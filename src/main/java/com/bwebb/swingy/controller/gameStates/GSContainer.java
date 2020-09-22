@@ -12,6 +12,8 @@ public class GSContainer {
     public GameState fight = null;
     public GameState death = null;
     public GameState win = null;
+    public GameState loadSave = null;
+    public GameState save = null;
 
     public GSContainer(GameAssets game) {
         menu = new MainMenu(game);
@@ -22,5 +24,7 @@ public class GSContainer {
         fight = new Fight(game);
         death = new Death(game);
         win = new Win(game);
+        win = new Save(game);
+        loadSave = new LoadCharacter(game);
     }
 }

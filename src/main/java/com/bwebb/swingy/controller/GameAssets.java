@@ -3,6 +3,7 @@ package com.bwebb.swingy.controller;
 import com.bwebb.swingy.controller.gameStates.GSContainer;
 import com.bwebb.swingy.controller.gameStates.GameState;
 import com.bwebb.swingy.model.chars.player.Character;
+import com.bwebb.swingy.model.chars.player.SaveHandler;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
@@ -19,4 +20,5 @@ public class GameAssets {
     public TerminalView terminalView = new TerminalView();
     public Faker faker = new Faker();
     public Random random = new Random();
+    public SaveHandler saveHandler = new SaveHandler();
 }

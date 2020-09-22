@@ -33,7 +33,12 @@ public abstract class GSTemplate implements GameState {
     }
 
     private void quitGame() {
-        game.display.endScreen();
-        game.state = null;
+        if (game.player != null) {
+            game.state = game.states.save;
+        }
+        else {
+            game.display.endScreen();
+            game.state = null;
+        }
     }
 }
