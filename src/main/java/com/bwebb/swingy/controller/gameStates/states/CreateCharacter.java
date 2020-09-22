@@ -10,6 +10,7 @@ public class CreateCharacter extends GSTemplate {
 
     public CreateCharacter(GameAssets game) {
         super(game);
+        commands.put("b", this::back);
     }
 
     @Override
@@ -53,5 +54,9 @@ public class CreateCharacter extends GSTemplate {
 
     public void printMe() {
         game.display.createCharacter();
+    }
+
+    private void back() {
+        game.state = game.states.menu;
     }
 }
