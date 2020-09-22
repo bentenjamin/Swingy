@@ -10,7 +10,7 @@ public abstract class GSTemplate implements GameState {
 
     public boolean evaluate(String userInput) {
         return (commands.containsKey(userInput));
-    };
+    }
 
     public void execute(String userInput) {
         try {

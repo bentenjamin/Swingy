@@ -2,9 +2,6 @@ package com.bwebb.swingy.controller.gameStates.states;
 
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
-import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
-import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
-import com.bwebb.swingy.model.chars.player.Character;
 
 public class LoadCharacter extends GSTemplate {
 
@@ -30,7 +27,7 @@ public class LoadCharacter extends GSTemplate {
 
         try {
             selection = Integer.parseInt(userInput);
-        } catch (NullPointerException  e) {
+        } catch (NullPointerException e) {
             return false;
         } catch (NumberFormatException e) {
             return false;
@@ -46,7 +43,7 @@ public class LoadCharacter extends GSTemplate {
     public void execute(String userInput) {
         if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
-            return ;
+            return;
         }
 
         game.player = game.saveHandler.getSaveByIndex(Integer.parseInt(userInput) - 1);

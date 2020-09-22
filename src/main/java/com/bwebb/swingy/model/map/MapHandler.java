@@ -16,10 +16,10 @@ public class MapHandler {
         int mapSize = calcMapSize(characterLevel);
         arrMap = new int[mapSize][mapSize];
 
-        for (int[] arr: arrMap) {
+        for (int[] arr : arrMap) {
             Arrays.fill(arr, mapNothing);
         }
-        
+
         for (int x = 0; x < mapSize; x++) {
             for (int y = 0; y < mapSize; y++) {
                 arrMap[x][y] = genTile();

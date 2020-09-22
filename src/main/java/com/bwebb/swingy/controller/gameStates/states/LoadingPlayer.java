@@ -2,7 +2,6 @@ package com.bwebb.swingy.controller.gameStates.states;
 
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
-import com.bwebb.swingy.model.map.Coordinates;
 
 public class LoadingPlayer extends GSTemplate {
 

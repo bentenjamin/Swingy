@@ -34,5 +34,4 @@ public class GameController {
                 game.display.invalidInput();
         }
     }
-
 }

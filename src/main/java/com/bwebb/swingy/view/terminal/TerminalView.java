@@ -11,17 +11,17 @@ import java.util.Random;
 public class TerminalView implements ViewInterface {
     public void mainMenu() {
         String mainMenu =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|        Swingy           |\r\n" +
-                "|  i have a week to do    |\r\n" +
-                "|      this fml           |\r\n" +
-                "|                         |\r\n" +
-                "|   1. Create Character   |\r\n" +
-                "|   2. Load Save          |\r\n" +
-                "|   3. Delete Save        |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|        Swingy           |\r\n" +
+                        "|  i have a week to do    |\r\n" +
+                        "|      this fml           |\r\n" +
+                        "|                         |\r\n" +
+                        "|   1. Create Character   |\r\n" +
+                        "|   2. Load Save          |\r\n" +
+                        "|   3. Delete Save        |\r\n" +
+                        "|                         |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(mainMenu);
     }
@@ -45,22 +45,22 @@ public class TerminalView implements ViewInterface {
         String[] classList = ClassesHandler.getClassList();
         String createCharacter =
 
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                          |\r\n" +
-                "|     Create Character     |\r\n" +
-                "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                          |\r\n" +
+                        "|     Create Character     |\r\n" +
+                        "|                          |\r\n" +
 
-                makeViewFromArr(classList) +
+                        makeViewFromArr(classList) +
 
-                "|                          |\r\n" +
-                "|     'b' to go back       |\r\n" +
-                "|                          |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "|                          |\r\n" +
+                        "|     'b' to go back       |\r\n" +
+                        "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
     }
 
     /*todo
-    *  edit createchar to recieve a list instead of fetching*/
+     *  edit createchar to recieve a list instead of fetching*/
 
     public void generalPrint(String input) {
         System.out.println(input);
@@ -122,10 +122,10 @@ public class TerminalView implements ViewInterface {
     @Override
     public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
         String newArtifact =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|     Artifact Found!     |\r\n" +
-                "|                         |\r\n";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|     Artifact Found!     |\r\n" +
+                        "|                         |\r\n";
 
         String line = "|  Type: " + artifactType.toUpperCase();
         for (int j = 0; line.length() < 26; j++)
@@ -136,14 +136,14 @@ public class TerminalView implements ViewInterface {
         line = "|  Current Buff: " + currentArtifactStat;
         for (int j = 0; line.length() < 26; j++)
             line += " ";
-            line += "|\r\n";
-            newArtifact += line;
+        line += "|\r\n";
+        newArtifact += line;
 
         line = "|  Artifact Buff: " + newArtifactStat;
         for (int j = 0; line.length() < 26; j++)
             line += " ";
-            line += "|\r\n";
-            newArtifact += line +
+        line += "|\r\n";
+        newArtifact += line +
 
                 "|                         |\r\n" +
                 "|  1. Equip               |\r\n" +
@@ -157,18 +157,18 @@ public class TerminalView implements ViewInterface {
     @Override
     public void enemyFound() {
         String fightOrFlee =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|   You have encountered  |\r\n" +
-                "|        an enemy!        |\r\n" +
-                "|                         |\r\n" +
-                "|   Do you Fight or       |\r\n" +
-                "|    attempt to Flee?     |\r\n" +
-                "|                         |\r\n" +
-                "|   1. FIGHT              |\r\n" +
-                "|   2. RUUUUUUUUNNNNNNN   |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|   You have encountered  |\r\n" +
+                        "|        an enemy!        |\r\n" +
+                        "|                         |\r\n" +
+                        "|   Do you Fight or       |\r\n" +
+                        "|    attempt to Flee?     |\r\n" +
+                        "|                         |\r\n" +
+                        "|   1. FIGHT              |\r\n" +
+                        "|   2. RUUUUUUUUNNNNNNN   |\r\n" +
+                        "|                         |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(fightOrFlee);
     }
@@ -179,7 +179,7 @@ public class TerminalView implements ViewInterface {
 
     public void fightWon() {
         System.out.println("You have triumphed over the heretic!");
-    };
+    }
 
     public void fled() {
         System.out.println("Successfully evaded the enemy!");
@@ -193,19 +193,19 @@ public class TerminalView implements ViewInterface {
     @Override
     public void death() {
         String rip =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|      YOU HAVE DIED      |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|    Press any key to     |\r\n" +
-                "|     return to the       |\r\n" +
-                "|      main menu...       |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|      YOU HAVE DIED      |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|    Press any key to     |\r\n" +
+                        "|     return to the       |\r\n" +
+                        "|      main menu...       |\r\n" +
+                        "|                         |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(rip);
     }
@@ -218,19 +218,19 @@ public class TerminalView implements ViewInterface {
     @Override
     public void win() {
         String ftw =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|    MISSION COMPLETE     |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|                         |\r\n" +
-                "|    Enter any key to     |\r\n" +
-                "|     return to the       |\r\n" +
-                "|      main menu...       |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|    MISSION COMPLETE     |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|                         |\r\n" +
+                        "|    Enter any key to     |\r\n" +
+                        "|     return to the       |\r\n" +
+                        "|      main menu...       |\r\n" +
+                        "|                         |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(ftw);
     }
@@ -254,31 +254,31 @@ public class TerminalView implements ViewInterface {
     public void loadPlayer(String[] savedNamesList) {
         String saveList =
 
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                          |\r\n" +
-                "|      Load Character      |\r\n" +
-                "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                          |\r\n" +
+                        "|      Load Character      |\r\n" +
+                        "|                          |\r\n" +
 
-                makeViewFromArr(savedNamesList) +
+                        makeViewFromArr(savedNamesList) +
 
-                "|                          |\r\n" +
-                "|    'b' to go back        |\r\n" +
-                "|                          |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "|                          |\r\n" +
+                        "|    'b' to go back        |\r\n" +
+                        "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(saveList);
     }
 
     @Override
     public void askSave() {
         String askSave =
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                         |\r\n" +
-                "|   Do you want to save?  |\r\n" +
-                "|                         |\r\n" +
-                "|   1. Yes                |\r\n" +
-                "|   2. No                 |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                         |\r\n" +
+                        "|   Do you want to save?  |\r\n" +
+                        "|                         |\r\n" +
+                        "|   1. Yes                |\r\n" +
+                        "|   2. No                 |\r\n" +
+                        "|                         |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(askSave);
     }
@@ -287,18 +287,18 @@ public class TerminalView implements ViewInterface {
     public void deleteSaves(String[] savesList) {
         String deleteSave =
 
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                "|                          |\r\n" +
-                "|     Delete Saves         |\r\n" +
-                "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                        "|                          |\r\n" +
+                        "|     Delete Saves         |\r\n" +
+                        "|                          |\r\n" +
 
-                makeViewFromArr(savesList) +
+                        makeViewFromArr(savesList) +
 
-                "|                          |\r\n" +
-                "|     'd' for all          |\r\n" +
-                "|    'b' to go back        |\r\n" +
-                "|                          |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+                        "|                          |\r\n" +
+                        "|     'd' for all          |\r\n" +
+                        "|    'b' to go back        |\r\n" +
+                        "|                          |\r\n" +
+                        "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(deleteSave);
     }
 
@@ -317,16 +317,3 @@ public class TerminalView implements ViewInterface {
         return (view);
     }
 }
-//    public void () {
-//        String = "";
-//        System.out.println();
-//    }
-
-
-// read input
-// send input to current game state
-// current game state evaluates
-// state executes its code
-// state decides next state
-// state returns current state
-// repeat

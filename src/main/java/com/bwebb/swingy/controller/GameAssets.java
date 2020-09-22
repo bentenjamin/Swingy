@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class GameAssets {
     public GSContainer states = new GSContainer(this);
-    public ViewInterface display = null ;
+    public ViewInterface display = null;
     public GameState state = null;
     public Character player = null;
     public MapHandler mapHandler = new MapHandler();

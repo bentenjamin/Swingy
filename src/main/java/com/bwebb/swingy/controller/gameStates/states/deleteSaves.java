@@ -28,7 +28,7 @@ public class deleteSaves extends GSTemplate {
 
         try {
             selection = Integer.parseInt(userInput);
-        } catch (NullPointerException  e) {
+        } catch (NullPointerException e) {
             return false;
         } catch (NumberFormatException e) {
             return false;
@@ -43,7 +43,7 @@ public class deleteSaves extends GSTemplate {
     public void execute(String userInput) {
         if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
-            return ;
+            return;
         }
 
         game.saveHandler.deleteSaveByIndex(Integer.parseInt(userInput) - 1);

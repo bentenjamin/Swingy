@@ -5,7 +5,6 @@ import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
 import com.bwebb.swingy.model.map.Coordinates;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,7 +69,7 @@ public class SaveHandler {
     private void parseSaves(String input) {
         String[] characters = input.split(";");
 
-        for (String character: characters) {
+        for (String character : characters) {
             String[] saveArr = character.split(",");
             if (validSave(saveArr))
                 saves.add(loadCharacterFromArr(saveArr));
@@ -88,7 +87,7 @@ public class SaveHandler {
     public String savesToString() {
         String saveString = "";
 
-        for (Character save: saves)
+        for (Character save : saves)
             saveString += String.join(",", playerToArr(save)) + ";";
 
         return saveString;
@@ -121,8 +120,8 @@ public class SaveHandler {
 
             scanner.close();
         } catch (IOException e) {
-        System.out.println("An error occurred while writing.");
-        e.printStackTrace();
+            System.out.println("An error occurred while writing.");
+            e.printStackTrace();
         }
     }
 
@@ -130,7 +129,7 @@ public class SaveHandler {
         saves = new ArrayList<Character>();
     }
 
-    public int countSaves(){
+    public int countSaves() {
         return saves.size();
     }
 
@@ -148,5 +147,5 @@ public class SaveHandler {
     }
 
     /* todo
-    *   validSave*/
+     *   validSave*/
 }

@@ -15,9 +15,9 @@ public class Enemy {
         e = how big the difference between levels will be
      */
     public Enemy(int playerLevel) {
-        health = (int) (baseHealth + (300 * pow((int)(playerLevel/5), 2)));
-        defense = (int) (baseDefense + (300 * pow((int)(playerLevel/5), 2)));
-        attack = (int) (baseAttack + (300 * pow((int)(playerLevel/5), 2)));
+        health = (int) (baseHealth + (300 * pow((int) (playerLevel / 5), 2)));
+        defense = (int) (baseDefense + (300 * pow((int) (playerLevel / 5), 2)));
+        attack = (int) (baseAttack + (300 * pow((int) (playerLevel / 5), 2)));
     }
 
     public int getHealth() {
@@ -33,7 +33,7 @@ public class Enemy {
     }
 
     public int getExp(int playerLevel) {
-        int xp = (int) (levelUpThreshold(playerLevel) * 15/100);
+        int xp = levelUpThreshold(playerLevel) * 15 / 100;
         xp += this.attack;
         return xp;
     }

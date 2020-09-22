@@ -22,7 +22,7 @@ public class Exploring extends GSTemplate {
     public void execute(String userInput) {
         if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
-            return ;
+            return;
         }
 
         game.player.setOffSet(keyCoordOffsets.get(userInput));

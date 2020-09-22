@@ -22,7 +22,7 @@ public class CreateCharacter extends GSTemplate {
 
         try {
             selection = Integer.parseInt(userInput);
-        } catch (NullPointerException  e) {
+        } catch (NullPointerException e) {
             return false;
         } catch (NumberFormatException e) {
             return false;
@@ -38,7 +38,7 @@ public class CreateCharacter extends GSTemplate {
     public void execute(String userInput) {
         if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
-            return ;
+            return;
         }
         int classIndex = (this.evaluate(userInput)) ? (Integer.parseInt(userInput) - 1) : 0;
         game.player = createCharacter(classIndex);
