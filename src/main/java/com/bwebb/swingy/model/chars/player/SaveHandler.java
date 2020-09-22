@@ -126,6 +126,10 @@ public class SaveHandler {
         }
     }
 
+    public void purgeCharacters() {
+        saves = new ArrayList<Character>();
+    }
+
     public int countSaves(){
         return saves.size();
     }

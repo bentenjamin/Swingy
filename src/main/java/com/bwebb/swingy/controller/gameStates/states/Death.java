@@ -20,9 +20,9 @@ public class Death extends GSTemplate {
 
     @Override
     public void execute(String userInput) {
-        if (commands.containsKey(userInput))
-            commands.get(userInput).run();
-        else
-            game.state = game.states.menu;
+        game.player = null;
+        game.saveHandler.purgeCharacters();
+        game.saveHandler.readSaves();
+        game.state = game.states.menu;
     }
 }

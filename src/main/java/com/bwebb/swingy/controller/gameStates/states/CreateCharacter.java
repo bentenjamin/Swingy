@@ -42,6 +42,9 @@ public class CreateCharacter extends GSTemplate {
         }
         int classIndex = (this.evaluate(userInput)) ? (Integer.parseInt(userInput) - 1) : 0;
         game.player = createCharacter(classIndex);
+        game.player.setPos(game.mapHandler.getSpawn(game.player.getLevel()));
+        game.state = game.states.save;
+        game.state.execute("save");
 
         game.state = game.states.loadingPlayer;
         game.state.execute("big sad");

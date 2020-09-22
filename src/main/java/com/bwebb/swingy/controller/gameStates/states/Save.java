@@ -8,22 +8,34 @@ public class Save extends GSTemplate {
     public Save(GameAssets game) {
         super(game);
 
-        commands.put("1", this::save);
-        commands.put("2", () -> {});
+        commands.put("1", this::yesSave);
+        commands.put("2", this::quit);
     }
 
     @Override
     public void execute(String userInput) {
-        super.execute(userInput);
+        if (commands.containsKey(userInput)) {
+            commands.get(userInput).run();
+            return;
+        }
 
-        game.display.endScreen();
-        game.state = null;
+        save();
     }
 
     private void save() {
         if (!game.saveHandler.saveExists(game.player))
             game.saveHandler.saveCharacter(game.player);
         game.saveHandler.writeSaves();
+    }
+
+    private void quit() {
+        game.display.endScreen();
+        game.state = null;
+    }
+
+    private void yesSave() {
+        save();
+        quit();
     }
 
     public void printMe() {

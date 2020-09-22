@@ -52,6 +52,8 @@ public class TerminalView implements ViewInterface {
                 makeViewFromArr(classList) +
 
                 "|                          |\r\n" +
+                "|     'b' to go back       |\r\n" +
+                "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
     }
@@ -220,7 +222,7 @@ public class TerminalView implements ViewInterface {
                 "|                         |\r\n" +
                 "|                         |\r\n" +
                 "|                         |\r\n" +
-                "|    Press any key to     |\r\n" +
+                "|    Enter any key to     |\r\n" +
                 "|     return to the       |\r\n" +
                 "|      main menu...       |\r\n" +
                 "|                         |\r\n" +
@@ -255,6 +257,8 @@ public class TerminalView implements ViewInterface {
 
                 makeViewFromArr(savedNamesList) +
 
+                "|                          |\r\n" +
+                "|    'b' to go back        |\r\n" +
                 "|                          |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(saveList);
