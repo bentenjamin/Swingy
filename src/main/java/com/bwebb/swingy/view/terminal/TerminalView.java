@@ -18,7 +18,8 @@ public class TerminalView implements ViewInterface {
                 "|      this fml           |\r\n" +
                 "|                         |\r\n" +
                 "|   1. Create Character   |\r\n" +
-                "|   2. Choose Character   |\r\n" +
+                "|   2. Load Save          |\r\n" +
+                "|   3. Delete Save        |\r\n" +
                 "|                         |\r\n" +
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
@@ -57,6 +58,9 @@ public class TerminalView implements ViewInterface {
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
         System.out.println(createCharacter);
     }
+
+    /*todo
+    *  edit createchar to recieve a list instead of fetching*/
 
     public void generalPrint(String input) {
         System.out.println(input);
@@ -277,6 +281,25 @@ public class TerminalView implements ViewInterface {
                 "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(askSave);
+    }
+
+    @Override
+    public void deleteSaves(String[] savesList) {
+        String deleteSave =
+
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
+                "|                          |\r\n" +
+                "|     Delete Saves         |\r\n" +
+                "|                          |\r\n" +
+
+                makeViewFromArr(savesList) +
+
+                "|                          |\r\n" +
+                "|     'd' for all          |\r\n" +
+                "|    'b' to go back        |\r\n" +
+                "|                          |\r\n" +
+                "*~~~~~~~~~~~~~~~~~~~~~~~~~~*";
+        System.out.println(deleteSave);
     }
 
     private String makeViewFromArr(String[] list) {

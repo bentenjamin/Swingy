@@ -9,6 +9,7 @@ public class MainMenu extends GSTemplate {
 
         commands.put("1", this::loadCreateCharacter);
         commands.put("2", this::loadSave);
+        commands.put("3", this::deleteSave);
     }
 
     private void loadSave() {
@@ -21,5 +22,9 @@ public class MainMenu extends GSTemplate {
 
     public void printMe() {
         game.display.mainMenu();
+    }
+
+    public void deleteSave() {
+        game.state = game.states.delete;
     }
 }

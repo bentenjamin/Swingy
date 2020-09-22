@@ -14,6 +14,7 @@ public class GSContainer {
     public GameState win = null;
     public GameState loadSave = null;
     public GameState save = null;
+    public GameState delete = null;
 
     public GSContainer(GameAssets game) {
         menu = new MainMenu(game);
@@ -26,5 +27,6 @@ public class GSContainer {
         win = new Win(game);
         save = new Save(game);
         loadSave = new LoadCharacter(game);
+        delete = new deleteSaves(game);
     }
 }

@@ -142,6 +142,11 @@ public class SaveHandler {
         saves.add(character);
     }
 
+    public void deleteSaveByIndex(int index) {
+        saves.remove(index);
+        writeSaves();
+    }
+
     /* todo
     *   validSave*/
 }
