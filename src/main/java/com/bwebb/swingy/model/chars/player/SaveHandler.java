@@ -17,7 +17,9 @@ public class SaveHandler {
 
     public SaveHandler() {
         saves = new ArrayList<String[]>();
+        readSaves();
     }
+
     //save order:
     //name,class,x,y,luck,weapon,armour,helm,level,experience
     //0   ,1    ,2,3,4   ,5     ,6     ,7   ,8    ,9
@@ -113,17 +115,19 @@ public class SaveHandler {
     }
 
     public void readSaves() {
-        try {
-            File saveFile = new File(saveFileName);
+
+        File saveFile = new File(saveFileName);
+
+        if (saveFile.exists()) try {
             Scanner scanner = new Scanner(saveFile);
 
             if (scanner.hasNextLine())
                 parseSaves(scanner.nextLine());
 
             scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred while reading.");
-            e.printStackTrace();
+        } catch (IOException e) {
+        System.out.println("An error occurred while writing.");
+        e.printStackTrace();
         }
     }
 

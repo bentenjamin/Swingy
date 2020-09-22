@@ -15,6 +15,8 @@ public class Save extends GSTemplate {
     @Override
     public void execute(String userInput) {
         super.execute(userInput);
+
+        game.saveHandler.writeSaves();
         game.display.endScreen();
         game.state = null;
     }
