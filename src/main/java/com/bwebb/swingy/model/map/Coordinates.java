@@ -24,6 +24,11 @@ public class Coordinates {
         this.x = x;
     }
 
+    public void setCoords(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
     public void moveBy(Coordinates offset) {
         this.x += offset.x;
         this.y += offset.y;

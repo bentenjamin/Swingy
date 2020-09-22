@@ -53,4 +53,9 @@ public class MapHandler {
     public void setClearedTile(Coordinates coords) {
         arrMap[coords.getX()][coords.getY()] = mapNothing;
     }
+
+    public Coordinates getSpawn(int playerLevel) {
+        int spawnCoords = (calcMapSize(playerLevel) / 2);
+        return new Coordinates(spawnCoords, spawnCoords);
+    }
 }

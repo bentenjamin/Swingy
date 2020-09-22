@@ -23,6 +23,7 @@ public class Win extends GSTemplate {
         if (commands.containsKey(userInput))
             commands.get(userInput).run();
         else {
+            game.player.setPos(game.mapHandler.getSpawn(game.player.getLevel()));
             game.saveHandler.savePlayer(game.player);
             game.player = null;
             game.state = game.states.menu;
