@@ -18,26 +18,7 @@ public class deleteSaves extends GSTemplate {
 
     @Override
     public boolean evaluate(String userInput) {
-        int selection;
-
-        if (commands.containsKey(userInput))
-            return true;
-
-        if (game.saveHandler.countSaves() == 0)
-            return false;
-
-        try {
-            selection = Integer.parseInt(userInput);
-        } catch (NullPointerException e) {
-            return false;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        if (selection >= 1 && selection <= game.saveHandler.countSaves())
-            return true;
-
-        return false;
+        return evaluateIntegerInput(userInput);
     }
 
     public void execute(String userInput) {

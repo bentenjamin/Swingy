@@ -3,6 +3,7 @@ package com.bwebb.swingy.model.artifacts;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Artifacts {
+    @SuppressWarnings("FieldMayBeFinal")
     private Object[][] artifacts = {
             {"weapon", 0},
             {"armour", 0},

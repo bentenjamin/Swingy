@@ -22,16 +22,11 @@ public class CreateCharacter extends GSTemplate {
 
         try {
             selection = Integer.parseInt(userInput);
-        } catch (NullPointerException e) {
-            return false;
-        } catch (NumberFormatException e) {
+        } catch (NullPointerException | NumberFormatException e) {
             return false;
         }
 
-        if (selection >= 1 && selection <= ClassesHandler.getClassList().length)
-            return true;
-
-        return false;
+        return (selection >= 1 && selection <= ClassesHandler.getClassList().length);
     }
 
     @Override

@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Exploring extends GSTemplate {
-    private HashMap<String, Coordinates> keyCoordOffsets = new HashMap<String, Coordinates>();
-    private static final Set<String> validKeys = new HashSet<String>(Arrays.asList("w", "a", "s", "d", "q", "i"));
+    private final HashMap<String, Coordinates> keyCoordinateOffsets = new HashMap<>();
+    private static final Set<String> validKeys = new HashSet<>(Arrays.asList("w", "a", "s", "d", "q", "i"));
 
     @Override
     public boolean evaluate(String userInput) {
@@ -25,7 +25,7 @@ public class Exploring extends GSTemplate {
             return;
         }
 
-        game.player.setOffSet(keyCoordOffsets.get(userInput));
+        game.player.setOffSet(keyCoordinateOffsets.get(userInput));
 
         int targetX = game.player.getPos().getX() + game.player.getOffSet().getX();
         int targetY = game.player.getPos().getY() + game.player.getOffSet().getY();
@@ -59,10 +59,10 @@ public class Exploring extends GSTemplate {
     public Exploring(GameAssets game) {
         super(game);
 
-        keyCoordOffsets.put("w", new Coordinates(0, 1));
-        keyCoordOffsets.put("a", new Coordinates(-1, 0));
-        keyCoordOffsets.put("s", new Coordinates(0, -1));
-        keyCoordOffsets.put("d", new Coordinates(1, 0));
+        keyCoordinateOffsets.put("w", new Coordinates(0, 1));
+        keyCoordinateOffsets.put("a", new Coordinates(-1, 0));
+        keyCoordinateOffsets.put("s", new Coordinates(0, -1));
+        keyCoordinateOffsets.put("d", new Coordinates(1, 0));
     }
 
     public void printMe() {

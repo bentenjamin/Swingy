@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SaveHandler {
-    private ArrayList<Character> saves = null;
+    private ArrayList<Character> saves;
     private final static String saveFileName = "player_saves.txt";
 
     public SaveHandler() {
-        saves = new ArrayList<Character>();
+        saves = new ArrayList<>();
         readSaves();
     }
 
@@ -126,7 +126,7 @@ public class SaveHandler {
     }
 
     public void purgeCharacters() {
-        saves = new ArrayList<Character>();
+        saves = new ArrayList<>();
     }
 
     public int countSaves() {

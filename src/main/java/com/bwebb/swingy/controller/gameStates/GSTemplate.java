@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public abstract class GSTemplate implements GameState {
     protected HashMap<String, Runnable> commands = new HashMap<>();
-    protected GameAssets game = null;
+    protected GameAssets game;
 
     public boolean evaluate(String userInput) {
         return (commands.containsKey(userInput));
@@ -39,5 +39,23 @@ public abstract class GSTemplate implements GameState {
             game.display.endScreen();
             game.state = null;
         }
+    }
+
+    protected boolean evaluateIntegerInput(String userInput) {
+        int selection;
+
+        if (commands.containsKey(userInput))
+            return true;
+
+        if (game.saveHandler.countSaves() == 0)
+            return false;
+
+        try {
+            selection = Integer.parseInt(userInput);
+        } catch (NullPointerException | NumberFormatException e) {
+            return false;
+        }
+
+        return selection >= 1 && selection <= game.saveHandler.countSaves();
     }
 }

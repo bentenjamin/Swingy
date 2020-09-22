@@ -4,17 +4,17 @@ import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.states.*;
 
 public class GSContainer {
-    public GameState menu = null;
-    public GameState charCreation = null;
-    public GameState loadingPlayer = null;
-    public GameState exploring = null;
-    public GameState artifact = null;
-    public GameState fight = null;
-    public GameState death = null;
-    public GameState win = null;
-    public GameState loadSave = null;
-    public GameState save = null;
-    public GameState delete = null;
+    public GameState menu;
+    public GameState charCreation;
+    public GameState loadingPlayer;
+    public GameState exploring;
+    public GameState artifact;
+    public GameState fight;
+    public GameState death;
+    public GameState win;
+    public GameState loadSave;
+    public GameState save;
+    public GameState delete;
 
     public GSContainer(GameAssets game) {
         menu = new MainMenu(game);

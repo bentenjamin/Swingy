@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GameController {
-    public GameAssets game = null;
+    public GameAssets game;
 
     public GameController(views argView) {
         game = new GameAssets();

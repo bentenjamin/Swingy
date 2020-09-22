@@ -4,7 +4,6 @@ import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
 import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.model.map.MapHandler;
-import com.bwebb.swingy.view.ViewInterface;
 
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
@@ -73,11 +72,6 @@ public class Character {
 
     public String getName() {
         return name;
-    }
-
-    public void saveCharacter(ViewInterface display) {
-        pos = null;
-        display.generalPrint("sAvEd ChArAcTeR");
     }
 
     public void movePlayer(Coordinates offset, MapHandler map) {

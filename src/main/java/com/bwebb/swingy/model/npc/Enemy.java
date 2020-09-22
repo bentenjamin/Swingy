@@ -4,7 +4,7 @@ import static com.bwebb.swingy.model.chars.player.Level.levelUpThreshold;
 import static java.lang.Math.pow;
 
 public class Enemy {
-    private int attack, defense, health, baseHealth = 10, baseDefense = 5, baseAttack = 10;
+    private final int attack, defense, health;
 
     /* general equation used:
         a + b * (c / d)^e
@@ -15,9 +15,11 @@ public class Enemy {
         e = how big the difference between levels will be
      */
     public Enemy(int playerLevel) {
-        health = (int) (baseHealth + (300 * pow((int) (playerLevel / 5), 2)));
-        defense = (int) (baseDefense + (300 * pow((int) (playerLevel / 5), 2)));
-        attack = (int) (baseAttack + (300 * pow((int) (playerLevel / 5), 2)));
+        final int  baseHealth = 10, baseDefense = 5, baseAttack = 10;
+
+        health = (int) (baseHealth + (300 * pow((int) ((float)playerLevel / 5), 2)));
+        defense = (int) (baseDefense + (300 * pow((int) ((float)playerLevel / 5), 2)));
+        attack = (int) (baseAttack + (300 * pow(((float)playerLevel / 5), 2)));
     }
 
     public int getHealth() {

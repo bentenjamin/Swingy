@@ -5,7 +5,7 @@ import com.bwebb.swingy.view.ViewInterface;
 import static java.lang.Math.pow;
 
 public class Level {
-    private int level = 1, experience = 0;
+    private int level, experience;
 
     public Level(int level, int exp) {
         this.level = level;

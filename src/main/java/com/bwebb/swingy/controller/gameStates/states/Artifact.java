@@ -4,7 +4,6 @@ import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
 public class Artifact extends GSTemplate {
-    private int findChance = 30, findRange = 20;
     private int artifactIndex;
     private int artifactStat;
 
@@ -22,6 +21,8 @@ public class Artifact extends GSTemplate {
 
     @Override
     public void execute(String userInput) {
+        final int findChance = 30, findRange = 20;
+
         if (commands.containsKey(userInput)) {
             commands.get(userInput).run();
             return;
