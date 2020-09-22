@@ -7,6 +7,16 @@ import static java.lang.Math.pow;
 public class Level {
     private int level = 1, experience = 0;
 
+    public Level(int level, int exp) {
+        this.level = level;
+        this.experience = exp;
+    }
+
+    public Level() {
+        this.level = 1;
+        this.experience = 0;
+    }
+
     public void addExp(int exp, ViewInterface display) {
         experience += exp;
         checkExp(display);

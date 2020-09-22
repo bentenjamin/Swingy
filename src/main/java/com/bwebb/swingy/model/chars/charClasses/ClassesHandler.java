@@ -1,6 +1,7 @@
 package com.bwebb.swingy.model.chars.charClasses;
 
 public abstract class ClassesHandler {
+    //className, attack, defense, health
     private static Object[][] classArr = {
             {"Warrior"  , 100, 100, 100},
             {"Mage"     , 100, 100, 100},

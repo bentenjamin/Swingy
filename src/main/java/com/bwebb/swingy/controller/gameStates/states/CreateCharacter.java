@@ -2,12 +2,9 @@ package com.bwebb.swingy.controller.gameStates.states;
 
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
-import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
-import com.bwebb.swingy.model.chars.charClasses.playerClass;
-import com.github.javafaker.Faker;
-
-import static com.bwebb.swingy.model.chars.charClasses.ClassesHandler.getClassObj;
+import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
+import com.bwebb.swingy.model.chars.player.Character;
 
 public class CreateCharacter extends GSTemplate {
 
@@ -50,8 +47,7 @@ public class CreateCharacter extends GSTemplate {
     }
 
     private Character createCharacter(int classIndex) {
-        Object[] classObj = getClassObj(classIndex);
-        playerClass myClass = new playerClass((String) classObj[0], (int) classObj[1], (int) classObj[2], (int) classObj[3]);
+        PlayerClass myClass = new PlayerClass(classIndex);
         return new Character(game.faker.name().firstName(), myClass);
     }
 

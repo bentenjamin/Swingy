@@ -2,10 +2,8 @@ package com.bwebb.swingy.controller.gameStates.states;
 
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
-import com.bwebb.swingy.model.chars.Character;
+import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.model.npc.Enemy;
-
-import java.util.Random;
 
 
 public class Fight extends GSTemplate {

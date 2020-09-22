@@ -1,17 +1,18 @@
-package com.bwebb.swingy.model.chars;
+package com.bwebb.swingy.model.chars.player;
 
 import com.bwebb.swingy.model.artifacts.Artifacts;
-import com.bwebb.swingy.model.chars.charClasses.playerClass;
-import com.bwebb.swingy.model.chars.player.Level;
+import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
 import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 
+import java.io.Serializable;
+
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
-    private String name = "defaultName";
-    private com.bwebb.swingy.model.chars.charClasses.playerClass playerClass = null;
+    private String name = null;
+    private PlayerClass playerClass = null;
     private Coordinates pos = null;
     //offset is used to keep track of where the player wants to go
     private Coordinates offSet = null;
@@ -19,17 +20,17 @@ public class Character {
     private Artifacts artifacts = null;
     private Level lvl = null;
 
-    //artifacts
-
-    public Character(String name, com.bwebb.swingy.model.chars.charClasses.playerClass playerClass) {
+    public Character(String name, PlayerClass playerClass) {
         this.name = name;
         this.playerClass = playerClass;
-        this.pos = new Coordinates(-1,-1);
         this.artifacts = new Artifacts();
         this.lvl = new Level();
 
         //luck is random between 0-100 and has a bias to lower ranges (0-40~)
         this.luck = rand_gaus(0, 100);
+    }
+
+    public Character() {
     }
 
     public int getEffectiveAttack() {
@@ -77,8 +78,7 @@ public class Character {
     }
 
     public void saveCharacter(ViewInterface display) {
-        pos.setX(-1);
-        pos.setY(-1);
+        pos = null;
         display.generalPrint("sAvEd ChArAcTeR");
     }
 
@@ -92,8 +92,28 @@ public class Character {
         return artifacts;
     }
 
-    public com.bwebb.swingy.model.chars.charClasses.playerClass getPlayerClass() {
+    public PlayerClass getPlayerClass() {
         return playerClass;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setArtifacts(Artifacts artifacts) {
+        this.artifacts = artifacts;
+    }
+
+    public void setLuck(int luck) {
+        this.luck = luck;
+    }
+
+    public void setLvl(Level lvl) {
+        this.lvl = lvl;
+    }
+
+    public void setPlayerClass(PlayerClass playerClass) {
+        this.playerClass = playerClass;
     }
 
     /* todo

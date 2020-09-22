@@ -19,7 +19,7 @@ public class LoadingPlayer extends GSTemplate {
 
     private void initPlay() {
         game.mapHandler.genMap(game.player.getLevel());
-        if (game.player.getPos().getX() == -1) {
+        if (game.player.getPos() == null) {
             int defaultPlayerPos = (game.mapHandler.calcMapSize(game.player.getLevel()) / 2);
             game.player.setPos(new Coordinates(defaultPlayerPos, defaultPlayerPos));
         }

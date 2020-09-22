@@ -1,11 +1,8 @@
 package com.bwebb.swingy.controller.gameStates;
 
 import com.bwebb.swingy.controller.GameAssets;
-import com.bwebb.swingy.model.chars.Character;
-import com.github.javafaker.Faker;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public abstract class GSTemplate implements GameState {
     protected HashMap<String, Runnable> commands = new HashMap<>();

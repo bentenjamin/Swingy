@@ -1,7 +1,7 @@
 package com.bwebb.swingy.view.terminal;
 
-import com.bwebb.swingy.model.chars.Character;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
+import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.view.ViewInterface;
 import com.github.javafaker.Faker;
 

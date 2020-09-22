@@ -12,6 +12,15 @@ public class Artifacts {
     private final static int artifactBaseStat = 25;
     private final static int artifactStatRange = 25;
 
+    public Artifacts(int weapon, int armour, int helm) {
+        setWeapon(weapon);
+        setArmour(armour);
+        setHelm(helm);
+    }
+
+    public Artifacts() {
+    }
+
 
     public String[] getArtifactList() {
         String[] artifactList = new String[artifacts.length];

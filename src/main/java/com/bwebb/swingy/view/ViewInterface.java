@@ -1,6 +1,6 @@
 package com.bwebb.swingy.view;
 
-import com.bwebb.swingy.model.chars.Character;
+import com.bwebb.swingy.model.chars.player.Character;
 
 public interface ViewInterface {
     void mainMenu();

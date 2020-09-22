@@ -1,8 +1,8 @@
 package com.bwebb.swingy.controller;
 
-import com.bwebb.swingy.controller.gameStates.GameState;
 import com.bwebb.swingy.controller.gameStates.GSContainer;
-import com.bwebb.swingy.model.chars.Character;
+import com.bwebb.swingy.controller.gameStates.GameState;
+import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.model.map.MapHandler;
 import com.bwebb.swingy.view.ViewInterface;
 import com.bwebb.swingy.view.terminal.TerminalView;
