@@ -42,6 +42,9 @@ public class Fight extends GSTemplate {
     private boolean rumble(Character player, Enemy badGuy) {
         int playerEHP, enemyEHP;
 
+        if (game.random.nextInt(100) == 1)
+            return false;
+
         playerEHP = player.getEffectiveHealth() + player.getEffectiveDefense();
         enemyEHP = badGuy.getHealth() + badGuy.getDefense();
 
