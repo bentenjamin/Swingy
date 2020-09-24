@@ -3,12 +3,18 @@ package com.bwebb.swingy.model.chars.player;
 import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
 import com.bwebb.swingy.model.map.Coordinates;
+import com.bwebb.swingy.model.map.MapHandler;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
 
 public class SaveHandler {
     private ArrayList<Character> saves;
@@ -70,15 +76,12 @@ public class SaveHandler {
         String[] characters = input.split(";");
 
         for (String character : characters) {
-            String[] saveArr = character.split(",");
-            if (validSave(saveArr))
-                saves.add(loadCharacterFromArr(saveArr));
+            Character save = validSave(character.split(","));
+            if (save != null)
+                saves.add(save);
         }
     }
 
-    private boolean validSave(String[] save) {
-        return true;
-    }
 
     public Character getSaveByIndex(int index) {
         return saves.get(index);
@@ -146,6 +149,38 @@ public class SaveHandler {
         writeSaves();
     }
 
+    private Character validSave(String[] save) {
+        Character player;
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+
+        if (save.length != 10)
+            return null;
+
+        player = loadCharacterFromArr(save);
+
+        if (player == null)
+            return null;
+
+        Set<ConstraintViolation<Character>> constraintViolations = validator.validate(player);
+
+        for (ConstraintViolation<Character> violation : constraintViolations)
+            System.out.println(violation.getMessage());
+
+        if (constraintViolations.size() > 0)
+            return null;
+
+        if (player.getPos().getX() > MapHandler.calcMapSize(player.getLevel()))
+            return null;
+
+        if (player.getPos().getY() > MapHandler.calcMapSize(player.getLevel()))
+            return null;
+
+        return player;
+    }
+
+
     /* todo
-     *   validSave*/
+     *   validSave
+     *  validate coordinate max*/
 }

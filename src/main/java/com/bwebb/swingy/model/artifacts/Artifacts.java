@@ -1,17 +1,20 @@
 package com.bwebb.swingy.model.artifacts;
 
+import javax.validation.Valid;
+
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Artifacts {
     @SuppressWarnings("FieldMayBeFinal")
-    private Object[][] artifacts = {
-            {"weapon", 0},
-            {"armour", 0},
-            {"helm", 0}
+//    private @Valid Artifact[] artifacts = new @Valid Artifact[3];
+    private @Valid Artifact[] artifacts = {
+            new @Valid Artifact("weapon", 0),
+            new @Valid Artifact("armour", 0),
+            new @Valid Artifact("helm", 0)
     };
 
-    private final static int artifactBaseStat = 25;
-    private final static int artifactStatRange = 25;
+    public final static int artifactBaseStat = 25;
+    public final static int artifactStatRange = 25;
 
     public Artifacts(int weapon, int armour, int helm) {
         setWeapon(weapon);
@@ -19,52 +22,50 @@ public class Artifacts {
         setHelm(helm);
     }
 
-    public Artifacts() {
-    }
-
+    public Artifacts() {}
 
     public String[] getArtifactList() {
         String[] artifactList = new String[artifacts.length];
         for (int i = 0; i < artifacts.length; i++) {
-            artifactList[i] = (String) artifacts[i][0];
+            artifactList[i] = (String) artifacts[i].type;
         }
         return artifactList;
     }
 
     public int getWeapon() {
-        return (int) artifacts[0][1];
+        return (int) artifacts[0].buff;
     }
 
     public int getArmour() {
-        return (int) artifacts[1][1];
+        return (int) artifacts[1].buff;
     }
 
     public int getHelm() {
-        return (int) artifacts[2][1];
+        return (int) artifacts[2].buff;
     }
 
     public void setWeapon(int artifactStat) {
-        artifacts[0][1] = artifactStat;
+        artifacts[0].buff = artifactStat;
     }
 
     public void setArmour(int artifactStat) {
-        artifacts[1][1] = artifactStat;
+        artifacts[1].buff = artifactStat;
     }
 
     public void setHelm(int artifactStat) {
-        artifacts[2][1] = artifactStat;
+        artifacts[2].buff = artifactStat;
     }
 
     public int getArtifactByIndex(int index) {
         if (index < 0 || index >= artifacts.length)
             return 0;
-        return (int) artifacts[index][1];
+        return (int) artifacts[index].buff;
     }
 
     public void setArtifactByIndex(int index, int artifactStat) {
         if (index < 0 || index >= artifacts.length)
             return;
-        artifacts[index][1] = artifactStat;
+        artifacts[index].buff = artifactStat;
     }
 
     public int calcStatBoost(int characterLuck) {
@@ -74,7 +75,7 @@ public class Artifacts {
         return artifactBaseStat + statBoost;
     }
 
-    public Object[][] getArtifacts() {
+    public Artifact[] getArtifacts() {
         return artifacts;
     }
 }

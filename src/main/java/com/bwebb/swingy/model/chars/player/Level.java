@@ -2,10 +2,17 @@ package com.bwebb.swingy.model.chars.player;
 
 import com.bwebb.swingy.view.ViewInterface;
 
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+
 import static java.lang.Math.pow;
 
 public class Level {
-    private int level, experience;
+    @Positive
+    private int  level;
+
+    @PositiveOrZero
+    private int  experience;
 
     public Level(int level, int exp) {
         this.level = level;

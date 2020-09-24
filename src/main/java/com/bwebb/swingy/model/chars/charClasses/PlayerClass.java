@@ -1,6 +1,9 @@
 package com.bwebb.swingy.model.chars.charClasses;
 
+import org.hibernate.validator.constraints.Range;
+
 public class PlayerClass {
+    @Range(max = 8)
     protected int classIndex;
 
     public PlayerClass(int classIndex) {

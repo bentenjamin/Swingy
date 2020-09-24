@@ -4,17 +4,32 @@ import com.bwebb.swingy.model.artifacts.Artifacts;
 import com.bwebb.swingy.model.chars.charClasses.PlayerClass;
 import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.model.map.MapHandler;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Character {
+    @NotBlank
     private String name = null;
+
+    @Valid
     private PlayerClass playerClass = null;
+
+    @Valid
     private Coordinates pos = null;
     //offset is used to keep track of where the player wants to go
     private Coordinates offSet = null;
+
+    @Range(max=100)
     private int luck = 0;
+
+    @Valid
     private Artifacts artifacts = null;
+
+    @Valid
     private Level lvl = null;
 
     public Character(String name, PlayerClass playerClass) {
@@ -27,8 +42,7 @@ public class Character {
         this.luck = rand_gaus(0, 100);
     }
 
-    public Character() {
-    }
+    public Character() {}
 
     public int getEffectiveAttack() {
         return this.playerClass.getAttack() + artifacts.getWeapon();

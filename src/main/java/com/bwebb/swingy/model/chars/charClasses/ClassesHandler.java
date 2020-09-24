@@ -14,6 +14,8 @@ public abstract class ClassesHandler {
             {"Brawler", 100, 100, 100}
     };
 
+    public final static int classAmount = classArr.length;
+
     public static Object[] getClassObj(int classIndex) {
         return classArr[classIndex];
     }

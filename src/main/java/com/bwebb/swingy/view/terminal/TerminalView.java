@@ -243,7 +243,7 @@ public class TerminalView implements ViewInterface {
         stats += "Luck: " + player.getLuck();
 
         System.out.println(stats);
-        this.twoDArray(player.getArtifacts().getArtifacts());
+        player.getArtifacts().toString();
 //        stats += ": " + player. + "\r\n";
     }
 

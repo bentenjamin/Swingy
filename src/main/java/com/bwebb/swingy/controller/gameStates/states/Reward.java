@@ -3,11 +3,11 @@ package com.bwebb.swingy.controller.gameStates.states;
 import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
 
-public class Artifact extends GSTemplate {
+public class Reward extends GSTemplate {
     private int artifactIndex;
     private int artifactStat;
 
-    public Artifact(GameAssets game) {
+    public Reward(GameAssets game) {
         super(game);
         commands.put("1", this::pickUp);
         commands.put("2", this::leave);

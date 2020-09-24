@@ -8,7 +8,7 @@ public class MapHandler {
 
     public static final int mapNothing = 3, mapBlockage = 2, mapEnemy = 1, mapPlayer = 0;
 
-    public int calcMapSize(int characterLevel) {
+    public static int calcMapSize(int characterLevel) {
         return ((characterLevel - 1) * 5) + 10 - (characterLevel % 2);
     }
 

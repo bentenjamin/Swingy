@@ -21,7 +21,7 @@ public class GSContainer {
         charCreation = new CreateCharacter(game);
         loadingPlayer = new LoadingPlayer(game);
         exploring = new Exploring(game);
-        artifact = new Artifact(game);
+        artifact = new Reward(game);
         fight = new Fight(game);
         death = new Death(game);
         win = new Win(game);

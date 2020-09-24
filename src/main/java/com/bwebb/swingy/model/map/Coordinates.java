@@ -1,6 +1,9 @@
 package com.bwebb.swingy.model.map;
 
+import javax.validation.constraints.PositiveOrZero;
+
 public class Coordinates {
+    @PositiveOrZero
     private int x, y;
 
     public Coordinates(int x, int y) {
