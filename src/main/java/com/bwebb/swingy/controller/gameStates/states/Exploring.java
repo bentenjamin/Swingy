@@ -66,6 +66,7 @@ public class Exploring extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.exploring(game.mapHandler.arrMap);
+//        game.display.exploring(game.mapHandler.arrMap);
+        game.display.exploring(game.mapHandler.arrMap, game.player.getPos());
     }
 }

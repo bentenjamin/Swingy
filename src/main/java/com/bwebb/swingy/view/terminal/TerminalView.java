@@ -2,6 +2,7 @@ package com.bwebb.swingy.view.terminal;
 
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.model.chars.player.Character;
+import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.view.ViewInterface;
 import com.github.javafaker.Faker;
 
@@ -9,6 +10,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TerminalView implements ViewInterface {
+    private final String[] legend = {"$", "X", "O", "-"};
+    private final int viewSize = 13;
+
     public void mainMenu() {
         String mainMenu =
                         "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
@@ -63,6 +67,10 @@ public class TerminalView implements ViewInterface {
         System.out.println(input);
     }
 
+    public void exploring(int[][] mapArr, Coordinates playerPos) {
+        System.out.println(arrMapToCenteredStrMap(mapArr, playerPos));
+    }
+
     public void exploring(int[][] mapArr) {
         System.out.println(arrMapToStrMap(mapArr));
     }
@@ -72,16 +80,14 @@ public class TerminalView implements ViewInterface {
         int mapWidth = mapArr.length;
         int mapHeight = mapArr[0].length;
         int fillerSize = ((mapWidth + 1) * 2) + 1;
-        String[] legend = {"$", "X", "O", "-"};
 
         strMap = filler(fillerSize, '~', '*');
         strMap += filler(fillerSize, ' ', '|');
 
         for (int y = mapHeight - 1; y >= 0; y--) {
             strMap += "|  ";
-            for (int x = 0; x < mapWidth; x++) {
+            for (int x = 0; x < mapWidth; x++)
                 strMap += legend[mapArr[x][y]] + ' ';
-            }
             strMap += " |\r\n";
         }
 
@@ -313,4 +319,33 @@ public class TerminalView implements ViewInterface {
 
         return (view);
     }
+
+    private String arrMapToCenteredStrMap(int[][] mapArr, Coordinates playerPos) {
+        String strMap = "";
+        int midView = viewSize/2;
+        int mapWidth = mapArr.length;
+        int mapHeight = mapArr[0].length;
+        int fillerSize = (viewSize * 2) + 1;
+
+        strMap = filler(fillerSize,'-', '*');
+
+        for (int y = viewSize - 1; y >= 0; y--) {
+            strMap += "| ";
+            for (int x = 0; x < viewSize; x++) {
+                int mx = playerPos.getX() - midView + x;
+                int my = playerPos.getY() - midView + y;
+                if (((mx >= 0) && (mx < mapWidth)) && ((my >= 0) && (my < mapHeight)))
+                    strMap += legend[mapArr[mx][my]];
+                else
+                    strMap += " ";
+                strMap += " ";
+            }
+            strMap += "|\r\n";
+        }
+        strMap += filler(fillerSize,'-', '*');
+
+        return strMap;
+    }
 }
+
+

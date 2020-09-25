@@ -1,11 +1,10 @@
 package com.bwebb.swingy.view;
 
 import com.bwebb.swingy.model.chars.player.Character;
+import com.bwebb.swingy.model.map.Coordinates;
 
 public interface ViewInterface {
     void mainMenu();
-
-    void hype();
 
     void invalidInput();
 
@@ -13,7 +12,7 @@ public interface ViewInterface {
 
     void createCharacter();
 
-    void generalPrint(String input);
+    void exploring(int[][] curMap, Coordinates playerPos);
 
     void exploring(int[][] curMap);
 
@@ -47,3 +46,6 @@ public interface ViewInterface {
 
     void deleteSaves(String[] savesList);
 }
+
+/*todo
+*  instructions for moving*/

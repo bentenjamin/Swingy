@@ -164,8 +164,8 @@ public class SaveHandler {
 
         Set<ConstraintViolation<Character>> constraintViolations = validator.validate(player);
 
-        for (ConstraintViolation<Character> violation : constraintViolations)
-            System.out.println(violation.getMessage());
+//        for (ConstraintViolation<Character> violation : constraintViolations)
+//            System.out.println(violation.getMessage());
 
         if (constraintViolations.size() > 0)
             return null;

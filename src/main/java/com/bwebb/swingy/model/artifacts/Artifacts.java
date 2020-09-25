@@ -5,9 +5,8 @@ import javax.validation.Valid;
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Artifacts {
-    @SuppressWarnings("FieldMayBeFinal")
-//    private @Valid Artifact[] artifacts = new @Valid Artifact[3];
-    private @Valid Artifact[] artifacts = {
+    private @Valid
+    final Artifact[] artifacts = {
             new @Valid Artifact("weapon", 0),
             new @Valid Artifact("armour", 0),
             new @Valid Artifact("helm", 0)
@@ -27,21 +26,21 @@ public class Artifacts {
     public String[] getArtifactList() {
         String[] artifactList = new String[artifacts.length];
         for (int i = 0; i < artifacts.length; i++) {
-            artifactList[i] = (String) artifacts[i].type;
+            artifactList[i] = artifacts[i].type;
         }
         return artifactList;
     }
 
     public int getWeapon() {
-        return (int) artifacts[0].buff;
+        return artifacts[0].buff;
     }
 
     public int getArmour() {
-        return (int) artifacts[1].buff;
+        return artifacts[1].buff;
     }
 
     public int getHelm() {
-        return (int) artifacts[2].buff;
+        return artifacts[2].buff;
     }
 
     public void setWeapon(int artifactStat) {
@@ -59,7 +58,7 @@ public class Artifacts {
     public int getArtifactByIndex(int index) {
         if (index < 0 || index >= artifacts.length)
             return 0;
-        return (int) artifacts[index].buff;
+        return artifacts[index].buff;
     }
 
     public void setArtifactByIndex(int index, int artifactStat) {
@@ -74,8 +73,7 @@ public class Artifacts {
 
         return artifactBaseStat + statBoost;
     }
-
-    public Artifact[] getArtifacts() {
-        return artifacts;
-    }
 }
+
+/*todo
+*  tostring*/
