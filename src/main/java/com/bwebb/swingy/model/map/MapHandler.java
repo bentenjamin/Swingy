@@ -6,7 +6,7 @@ import java.util.Random;
 public class MapHandler {
     public int[][] arrMap = null;
 
-    public static final int mapNothing = 3, mapBlockage = 2, mapEnemy = 1, mapPlayer = 0;
+    public static final int mapNothing = 3, mapBlockage = 2, mapEnemy = 1, mapPlayer = 0, mapCleared = 4;
 
     public static int calcMapSize(int characterLevel) {
         return ((characterLevel - 1) * 5) + 10 - (characterLevel % 2);
@@ -51,7 +51,7 @@ public class MapHandler {
     }
 
     public void setClearedTile(Coordinates coords) {
-        arrMap[coords.getX()][coords.getY()] = mapNothing;
+        arrMap[coords.getX()][coords.getY()] = mapCleared;
     }
 
     public Coordinates getSpawn(int playerLevel) {

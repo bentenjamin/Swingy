@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class TerminalView implements ViewInterface {
-    private final String[] legend = {"$", "X", "O", "-"};
+    private final String[] legend = {"$", "X", "O", "-", "."};
     private final int viewSize = 13;
 
     public void mainMenu() {
