@@ -21,7 +21,7 @@ public class MainMenu extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.mainMenu();
+        game.viewController.display.mainMenu();
     }
 
     public void deleteSave() {

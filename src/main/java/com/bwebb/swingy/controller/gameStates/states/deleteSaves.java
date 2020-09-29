@@ -36,6 +36,6 @@ public class deleteSaves extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.deleteSaves(game.saveHandler.getSavedCharacterNames());
+        game.viewController.display.deleteSaves(game.saveHandler.getSavedCharacterNames());
     }
 }

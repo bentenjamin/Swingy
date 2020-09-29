@@ -10,7 +10,7 @@ public class Death extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.death();
+        game.viewController.display.death();
     }
 
     @Override

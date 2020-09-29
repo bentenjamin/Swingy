@@ -29,7 +29,7 @@ public class Save extends GSTemplate {
     }
 
     private void quit() {
-        game.display.endScreen();
+        game.viewController.display.endScreen();
         game.state = null;
     }
 
@@ -39,6 +39,6 @@ public class Save extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.askSave();
+        game.viewController.display.askSave();
     }
 }

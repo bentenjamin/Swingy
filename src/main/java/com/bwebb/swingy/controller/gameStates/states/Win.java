@@ -10,7 +10,7 @@ public class Win extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.win();
+        game.viewController.display.win();
     }
 
     @Override

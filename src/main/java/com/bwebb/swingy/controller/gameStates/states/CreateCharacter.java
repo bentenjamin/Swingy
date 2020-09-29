@@ -51,7 +51,7 @@ public class CreateCharacter extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.createCharacter();
+        game.viewController.display.createCharacter();
     }
 
     private void back() {

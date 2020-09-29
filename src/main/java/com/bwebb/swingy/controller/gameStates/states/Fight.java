@@ -16,7 +16,7 @@ public class Fight extends GSTemplate {
     }
 
     private void fightEnemy() {
-        game.display.fight();
+        game.viewController.display.fight();
         Enemy enemy = new Enemy(game.player.getLevel());
         if (rumble(game.player, enemy))
             fightWon(enemy.getExp(game.player.getLevel()));
@@ -25,15 +25,16 @@ public class Fight extends GSTemplate {
     }
 
     private void fightWon(int enemyExp) {
-        game.display.fightWon();
-        game.player.getLvl().addExp(enemyExp, game.display);
+        game.viewController.display.fightWon();
+        if (game.player.getLvl().addExp(enemyExp))
+            game.viewController.display.levelUp(game.player.getLevel());
         game.state = game.states.artifact;
         game.state.execute("");
     }
 
     private void flee() {
         if (game.random.nextBoolean()) {
-            game.display.fled();
+            game.viewController.display.fled();
             game.state = game.states.exploring;
         } else
             fightEnemy();
@@ -53,6 +54,6 @@ public class Fight extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.enemyFound();
+        game.viewController.display.enemyFound();
     }
 }

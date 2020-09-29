@@ -29,14 +29,14 @@ public abstract class GSTemplate implements GameState {
 
     private void viewStats() {
         if (game.player != null)
-            game.display.stats(game.player);
+            game.viewController.display.stats(game.player);
     }
 
     private void quitGame() {
         if (game.player != null) {
             game.state = game.states.save;
         } else {
-            game.display.endScreen();
+            game.viewController.display.endScreen();
             game.state = null;
         }
     }

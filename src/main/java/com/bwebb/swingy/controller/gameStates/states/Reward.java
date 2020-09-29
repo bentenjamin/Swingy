@@ -15,7 +15,7 @@ public class Reward extends GSTemplate {
 
     private void pickUp() {
         game.player.getArtifacts().setArtifactByIndex(artifactIndex, artifactStat);
-        game.display.equippedArtifact();
+        game.viewController.display.equippedArtifact();
         leave();
     }
 
@@ -47,6 +47,6 @@ public class Reward extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.artifactFound(game.player.getArtifacts().getArtifactList()[artifactIndex], artifactStat, game.player.getArtifacts().getArtifactByIndex(artifactIndex));
+        game.viewController.display.artifactFound(game.player.getArtifacts().getArtifactList()[artifactIndex], artifactStat, game.player.getArtifacts().getArtifactByIndex(artifactIndex));
     }
 }

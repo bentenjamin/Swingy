@@ -1,5 +1,7 @@
 package com.bwebb.swingy.controller;
 
+import com.bwebb.swingy.view.terminal.TerminalView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,31 +9,36 @@ import java.io.InputStreamReader;
 public class GameController {
     public GameAssets game;
 
-    public GameController(views argView) {
-        game = new GameAssets();
-
-        switch (argView) {
-            default -> game.display = game.terminalView;
-        }
+    public GameController() {
+        game = new GameAssets(this);
     }
 
     @SuppressWarnings("SpellCheckingInspection")
-    public void startSwingy() throws IOException {
+    public void startSwingy(views argView) throws IOException {
         game.state = game.states.menu;
-        evaluateExecuteRepeat();
+        game.viewController.setDisplay(argView);
     }
 
-    private void evaluateExecuteRepeat() throws IOException {
+    public void runGuiCommand(String input) {
+        game.state.execute(input);
+        game.state.printMe();
+    }
+
+    public void readConsole() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while (game.state != null) {
+        while (game.state != null && (game.viewController.display instanceof TerminalView)) {
             game.state.printMe();
 
             String line = br.readLine();
             if (game.state.evaluate(line))
                 game.state.execute(line);
             else
-                game.display.invalidInput();
+                game.viewController.display.invalidInput();
         }
+    }
+
+    public GameAssets getGame() {
+        return game;
     }
 }

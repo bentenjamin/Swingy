@@ -33,6 +33,6 @@ public class LoadCharacter extends GSTemplate {
     }
 
     public void printMe() {
-        game.display.loadPlayer(game.saveHandler.getSavedCharacterNames());
+        game.viewController.display.loadPlayer(game.saveHandler.getSavedCharacterNames());
     }
 }

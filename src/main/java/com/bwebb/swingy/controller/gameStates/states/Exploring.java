@@ -40,7 +40,7 @@ public class Exploring extends GSTemplate {
     }
 
     public void runBlockage() {
-        game.display.blockage();
+        game.viewController.display.blockage();
     }
 
     public void runEndOfMap() {
@@ -67,6 +67,6 @@ public class Exploring extends GSTemplate {
 
     public void printMe() {
 //        game.display.exploring(game.mapHandler.arrMap);
-        game.display.exploring(game.mapHandler.arrMap, game.player.getPos());
+        game.viewController.display.exploring(game.mapHandler.arrMap, game.player.getPos());
     }
 }

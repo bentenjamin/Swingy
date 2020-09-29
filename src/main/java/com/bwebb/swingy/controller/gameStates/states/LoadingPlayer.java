@@ -23,6 +23,6 @@ public class LoadingPlayer extends GSTemplate {
 
     @Override
     public void printMe() {
-        game.display.loadingPlayer();
+        game.viewController.display.loadingPlayer();
     }
 }

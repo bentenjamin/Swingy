@@ -24,21 +24,24 @@ public class Level {
         this.experience = 0;
     }
 
-    public void addExp(int exp, ViewInterface display) {
+    public boolean addExp(int exp) {
         experience += exp;
-        checkExp(display);
+        return checkExp();
     }
 
-    public void checkExp(ViewInterface display) {
+    public boolean checkExp() {
         int levelExp = levelUpThreshold(level);
-        if (levelExp < experience)
-            levelUp(experience - levelExp, display);
+
+        if (levelExp < experience) {
+            levelUp(experience - levelExp);
+            return true;
+        }
+        return false;
     }
 
-    public void levelUp(int remainderExp, ViewInterface display) {
+    public void levelUp(int remainderExp) {
         level += 1;
         experience = remainderExp;
-        display.levelUp(level);
     }
 
     public static int levelUpThreshold(int playerLevel) {
