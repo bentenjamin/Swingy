@@ -20,8 +20,7 @@ public class viewController {
 
     public viewController(GameController controller) {
         this.controller = controller;
-        game = controller.getGame();
-        guiView = new Gui(game);
+        guiView = new Gui(controller);
         terminalView = new TerminalView();
     }
 
@@ -35,7 +34,7 @@ public class viewController {
     private void switchGui() {
         display = guiView;
         guiView.setVisible(true);
-        game.state.printMe();
+        controller.getGame().state.printMe();
     }
 
     private void switchToTerminal() throws IOException {
