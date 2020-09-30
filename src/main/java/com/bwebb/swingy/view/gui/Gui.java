@@ -375,7 +375,6 @@ public class Gui extends JFrame implements ViewInterface {
 	@Override
 	public void levelUp(int playerLevel) {
 		txtpnTextoutput.setText("You have leveled up to level " + playerLevel);
-
 	}
 
 	@Override
@@ -395,6 +394,8 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.add(txtpnDisplay);
 		
 		txtpnDisplay.setText("MISSION SUCCESS");
+
+		panel.repaint();
 	}
 
 	@Override
