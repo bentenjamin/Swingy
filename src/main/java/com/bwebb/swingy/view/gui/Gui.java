@@ -235,7 +235,7 @@ public class Gui extends JFrame implements ViewInterface {
 
 		txtpnLoadSave.setText("Load Save");
 		txtpnLoadSave.setBounds(49, 12, 153, 21);
-		
+
 
 
 		//delete save
@@ -380,30 +380,26 @@ public class Gui extends JFrame implements ViewInterface {
         txtpnTextoutput.setText("You have leveled up to level " + playerLevel);
     }
 
-    @Override
-	public void death() {
+    private void messageToMenu(String message) {
 		panel.removeAll();
 
 		txtpnDisplay.setBounds(36, 31, 316, 193);
-		txtpnDisplay.setText("YOU DIED");
+		txtpnDisplay.setText(message);
 
-		panel.add(btnReturn);
 		panel.add(txtpnDisplay);
+		panel.add(btnReturn);
 
 		panel.repaint();
 	}
 
+    @Override
+	public void death() {
+		messageToMenu("YOU DIED");
+	}
+
 	@Override
     public void win() {
-        panel.removeAll();
-
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		txtpnDisplay.setText("MISSION SUCCESS");
-
-		panel.add(txtpnDisplay);
-		panel.add(btnReturn);
-
-        panel.repaint();
+		messageToMenu("MISSION SUCCESS");
     }
 
     @Override
