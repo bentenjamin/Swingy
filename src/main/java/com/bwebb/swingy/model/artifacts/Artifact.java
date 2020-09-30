@@ -15,4 +15,9 @@ public class Artifact {
         this.type = type;
         this.buff = buff;
     }
+
+    @Override
+    public String toString() {
+        return type + ": " + buff + "\n";
+    }
 }

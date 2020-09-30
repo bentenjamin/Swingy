@@ -2,6 +2,8 @@ package com.bwebb.swingy.model.artifacts;
 
 import javax.validation.Valid;
 
+import java.util.Arrays;
+
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Artifacts {
@@ -72,6 +74,16 @@ public class Artifacts {
         int statBoost = rand_gaus(0, artifactStatRange, skew);
 
         return artifactBaseStat + statBoost;
+    }
+
+    @Override
+    public String toString() {
+        String artifactString = "Artifacts:\n";
+
+        for (Artifact artifact: artifacts)
+            artifactString += artifact.toString();
+
+        return artifactString;
     }
 }
 
