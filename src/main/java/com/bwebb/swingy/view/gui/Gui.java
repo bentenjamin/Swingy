@@ -12,6 +12,7 @@ import com.bwebb.swingy.controller.GameController;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.model.map.Coordinates;
+import com.bwebb.swingy.view.DisplayStringHandler;
 import com.bwebb.swingy.view.ViewInterface;
 
 import javax.swing.JButton;
@@ -24,6 +25,7 @@ import javax.swing.JTextPane;
 
 public class Gui extends JFrame implements ViewInterface {
 	private GameController controller;
+	private DisplayStringHandler stringHandler;
 
 	private JPanel contentPane;
 	
@@ -35,8 +37,9 @@ public class Gui extends JFrame implements ViewInterface {
 	/**
 	 * Create the frame.
 	 */
-	public Gui(GameController controller) {
+	public Gui(GameController controller, DisplayStringHandler strHandler) {
 		this.controller = controller;
+		stringHandler = strHandler;
 
 		setTitle("Swingy");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,6 +51,14 @@ public class Gui extends JFrame implements ViewInterface {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 	}
+
+	/*todo
+	*  	exploring
+	* 	blockage
+	* 	artifact
+	* 	enemyfound
+	* 	stats
+	* 	*/
 
 	public void mainMenu() {
 		panel.removeAll();
@@ -160,11 +171,11 @@ public class Gui extends JFrame implements ViewInterface {
 	}
 
 	@Override
-	public void exploring(int[][] curMap, Coordinates playerPos) {
+	public void exploring(int[][] mapArr, Coordinates playerPos) {
 		panel.removeAll();
 		
 		JTextPane mapDisplay = new JTextPane();
-		mapDisplay.setText("gettextHandlermap");
+		mapDisplay.setText(stringHandler.arrMapToCenteredStrMap(mapArr, playerPos));
 		mapDisplay.setBounds(45, 28, 361, 195);
 		panel.add(mapDisplay);
 		

@@ -17,11 +17,12 @@ public class viewController {
     public ViewInterface display = null;
     private Gui guiView;
     private TerminalView terminalView;
+    protected DisplayStringHandler strHandler = new DisplayStringHandler();
 
     public viewController(GameController controller) {
         this.controller = controller;
-        guiView = new Gui(controller);
-        terminalView = new TerminalView();
+        guiView = new Gui(controller, strHandler);
+        terminalView = new TerminalView(strHandler);
     }
 
     public void setDisplay(views view) throws IOException {
