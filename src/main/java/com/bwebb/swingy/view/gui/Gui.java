@@ -1,7 +1,6 @@
 package com.bwebb.swingy.view.gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -169,6 +168,9 @@ public class Gui extends JFrame implements ViewInterface {
 		JTextPane mapDisplay = new JTextPane();
 		mapDisplay.setText(stringHandler.arrMapToCenteredStrMap(mapArr, playerPos));
 		mapDisplay.setBounds(45, 28, 361, 195);
+		mapDisplay.setEditable(false);
+		Font monoFont = new Font(Font.MONOSPACED, 3, 10);
+		mapDisplay.setFont(monoFont);
 		panel.add(mapDisplay);
 		
 		JButton btnQuit = new JButton("Quit");
