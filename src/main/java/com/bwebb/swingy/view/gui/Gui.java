@@ -29,7 +29,7 @@ public class Gui extends JFrame implements ViewInterface {
     JButton btnOption1 = new JButton();
     JButton btnOption2 = new JButton();
 	Font monoFontExplore = new Font(Font.MONOSPACED, 3, 30);
-	Font monoFontGeneric = new Font(Font.MONOSPACED, 3, 10);
+	Font monoFontGeneric = new Font(Font.MONOSPACED, 3, 15);
 	JButton btnReturn = new JButton("Return to Menu");
 	JComboBox<String> saveList = new JComboBox<String>();
 	JButton btnChooseSelected = new JButton();
@@ -130,6 +130,7 @@ public class Gui extends JFrame implements ViewInterface {
 		//generic text output for exploring state
         txtpnTextoutput.setEditable(false);
         txtpnTextoutput.setBounds(746, 227, 166, 195);
+        txtpnTextoutput.setFont(monoFontGeneric);
 
         //text display
 //		txtpnDisplay.setBounds(36, 31, 316, 193);
@@ -390,7 +391,7 @@ public class Gui extends JFrame implements ViewInterface {
     private void viewSaves(String[] savedNamesList, String button) {
 		panel.removeAll();
 
-		if (savedNamesList.length >= 0) {
+		if (savedNamesList.length > 0) {
 			saveList.removeAllItems();
 			for (String save : savedNamesList)
 				saveList.addItem(save);
