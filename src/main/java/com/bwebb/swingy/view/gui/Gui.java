@@ -32,6 +32,7 @@ public class Gui extends JFrame implements ViewInterface {
 	Font monoFontGeneric = new Font(Font.MONOSPACED, 3, 10);
 	JButton btnReturn = new JButton("Return to Menu");
 	JComboBox<String> saveList = new JComboBox<String>();
+	JButton btnChooseSelected = new JButton();
 
 
 	//menu
@@ -53,13 +54,7 @@ public class Gui extends JFrame implements ViewInterface {
     JButton btnLeft = new JButton("Left");
     JButton btnRight = new JButton("Right");
 
-	//load save
-	JButton btnLoad = new JButton("Load");
-	JTextPane txtpnLoadSave = new JTextPane();
-
 	//delete save
-	JButton btnDel = new JButton("Delete");
-	JTextPane txtpnDelSave = new JTextPane();
 	JButton btnDelAll = new JButton("Delete All");
 
 
@@ -102,7 +97,7 @@ public class Gui extends JFrame implements ViewInterface {
                 controller.runGuiCommand("b");
             }
         });
-        btnBack.setBounds(36, 323, 166, 33);
+        btnBack.setBounds(36, 330, 166, 33);
 
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -124,6 +119,13 @@ public class Gui extends JFrame implements ViewInterface {
 			}
 		});
 		btnOption2.setBounds(36, 330, 166, 33);
+
+		btnChooseSelected.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
+			}
+		});
+		btnChooseSelected.setBounds(36, 285, 166, 33);
 
 		//generic text output for exploring state
         txtpnTextoutput.setEditable(false);
@@ -223,38 +225,13 @@ public class Gui extends JFrame implements ViewInterface {
 
 
 
-		//laod save
-		saveList.setBounds(49, 66, 149, 24);
-
-		btnLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
-			}
-		});
-		btnLoad.setBounds(36, 271, 166, 33);
-
-		txtpnLoadSave.setText("Load Save");
-		txtpnLoadSave.setBounds(49, 12, 153, 21);
-
-
-
 		//delete save
-		btnDel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
-			}
-		});
-		btnDel.setBounds(36, 233, 166, 33);
-
-		txtpnDelSave.setText("Delete Save");
-		txtpnDelSave.setBounds(49, 12, 153, 21);
-
 		btnDelAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("d");
 			}
 		});
-		btnDelAll.setBounds(36, 278, 166, 33);
+		btnDelAll.setBounds(36, 240, 166, 33);
 	}
 
     public void mainMenu() {
@@ -407,46 +384,33 @@ public class Gui extends JFrame implements ViewInterface {
         txtpnTextoutput.setText(stringHandler.formatStats(player));
     }
 
-    @Override
-	public void loadPlayer(String[] savedNamesList) {
+    private void viewSaves(String[] savedNamesList, String button) {
 		panel.removeAll();
 
-		populateSaveList(savedNamesList);
-		if (savedNamesList.length > 0)
-			panel.add(btnLoad);
+		if (savedNamesList.length > 0) {
+			saveList.removeAllItems();
+			for (String save : savedNamesList)
+				saveList.addItem(save);
+			saveList.setSelectedIndex(0);
+			btnChooseSelected.setText(button);
+			panel.add(saveList);
+			panel.add(btnChooseSelected);
+		}
 
-		panel.add(btnQuit);
 		panel.add(btnBack);
-		panel.add(txtpnLoadSave);
+		panel.add(btnQuit);
 
 		panel.repaint();
 	}
 
     @Override
-    public void deleteSaves(String[] savesList) {
-        panel.removeAll();
-
-		populateSaveList(savesList);
-		if (savesList.length > 0)
-			panel.add(btnDel);
-
-		panel.add(btnQuit);
-		panel.add(btnBack);
-        panel.add(txtpnDelSave);
-        panel.add(btnDelAll);
-
-        panel.repaint();
-    }
-
-    private void populateSaveList(String[] savedNamesList) {
-		saveList.removeAllItems();
-
-		for (String save : savedNamesList)
-			saveList.addItem(save);
-
-		if (savedNamesList.length > 0) {
-			saveList.setSelectedIndex(0);
-			panel.add(saveList);
-		}
+	public void loadPlayer(String[] savedNamesList) {
+		viewSaves(savedNamesList, "Load");
 	}
+
+    @Override
+    public void deleteSaves(String[] savesList) {
+		viewSaves(savesList, "Delete");
+		panel.add(btnDelAll);
+    }
 }
