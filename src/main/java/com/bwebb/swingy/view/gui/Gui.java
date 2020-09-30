@@ -26,6 +26,8 @@ public class Gui extends JFrame implements ViewInterface {
     //generic
     JButton btnQuit = new JButton("Quit");
     JButton btnBack = new JButton("Back");
+    JButton btnOption1 = new JButton();
+    JButton btnOption2 = new JButton();
 	Font monoFontExplore = new Font(Font.MONOSPACED, 3, 30);
 	Font monoFontGeneric = new Font(Font.MONOSPACED, 3, 10);
 	JButton btnReturn = new JButton("Return to Menu");
@@ -51,20 +53,9 @@ public class Gui extends JFrame implements ViewInterface {
     JButton btnLeft = new JButton("Left");
     JButton btnRight = new JButton("Right");
 
-    //found artifact
-	JButton btnEquip = new JButton("Equip");
-	JButton btnDiscard = new JButton("Discard");
-
-	//encountered enemy
-	JButton btnFight = new JButton("Fight");
-	JButton btnFlee = new JButton("Flee");
-
 	//load save
 	JButton btnLoad = new JButton("Load");
 	JTextPane txtpnLoadSave = new JTextPane();
-
-	//save
-	JButton btnSave = new JButton("Save");
 
 	//delete save
 	JButton btnDel = new JButton("Delete");
@@ -119,6 +110,20 @@ public class Gui extends JFrame implements ViewInterface {
 			}
 		});
 		btnReturn.setBounds(36, 368, 166, 33);
+
+		btnOption1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.runGuiCommand("1");
+			}
+		});
+		btnOption1.setBounds(36, 285, 166, 33);
+
+		btnOption2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controller.runGuiCommand("2");
+			}
+		});
+		btnOption2.setBounds(36, 330, 166, 33);
 
 		//generic text output for exploring state
         txtpnTextoutput.setEditable(false);
@@ -218,40 +223,6 @@ public class Gui extends JFrame implements ViewInterface {
 
 
 
-		//found artifact
-		btnEquip.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("1");
-			}
-		});
-		btnEquip.setBounds(36, 248, 166, 33);
-
-		btnDiscard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("2");
-			}
-		});
-		btnDiscard.setBounds(36, 302, 166, 33);
-
-
-
-		//encountered enemy
-		btnFight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("1");
-			}
-		});
-		btnFight.setBounds(36, 248, 166, 33);
-
-		btnFlee.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("2");
-			}
-		});
-		btnFlee.setBounds(36, 302, 166, 33);
-
-
-
 		//laod save
 		saveList.setBounds(49, 66, 149, 24);
 
@@ -264,17 +235,7 @@ public class Gui extends JFrame implements ViewInterface {
 
 		txtpnLoadSave.setText("Load Save");
 		txtpnLoadSave.setBounds(49, 12, 153, 21);
-
-
-
-		//save
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("1");
-			}
-		});
-		btnSave.setBounds(36, 248, 166, 33);
-
+		
 
 
 		//delete save
@@ -360,36 +321,39 @@ public class Gui extends JFrame implements ViewInterface {
         txtpnTextoutput.setText(stringHandler.genBlockage());
     }
 
-    @Override
-    public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
-        panel.removeAll();
+    private void genericTwoOption(String display, String btn1, String btn2) {
+		panel.removeAll();
 
-		txtpnDisplay.setText(stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
+		txtpnDisplay.setText(display);
 		txtpnDisplay.setBounds(36, 31, 316, 193);
 
-		panel.add(btnQuit);
-		panel.add(txtpnDisplay);
-		panel.add(btnEquip);
-		panel.add(btnDiscard);
+		btnOption1.setText(btn1);
+		btnOption2.setText(btn2);
 
-        panel.repaint();
+		panel.add(txtpnDisplay);
+		panel.add(btnOption1);
+		panel.add(btnOption2);
+
+		panel.repaint();
+	}
+
+    @Override
+    public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
+		String message = stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat);
+		genericTwoOption(message, "Equip", "Drop");
     }
 
     @Override
     public void enemyFound() {
-        panel.removeAll();
-
-		txtpnDisplay.setText("You have encountered an enemy!\nDo you Fight or attempt to Flee?");
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-
-		panel.add(txtpnDisplay);
-		panel.add(btnQuit);
-		panel.add(btnFight);
-		panel.add(btnFlee);
-
-
-        panel.repaint();
+    	String message = "You have encountered an enemy!\nDo you Fight or attempt to Flee?";
+    	genericTwoOption(message, "Fight", "Flee");
     }
+
+	@Override
+	public void askSave() {
+		String message = "Do you want to save?";
+		genericTwoOption(message, "Save", "No");
+	}
 
     @Override
     public void fight() {
@@ -445,20 +409,6 @@ public class Gui extends JFrame implements ViewInterface {
     @Override
     public void stats(Character player) {
         txtpnTextoutput.setText(stringHandler.formatStats(player));
-    }
-
-    @Override
-	public void askSave() {
-        panel.removeAll();
-
-        txtpnDisplay.setBounds(36, 31, 316, 193);
-		txtpnDisplay.setText("Do you want to save?");
-
-		panel.add(txtpnDisplay);
-		panel.add(btnSave);
-		panel.add(btnDiscard);
-
-        panel.repaint();
     }
 
     @Override
