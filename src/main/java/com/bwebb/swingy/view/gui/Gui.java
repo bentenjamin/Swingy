@@ -135,6 +135,9 @@ public class Gui extends JFrame implements ViewInterface {
 //		txtpnDisplay.setBounds(36, 31, 316, 193);
 		txtpnDisplay.setFont(monoFontGeneric);
 
+		//saveList
+		saveList.setBounds(36, 12, 166, 33);
+
 
         //menu
         btnDelete.addActionListener(new ActionListener() {
@@ -387,7 +390,7 @@ public class Gui extends JFrame implements ViewInterface {
     private void viewSaves(String[] savedNamesList, String button) {
 		panel.removeAll();
 
-		if (savedNamesList.length > 0) {
+		if (savedNamesList.length >= 0) {
 			saveList.removeAllItems();
 			for (String save : savedNamesList)
 				saveList.addItem(save);
