@@ -9,7 +9,7 @@ import com.bwebb.swingy.view.ViewInterface;
 import java.util.Arrays;
 
 public class TerminalView implements ViewInterface {
-    private DisplayStringHandler strHandler;
+    private final DisplayStringHandler strHandler;
 
     public TerminalView(DisplayStringHandler stringHandler) {
         strHandler = stringHandler;

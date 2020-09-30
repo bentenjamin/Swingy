@@ -14,526 +14,493 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Gui extends JFrame implements ViewInterface {
-	private GameController controller;
-	private DisplayStringHandler stringHandler;
+    private final GameController controller;
+    private final DisplayStringHandler stringHandler;
 
-	private JPanel contentPane;
-	
-	//stuff
-	JPanel panel = new JPanel();
-	JTextPane txtpnTextoutput = new JTextPane();
-	private final JTextPane txtpnDisplay = new JTextPane();
+    private JPanel panel;
 
-	/**
-	 * Create the frame.
-	 */
-	public Gui(GameController controller, DisplayStringHandler strHandler) {
-		this.controller = controller;
-		stringHandler = strHandler;
+    //stuff
+    JTextPane txtpnTextoutput = new JTextPane();
+    private final JTextPane txtpnDisplay = new JTextPane();
 
-		setTitle("Swingy");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 647, 567);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(null);
-	}
+    //generic
+    JButton btnQuit = new JButton("Quit");
+    JButton btnBack = new JButton("Back");
+	Font monoFontExplore = new Font(Font.MONOSPACED, 3, 30);
+	Font monoFontGeneric = new Font(Font.MONOSPACED, 3, 10);
+	JButton btnReturn = new JButton("Return to Menu");
+	JComboBox<String> saveList = new JComboBox<String>();
 
-	private void initComponents() {
 
-	}
+	//menu
+    JButton btnDelete = new JButton("Delete");
+    JButton btnMenuLoad = new JButton("Load");
+    JTextArea menuTitle = new JTextArea();
+    JButton btnCreateCharacter = new JButton("Create Character");
 
-	public void mainMenu() {
-		panel.removeAll();
-		
-		JButton btnCreateCharacter = new JButton("Create Character");
-		btnCreateCharacter.addActionListener(new ActionListener() {
+    //createCharacter
+    JComboBox<String> classes = new JComboBox<String>();
+    JButton btnCreate = new JButton("Create");
+    JTextPane txtpnCreateChar = new JTextPane();
+
+    //exploring
+    JTextPane mapDisplay = new JTextPane();
+    JButton btnStats = new JButton("Stats");
+    JButton btnUp = new JButton("Up");
+    JButton btnDown = new JButton("Down");
+    JButton btnLeft = new JButton("Left");
+    JButton btnRight = new JButton("Right");
+
+    //found artifact
+	JButton btnEquip = new JButton("Equip");
+	JButton btnDiscard = new JButton("Discard");
+
+	//encountered enemy
+	JButton btnFight = new JButton("Fight");
+	JButton btnFlee = new JButton("Flee");
+
+	//load save
+	JButton btnLoad = new JButton("Load");
+	JTextPane txtpnLoadSave = new JTextPane();
+
+	//save
+	JButton btnSave = new JButton("Save");
+
+	//delete save
+	JButton btnDel = new JButton("Delete");
+	JTextPane txtpnDelSave = new JTextPane();
+	JButton btnDelAll = new JButton("Delete All");
+
+
+    /**
+     * Create the frame.
+     */
+    public Gui(GameController controller, DisplayStringHandler strHandler) {
+        this.controller = controller;
+        stringHandler = strHandler;
+
+        initComponents();
+
+//		exploring(2, 2 ,2);
+    }
+
+    private void initComponents() {
+        //default things
+        setTitle("Swingy");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setBounds(100, 100, 1018, 726);
+        panel = new JPanel();
+        panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        panel.setLayout(new BorderLayout(0, 0));
+        setContentPane(panel);
+        panel.setLayout(null);
+
+
+
+        //generic
+		//buttons
+        btnQuit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("q");
+            }
+        });
+        btnQuit.setBounds(36, 375, 166, 33);
+
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("b");
+            }
+        });
+        btnBack.setBounds(36, 323, 166, 33);
+
+		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("1");
+				controller.runGuiCommand("menu");
 			}
 		});
-		btnCreateCharacter.setBounds(36, 240, 166, 33);
-		panel.add(btnCreateCharacter);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setText(" ________  ___       __   ___  ________   ________      ___    ___ \n|\\   ____\\|\\  \\     |\\  \\|\\  \\|\\   ___  \\|\\   ____\\    |\\  \\  /  /|\n\\ \\  \\___|\\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|    \\ \\  \\/  / /\n \\ \\_____  \\ \\  \\  __\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___   \\ \\    / / \n  \\|____|\\  \\ \\  \\|\\__\\_\\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\   \\/  /  /  \n    ____\\_\\  \\ \\____________\\ \\__\\ \\__\\\\ \\__\\ \\_______\\__/  / /    \n   |\\_________\\|____________|\\|__|\\|__| \\|__|\\|_______|\\___/ /     \n   \\|_________|                                       \\|___|/      \n\nwell its supposed to say Swingy :(");
-		textArea.setBounds(36, 12, 436, 185);
-		panel.add(textArea);
-		
-		JButton btnLoad = new JButton("Load");
-		btnLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("2");
-			}
-		});
-		btnLoad.setBounds(36, 285, 166, 33);
-		panel.add(btnLoad);
-		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("3");
-			}
-		});
-		btnDelete.setBounds(36, 330, 166, 33);
-		panel.add(btnDelete);
-		
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 375, 166, 33);
-		panel.add(btnQuit);
-		
-		panel.repaint();
-	}
+		btnReturn.setBounds(36, 368, 166, 33);
 
-	@Override
-	public void invalidInput() {}
+		//generic text output for exploring state
+        txtpnTextoutput.setEditable(false);
+        txtpnTextoutput.setBounds(746, 227, 166, 195);
 
-	@Override
-	public void endScreen() {}
+        //text display
+//		txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setFont(monoFontGeneric);
 
-	@Override
-	public void createCharacter() {
-		panel.removeAll();
 
-		String[] classList = ClassesHandler.getClassList();
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(53, 45, 149, 24);
-		
-		for (String aClass: classList)
-			comboBox.addItem(aClass);
-		
-		comboBox.setSelectedIndex(0);
-		
-		panel.add(comboBox);
+        //menu
+        btnDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("3");
+            }
+        });
+        btnDelete.setBounds(36, 330, 166, 33);
 
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("b");
-			}
-		});
-		btnBack.setBounds(36, 323, 166, 33);
-		panel.add(btnBack);
-		
-		JButton btnCreate = new JButton("Create");
-		btnCreate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-//				System.out.println(comboBox.getSelectedIndex());
-				controller.runGuiCommand(Integer.toString((comboBox.getSelectedIndex() + 1)));
-			}
-		});
-		btnCreate.setBounds(36, 271, 166, 33);
-		panel.add(btnCreate);
-		
-		JTextPane txtpnCreateChar = new JTextPane();
-		txtpnCreateChar.setText("Create Character");
-		txtpnCreateChar.setBounds(49, 12, 153, 21);
-		panel.add(txtpnCreateChar);
-		
-		panel.repaint();
-	}
+        btnMenuLoad.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("2");
+            }
+        });
+        btnMenuLoad.setBounds(36, 285, 166, 33);
 
-	@Override
-	public void exploring(int[][] mapArr, Coordinates playerPos) {
-		panel.removeAll();
-		
-		JTextPane mapDisplay = new JTextPane();
-		mapDisplay.setText(stringHandler.arrMapToCenteredStrMap(mapArr, playerPos));
-		mapDisplay.setBounds(45, 28, 361, 195);
-		mapDisplay.setEditable(false);
-		Font monoFont = new Font(Font.MONOSPACED, 3, 10);
-		mapDisplay.setFont(monoFont);
-		panel.add(mapDisplay);
-		
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		txtpnTextoutput.setEditable(false);
-		
+        btnCreateCharacter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("1");
+            }
+        });
+        btnCreateCharacter.setBounds(36, 240, 166, 33);
 
-		txtpnTextoutput.setBounds(444, 28, 166, 195);
-		panel.add(txtpnTextoutput);
-		
-		JButton btnStats = new JButton("Stats");
-		btnStats.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("i");
-			}
-		});
-		btnStats.setBounds(467, 252, 117, 25);
-		panel.add(btnStats);
-		
-		JButton btnUp = new JButton("Up");
+        menuTitle.setEditable(false);
+        menuTitle.setText(" ________  ___       __   ___  ________   ________      ___    ___ \n|\\   ____\\|\\  \\     |\\  \\|\\  \\|\\   ___  \\|\\   ____\\    |\\  \\  /  /|\n\\ \\  \\___|\\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|    \\ \\  \\/  / /\n \\ \\_____  \\ \\  \\  __\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___   \\ \\    / / \n  \\|____|\\  \\ \\  \\|\\__\\_\\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\   \\/  /  /  \n    ____\\_\\  \\ \\____________\\ \\__\\ \\__\\\\ \\__\\ \\_______\\__/  / /    \n   |\\_________\\|____________|\\|__|\\|__| \\|__|\\|_______|\\___/ /     \n   \\|_________|                                       \\|___|/      \n\nwell its supposed to say Swingy :(");
+        menuTitle.setBounds(36, 12, 436, 185);
+
+
+
+        //createCharacter
+        classes.setBounds(53, 45, 149, 24);
+        String[] classList = ClassesHandler.getClassList();
+        for (String aClass : classList)
+            classes.addItem(aClass);
+        classes.setSelectedIndex(0);
+
+        btnCreate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand(Integer.toString((classes.getSelectedIndex() + 1)));
+            }
+        });
+        btnCreate.setBounds(36, 271, 166, 33);
+
+        txtpnCreateChar.setText("Create Character");
+        txtpnCreateChar.setBounds(49, 12, 153, 21);
+
+
+
+        //exploring
+        mapDisplay.setBounds(45, 28, 612, 571);
+        mapDisplay.setEditable(false);
+        mapDisplay.setFont(monoFontExplore);
+
+        btnStats.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                controller.runGuiCommand("i");
+            }
+        });
+        btnStats.setBounds(774, 507, 117, 25);
+
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("w");
-}
+			}
 		});
-		btnUp.setBounds(172, 235, 117, 25);
-		panel.add(btnUp);
-		
-		JButton btnDown = new JButton("Down");
+		btnUp.setBounds(774, 28, 117, 25);
+
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("s");
-}
+			}
 		});
-		btnDown.setBounds(172, 289, 117, 25);
-		panel.add(btnDown);
-		
-		JButton btnLeft = new JButton("Left");
+		btnDown.setBounds(774, 102, 117, 25);
+
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("a");
-}
+			}
 		});
-		btnLeft.setBounds(42, 262, 117, 25);
-		panel.add(btnLeft);
-		
-		JButton btnRight = new JButton("Right");
+		btnLeft.setBounds(669, 65, 117, 25);
+
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("d");
-}
-		});
-		btnRight.setBounds(304, 262, 117, 25);
-		panel.add(btnRight);
-		
-		panel.repaint();
-	}
-
-	@Override
-	public void exploring(int[][] curMap) {}
-
-	@Override
-	public void loadingPlayer() {}
-
-	@Override
-	public void blockage() {
-		txtpnTextoutput.setText(stringHandler.genBlockage());
-	}
-
-	@Override
-	public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
-		panel.removeAll();
-		
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
 			}
 		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		
-		panel.add(txtpnDisplay);
-		
-		JButton btnEquip = new JButton("Equip");
+		btnRight.setBounds(858, 65, 117, 25);
+
+
+
+		//found artifact
 		btnEquip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("1");
 			}
 		});
 		btnEquip.setBounds(36, 248, 166, 33);
-		panel.add(btnEquip);
-		
-		JButton btnDiscard = new JButton("Discard");
+
 		btnDiscard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("2");
 			}
 		});
 		btnDiscard.setBounds(36, 302, 166, 33);
-		
-		panel.add(btnDiscard);
 
-		Font monoFont = new Font(Font.MONOSPACED, 3, 10);
-		txtpnDisplay.setFont(monoFont);
-		txtpnDisplay.setText(stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
-		
-		panel.repaint();
-	}
 
-	@Override
-	public void enemyFound() {
-		panel.removeAll();
-		
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		
-		panel.add(txtpnDisplay);
-		
-		JButton btnFight = new JButton("Fight");
+
+		//encountered enemy
 		btnFight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("1");
 			}
 		});
 		btnFight.setBounds(36, 248, 166, 33);
-		
-		panel.add(btnFight);
-		
-		JButton btnFlee = new JButton("Flee");
+
 		btnFlee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("2");
 			}
 		});
 		btnFlee.setBounds(36, 302, 166, 33);
-		
-		panel.add(btnFlee);
-		
-		txtpnDisplay.setText("You have encountered an enemy!\nDo you Fight or attempt to Flee?");
-		
-		panel.repaint();
-	}
 
-	@Override
-	public void fight() {
-		txtpnTextoutput.setText("You engage in an 'epic battle that will be spoke of for decades'");
-	}
 
-	@Override
-	public void fightWon() {
-		txtpnTextoutput.setText("You have slain the heretic");
-	}
 
-	@Override
-	public void fled() {
-		txtpnTextoutput.setText("You have evaded the Monster");
-	}
+		//laod save
+		saveList.setBounds(49, 66, 149, 24);
 
-	@Override
-	public void equippedArtifact() {
-		txtpnTextoutput.setText("You have equipped your new loot");
-	}
-
-	@Override
-	public void death() {
-		panel.removeAll();
-		
-		JButton btnReturn = new JButton("Return to Menu");
-		btnReturn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnReturn.setBounds(36, 368, 166, 33);
-		panel.add(btnReturn);
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		
-		panel.add(txtpnDisplay);
-		
-		txtpnDisplay.setText("YOU DIED");
-		
-		panel.repaint();
-	}
-
-	@Override
-	public void levelUp(int playerLevel) {
-		txtpnTextoutput.setText("You have leveled up to level " + playerLevel);
-	}
-
-	@Override
-	public void win() {
-		panel.removeAll();
-		
-		JButton btnReturn = new JButton("Return to Menu");
-		btnReturn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("");
-			}
-		});
-		btnReturn.setBounds(36, 368, 166, 33);
-		panel.add(btnReturn);
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		
-		panel.add(txtpnDisplay);
-		
-		txtpnDisplay.setText("MISSION SUCCESS");
-
-		panel.repaint();
-	}
-
-	@Override
-	public void stats(Character player) {
-		txtpnTextoutput.setText(stringHandler.formatStats(player));
-	}
-
-	@Override
-	public void loadPlayer(String[] savedNamesList) {
-		panel.removeAll();
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(49, 66, 149, 24);
-		
-		for (String save: savedNamesList)
-			comboBox.addItem(save);
-		
-		if (savedNamesList.length > 0) {
-			comboBox.setSelectedIndex(0);
-			panel.add(comboBox);
-		}
-
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("b");
-			}
-		});
-		btnBack.setBounds(36, 323, 166, 33);
-		panel.add(btnBack);
-		
-		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				System.out.println(comboBox.getSelectedIndex());
-				controller.runGuiCommand(Integer.toString((comboBox.getSelectedIndex() + 1)));
+				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
 			}
 		});
 		btnLoad.setBounds(36, 271, 166, 33);
-		if (savedNamesList.length > 0)
-			panel.add(btnLoad);
-		
-		JTextPane txtpnLoadSave = new JTextPane();
+
 		txtpnLoadSave.setText("Load Save");
 		txtpnLoadSave.setBounds(49, 12, 153, 21);
-		panel.add(txtpnLoadSave);
-		
-		panel.repaint();
-	}
 
-	@Override
-	public void askSave() {
-		panel.removeAll();
-		
-		txtpnDisplay.setBounds(36, 31, 316, 193);
-		
-		panel.add(txtpnDisplay);
-		
-		JButton btnSave = new JButton("Save");
+
+
+		//save
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("1");
 			}
 		});
 		btnSave.setBounds(36, 248, 166, 33);
-		
-		panel.add(btnSave);
-		
-		JButton btnDiscard = new JButton("Discard");
-		btnDiscard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("2");
-			}
-		});
-		btnDiscard.setBounds(36, 302, 166, 33);
-		
-		panel.add(btnDiscard);
-		
-		txtpnDisplay.setText("Do you want to save?");
-		
-		panel.repaint();
-	}
 
-	@Override
-	public void deleteSaves(String[] savesList) {
-		panel.removeAll();
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(49, 66, 149, 24);
-		
-		for (String save: savesList)
-			comboBox.addItem(save);
-		
-		if (savesList.length > 0) {
-			comboBox.setSelectedIndex(0);
-			panel.add(comboBox);
-		}
 
-		JButton btnQuit = new JButton("Quit");
-		btnQuit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
-			}
-		});
-		btnQuit.setBounds(36, 368, 166, 33);
-		panel.add(btnQuit);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("b");
-			}
-		});
-		btnBack.setBounds(36, 323, 166, 33);
-		panel.add(btnBack);
-		
-		JButton btnDel = new JButton("Delete");
+
+		//delete save
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand(Integer.toString((comboBox.getSelectedIndex() + 1)));
+				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
 			}
 		});
 		btnDel.setBounds(36, 233, 166, 33);
-		if (savesList.length > 0)
-			panel.add(btnDel);
-		
-		JTextPane txtpnDelSave = new JTextPane();
+
 		txtpnDelSave.setText("Delete Save");
 		txtpnDelSave.setBounds(49, 12, 153, 21);
-		panel.add(txtpnDelSave);
-		
-		JButton btnDelAll = new JButton("Delete All");
+
 		btnDelAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("d");
 			}
 		});
 		btnDelAll.setBounds(36, 278, 166, 33);
-		panel.add(btnDelAll);
-		
+	}
+
+    public void mainMenu() {
+        panel.removeAll();
+
+        panel.add(btnCreateCharacter);
+        panel.add(menuTitle);
+        panel.add(btnMenuLoad);
+        panel.add(btnDelete);
+        panel.add(btnQuit);
+
+        panel.repaint();
+    }
+
+    @Override
+    public void invalidInput() {
+    }
+
+    @Override
+    public void endScreen() {
+    }
+
+    @Override
+    public void createCharacter() {
+        panel.removeAll();
+
+        panel.add(classes);
+        panel.add(btnQuit);
+        panel.add(btnBack);
+        panel.add(btnCreate);
+        panel.add(txtpnCreateChar);
+
+        panel.repaint();
+    }
+
+    @Override
+    public void exploring(int[][] mapArr, Coordinates playerPos) {
+        panel.removeAll();
+
+        mapDisplay.setText(stringHandler.arrMapToCenteredStrMap(mapArr, playerPos));
+
+        panel.add(mapDisplay);
+        panel.add(txtpnTextoutput);
+		panel.add(btnQuit);
+		panel.add(btnStats);
+		panel.add(btnUp);
+		panel.add(btnDown);
+		panel.add(btnLeft);
+		panel.add(btnRight);
+
+        panel.repaint();
+    }
+
+    @Override
+    public void exploring(int[][] curMap) {
+    }
+
+    @Override
+    public void loadingPlayer() {
+    }
+
+    @Override
+    public void blockage() {
+        txtpnTextoutput.setText(stringHandler.genBlockage());
+    }
+
+    @Override
+    public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
+        panel.removeAll();
+
+		txtpnDisplay.setText(stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
+		txtpnDisplay.setBounds(36, 31, 316, 193);
+
+		panel.add(btnQuit);
+		panel.add(txtpnDisplay);
+		panel.add(btnEquip);
+		panel.add(btnDiscard);
+
+        panel.repaint();
+    }
+
+    @Override
+    public void enemyFound() {
+        panel.removeAll();
+
+		txtpnDisplay.setText("You have encountered an enemy!\nDo you Fight or attempt to Flee?");
+		txtpnDisplay.setBounds(36, 31, 316, 193);
+
+		panel.add(txtpnDisplay);
+		panel.add(btnQuit);
+		panel.add(btnFight);
+		panel.add(btnFlee);
+
+
+        panel.repaint();
+    }
+
+    @Override
+    public void fight() {
+        txtpnTextoutput.setText("You engage in an 'epic battle that will be spoke of for decades'");
+    }
+
+    @Override
+    public void fightWon() {
+        txtpnTextoutput.setText("You have slain the heretic");
+    }
+
+    @Override
+    public void fled() {
+        txtpnTextoutput.setText("You have evaded the Monster");
+    }
+
+    @Override
+    public void equippedArtifact() {
+        txtpnTextoutput.setText("You have equipped your new loot");
+    }
+
+    @Override
+    public void levelUp(int playerLevel) {
+        txtpnTextoutput.setText("You have leveled up to level " + playerLevel);
+    }
+
+    @Override
+	public void death() {
+		panel.removeAll();
+
+		txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setText("YOU DIED");
+
+		panel.add(btnReturn);
+		panel.add(txtpnDisplay);
+
 		panel.repaint();
+	}
+
+	@Override
+    public void win() {
+        panel.removeAll();
+
+		txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setText("MISSION SUCCESS");
+
+		panel.add(txtpnDisplay);
+		panel.add(btnReturn);
+
+        panel.repaint();
+    }
+
+    @Override
+    public void stats(Character player) {
+        txtpnTextoutput.setText(stringHandler.formatStats(player));
+    }
+
+    @Override
+	public void askSave() {
+        panel.removeAll();
+
+        txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setText("Do you want to save?");
+
+		panel.add(txtpnDisplay);
+		panel.add(btnSave);
+		panel.add(btnDiscard);
+
+        panel.repaint();
+    }
+
+    @Override
+	public void loadPlayer(String[] savedNamesList) {
+		panel.removeAll();
+
+		populateSaveList(savedNamesList);
+		if (savedNamesList.length > 0)
+			panel.add(btnLoad);
+
+		panel.add(btnQuit);
+		panel.add(btnBack);
+		panel.add(txtpnLoadSave);
+
+		panel.repaint();
+	}
+
+    @Override
+    public void deleteSaves(String[] savesList) {
+        panel.removeAll();
+
+		populateSaveList(savesList);
+		if (savesList.length > 0)
+			panel.add(btnDel);
+
+		panel.add(btnQuit);
+		panel.add(btnBack);
+        panel.add(txtpnDelSave);
+        panel.add(btnDelAll);
+
+        panel.repaint();
+    }
+
+    private void populateSaveList(String[] savedNamesList) {
+		saveList.removeAllItems();
+
+		for (String save : savedNamesList)
+			saveList.addItem(save);
+
+		if (savedNamesList.length > 0) {
+			saveList.setSelectedIndex(0);
+			panel.add(saveList);
+		}
 	}
 }

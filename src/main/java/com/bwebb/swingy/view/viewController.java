@@ -8,11 +8,11 @@ import com.bwebb.swingy.view.terminal.TerminalView;
 import java.io.IOException;
 
 public class viewController {
-    private GameController controller;
+    private final GameController controller;
 
     public ViewInterface display = null;
-    private Gui guiView;
-    private TerminalView terminalView;
+    private final Gui guiView;
+    private final TerminalView terminalView;
     protected DisplayStringHandler strHandler = new DisplayStringHandler();
 
     public viewController(GameController controller) {
