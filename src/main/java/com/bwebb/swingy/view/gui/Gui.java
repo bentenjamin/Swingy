@@ -52,14 +52,6 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.setLayout(null);
 	}
 
-	/*todo
-	*  	exploring
-	* 	blockage
-	* 	artifact
-	* 	enemyfound
-	* 	stats
-	* 	*/
-
 	public void mainMenu() {
 		panel.removeAll();
 		
@@ -253,8 +245,7 @@ public class Gui extends JFrame implements ViewInterface {
 
 	@Override
 	public void blockage() {
-		txtpnTextoutput.setText("getTextFromStringHandlerForBloackage");
-
+		txtpnTextoutput.setText(stringHandler.genBlockage());
 	}
 
 	@Override
@@ -292,7 +283,7 @@ public class Gui extends JFrame implements ViewInterface {
 		
 		panel.add(btnDiscard);
 		
-		txtpnDisplay.setText("gettexthandlerArtifact");
+		txtpnDisplay.setText(stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
 		
 		panel.repaint();
 	}
@@ -333,7 +324,7 @@ public class Gui extends JFrame implements ViewInterface {
 		
 		panel.add(btnFlee);
 		
-		txtpnDisplay.setText("gettexthandlerEnemyFound");
+		txtpnDisplay.setText("You have encountered an enemy!\nDo you Fight or attempt to Flee?");
 		
 		panel.repaint();
 	}
@@ -406,7 +397,7 @@ public class Gui extends JFrame implements ViewInterface {
 
 	@Override
 	public void stats(Character player) {
-		txtpnTextoutput.setText("getTextFromStringHandlerForStats");
+		txtpnTextoutput.setText(stringHandler.formatStats(player));
 	}
 
 	@Override

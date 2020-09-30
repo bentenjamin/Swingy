@@ -89,45 +89,12 @@ public class TerminalView implements ViewInterface {
 
     @Override
     public void blockage() {
-        Faker faker = new Faker();
-        Random random = new Random();
-        String monster = (random.nextBoolean()) ? faker.elderScrolls().creature() : faker.witcher().monster();
-        System.out.println("A " + monster + " blocks your path!");
+        System.out.println(strHandler.genBlockage());
     }
 
     @Override
     public void artifactFound(String artifactType, int newArtifactStat, int currentArtifactStat) {
-        String newArtifact =
-                        "*~~~~~~~~~~~~~~~~~~~~~~~~~*\r\n" +
-                        "|                         |\r\n" +
-                        "|     Artifact Found!     |\r\n" +
-                        "|                         |\r\n";
-
-        String line = "|  Type: " + artifactType.toUpperCase();
-        for (int j = 0; line.length() < 26; j++)
-            line += " ";
-        line += "|\r\n";
-        newArtifact += line;
-
-        line = "|  Current Buff: " + currentArtifactStat;
-        for (int j = 0; line.length() < 26; j++)
-            line += " ";
-        line += "|\r\n";
-        newArtifact += line;
-
-        line = "|  Artifact Buff: " + newArtifactStat;
-        for (int j = 0; line.length() < 26; j++)
-            line += " ";
-        line += "|\r\n";
-        newArtifact += line +
-
-                "|                         |\r\n" +
-                "|  1. Equip               |\r\n" +
-                "|  2. Drop                |\r\n" +
-                "|                         |\r\n" +
-                "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
-
-        System.out.println(newArtifact);
+        System.out.println(strHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
     }
 
     @Override
@@ -212,18 +179,7 @@ public class TerminalView implements ViewInterface {
     }
 
     public void stats(Character player) {
-        String stats = "Name: " + player.getName() + "\r\n";
-        stats += "Class: " + player.getPlayerClass().getClassName() + "\r\n";
-        stats += "Attack: " + player.getPlayerClass().getAttack() + "\r\n";
-        stats += "Defense: " + player.getPlayerClass().getDefense() + "\r\n";
-        stats += "Health: " + player.getPlayerClass().getHealth() + "\r\n";
-        stats += "Level: " + player.getLevel() + "\r\n";
-        stats += "Exp: " + player.getLvl().getExperience() + "\r\n";
-        stats += "Luck: " + player.getLuck();
-
-        System.out.println(stats);
-        player.getArtifacts().toString();
-//        stats += ": " + player. + "\r\n";
+        System.out.println(strHandler.formatStats(player));
     }
 
     @Override
