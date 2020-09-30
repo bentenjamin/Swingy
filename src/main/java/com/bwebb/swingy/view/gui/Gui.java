@@ -1,12 +1,5 @@
 package com.bwebb.swingy.view.gui;
 
-import java.awt.*;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.GameController;
 import com.bwebb.swingy.model.chars.charClasses.ClassesHandler;
 import com.bwebb.swingy.model.chars.player.Character;
@@ -14,13 +7,11 @@ import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.view.DisplayStringHandler;
 import com.bwebb.swingy.view.ViewInterface;
 
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
 
 public class Gui extends JFrame implements ViewInterface {
 	private GameController controller;

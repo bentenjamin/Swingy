@@ -5,10 +5,8 @@ import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.model.map.Coordinates;
 import com.bwebb.swingy.view.DisplayStringHandler;
 import com.bwebb.swingy.view.ViewInterface;
-import com.github.javafaker.Faker;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class TerminalView implements ViewInterface {
     private DisplayStringHandler strHandler;

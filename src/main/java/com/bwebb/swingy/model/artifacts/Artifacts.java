@@ -2,8 +2,6 @@ package com.bwebb.swingy.model.artifacts;
 
 import javax.validation.Valid;
 
-import java.util.Arrays;
-
 import static com.bwebb.swingy.model.helper.MathFunctions.rand_gaus;
 
 public class Artifacts {

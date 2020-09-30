@@ -1,14 +1,11 @@
 package com.bwebb.swingy.view;
 
-import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.GameController;
 import com.bwebb.swingy.controller.views;
 import com.bwebb.swingy.view.gui.Gui;
 import com.bwebb.swingy.view.terminal.TerminalView;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class viewController {
     private GameController controller;

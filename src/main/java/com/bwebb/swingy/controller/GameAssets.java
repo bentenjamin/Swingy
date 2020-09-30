@@ -5,9 +5,6 @@ import com.bwebb.swingy.controller.gameStates.GameState;
 import com.bwebb.swingy.model.chars.player.Character;
 import com.bwebb.swingy.model.chars.player.SaveHandler;
 import com.bwebb.swingy.model.map.MapHandler;
-import com.bwebb.swingy.view.ViewInterface;
-import com.bwebb.swingy.view.gui.Gui;
-import com.bwebb.swingy.view.terminal.TerminalView;
 import com.bwebb.swingy.view.viewController;
 import com.github.javafaker.Faker;
 
