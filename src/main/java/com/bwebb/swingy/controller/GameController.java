@@ -21,7 +21,10 @@ public class GameController {
 
     public void runGuiCommand(String input) {
         game.state.execute(input);
-        game.state.printMe();
+        if (game.state != null)
+            game.state.printMe();
+        else
+            game.viewController.getGuiView().dispose();
     }
 
     public void readConsole() throws IOException {
