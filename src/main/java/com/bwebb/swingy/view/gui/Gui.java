@@ -41,7 +41,7 @@ public class Gui extends JFrame implements ViewInterface {
 		stringHandler = strHandler;
 
 		setTitle("Swingy");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 647, 567);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -100,14 +100,10 @@ public class Gui extends JFrame implements ViewInterface {
 	}
 
 	@Override
-	public void invalidInput() {
-
-	}
+	public void invalidInput() {}
 
 	@Override
-	public void endScreen() {
-
-	}
+	public void endScreen() {}
 
 	@Override
 	public void createCharacter() {
@@ -236,14 +232,10 @@ public class Gui extends JFrame implements ViewInterface {
 	}
 
 	@Override
-	public void exploring(int[][] curMap) {
-
-	}
+	public void exploring(int[][] curMap) {}
 
 	@Override
-	public void loadingPlayer() {
-
-	}
+	public void loadingPlayer() {}
 
 	@Override
 	public void blockage() {
@@ -384,7 +376,7 @@ public class Gui extends JFrame implements ViewInterface {
 		JButton btnReturn = new JButton("Return to Menu");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controller.runGuiCommand("q");
+				controller.runGuiCommand("");
 			}
 		});
 		btnReturn.setBounds(36, 368, 166, 33);

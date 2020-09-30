@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class viewController {
-    private GameAssets game;
     private GameController controller;
 
     public ViewInterface display = null;
@@ -42,5 +41,9 @@ public class viewController {
         guiView.setVisible(false);
         display = terminalView;
         controller.readConsole();
+    }
+
+    public Gui getGuiView() {
+        return guiView;
     }
 }
