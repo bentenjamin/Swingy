@@ -51,6 +51,10 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.setLayout(null);
 	}
 
+	private void initComponents() {
+
+	}
+
 	public void mainMenu() {
 		panel.removeAll();
 		
@@ -276,7 +280,9 @@ public class Gui extends JFrame implements ViewInterface {
 		btnDiscard.setBounds(36, 302, 166, 33);
 		
 		panel.add(btnDiscard);
-		
+
+		Font monoFont = new Font(Font.MONOSPACED, 3, 10);
+		txtpnDisplay.setFont(monoFont);
 		txtpnDisplay.setText(stringHandler.artifactString(artifactType, newArtifactStat, currentArtifactStat));
 		
 		panel.repaint();
