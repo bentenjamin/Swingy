@@ -66,8 +66,6 @@ public class Gui extends JFrame implements ViewInterface {
         stringHandler = strHandler;
 
         initComponents();
-
-//		exploring(2, 2 ,2);
     }
 
     private void initComponents() {
@@ -77,7 +75,6 @@ public class Gui extends JFrame implements ViewInterface {
         setBounds(100, 100, 1018, 726);
         panel = new JPanel();
         panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-        panel.setLayout(new BorderLayout(0, 0));
         setContentPane(panel);
         panel.setLayout(null);
 
@@ -90,46 +87,46 @@ public class Gui extends JFrame implements ViewInterface {
                 controller.runGuiCommand("q");
             }
         });
-        btnQuit.setBounds(36, 375, 166, 33);
+        setQuitBtnToDefaultPos();
 
         btnBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 controller.runGuiCommand("b");
             }
         });
-        btnBack.setBounds(36, 330, 166, 33);
+        btnBack.setBounds(384, 334, 166, 33);
 
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("menu");
 			}
 		});
-		btnReturn.setBounds(36, 368, 166, 33);
+		btnReturn.setBounds(424, 335, 166, 33);
 
 		btnOption1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("1");
 			}
 		});
-		btnOption1.setBounds(36, 285, 166, 33);
+		btnOption1.setBounds(414, 279, 166, 33);
 
 		btnOption2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand("2");
 			}
 		});
-		btnOption2.setBounds(36, 330, 166, 33);
+		btnOption2.setBounds(414, 324, 166, 33);
 
 		btnChooseSelected.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controller.runGuiCommand(Integer.toString((saveList.getSelectedIndex() + 1)));
 			}
 		});
-		btnChooseSelected.setBounds(36, 285, 166, 33);
+		btnChooseSelected.setBounds(384, 289, 166, 33);
 
 		//generic text output for exploring state
         txtpnTextoutput.setEditable(false);
-        txtpnTextoutput.setBounds(746, 227, 166, 195);
+        txtpnTextoutput.setBounds(711, 185, 238, 297);
         txtpnTextoutput.setFont(monoFontGeneric);
 
         //text display
@@ -137,7 +134,7 @@ public class Gui extends JFrame implements ViewInterface {
 		txtpnDisplay.setFont(monoFontGeneric);
 
 		//saveList
-		saveList.setBounds(36, 12, 166, 33);
+		saveList.setBounds(384, 129, 166, 33);
 
 
         //menu
@@ -146,30 +143,30 @@ public class Gui extends JFrame implements ViewInterface {
                 controller.runGuiCommand("3");
             }
         });
-        btnDelete.setBounds(36, 330, 166, 33);
+        btnDelete.setBounds(384, 334, 166, 33);
 
         btnMenuLoad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 controller.runGuiCommand("2");
             }
         });
-        btnMenuLoad.setBounds(36, 285, 166, 33);
+        btnMenuLoad.setBounds(384, 289, 166, 33);
 
         btnCreateCharacter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 controller.runGuiCommand("1");
             }
         });
-        btnCreateCharacter.setBounds(36, 240, 166, 33);
+        btnCreateCharacter.setBounds(384, 244, 166, 33);
 
         menuTitle.setEditable(false);
         menuTitle.setText(" ________  ___       __   ___  ________   ________      ___    ___ \n|\\   ____\\|\\  \\     |\\  \\|\\  \\|\\   ___  \\|\\   ____\\    |\\  \\  /  /|\n\\ \\  \\___|\\ \\  \\    \\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|    \\ \\  \\/  / /\n \\ \\_____  \\ \\  \\  __\\ \\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___   \\ \\    / / \n  \\|____|\\  \\ \\  \\|\\__\\_\\  \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\   \\/  /  /  \n    ____\\_\\  \\ \\____________\\ \\__\\ \\__\\\\ \\__\\ \\_______\\__/  / /    \n   |\\_________\\|____________|\\|__|\\|__| \\|__|\\|_______|\\___/ /     \n   \\|_________|                                       \\|___|/      \n\nwell its supposed to say Swingy :(");
-        menuTitle.setBounds(36, 12, 436, 185);
+        menuTitle.setBounds(261, 12, 436, 185);
 
 
 
         //createCharacter
-        classes.setBounds(53, 45, 149, 24);
+        classes.setBounds(384, 176, 149, 24);
         String[] classList = ClassesHandler.getClassList();
         for (String aClass : classList)
             classes.addItem(aClass);
@@ -180,10 +177,10 @@ public class Gui extends JFrame implements ViewInterface {
                 controller.runGuiCommand(Integer.toString((classes.getSelectedIndex() + 1)));
             }
         });
-        btnCreate.setBounds(36, 271, 166, 33);
+        btnCreate.setBounds(384, 289, 166, 33);
 
         txtpnCreateChar.setText("Create Character");
-        txtpnCreateChar.setBounds(49, 12, 153, 21);
+        txtpnCreateChar.setBounds(384, 125, 153, 21);
 
 
 
@@ -197,7 +194,7 @@ public class Gui extends JFrame implements ViewInterface {
                 controller.runGuiCommand("i");
             }
         });
-        btnStats.setBounds(774, 507, 117, 25);
+        btnStats.setBounds(774, 553, 117, 25);
 
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,11 +232,13 @@ public class Gui extends JFrame implements ViewInterface {
 				controller.runGuiCommand("d");
 			}
 		});
-		btnDelAll.setBounds(36, 240, 166, 33);
+		btnDelAll.setBounds(384, 244, 166, 33);
 	}
 
     public void mainMenu() {
         panel.removeAll();
+        panel.setLayout(null);
+        setQuitBtnToDefaultPos();
 
         panel.add(btnCreateCharacter);
         panel.add(menuTitle);
@@ -276,6 +275,7 @@ public class Gui extends JFrame implements ViewInterface {
         panel.removeAll();
 
         mapDisplay.setText(stringHandler.arrMapToCenteredStrMap(mapArr, playerPos));
+        btnQuit.setBounds(55, 622, 166, 33);
 
         panel.add(mapDisplay);
         panel.add(txtpnTextoutput);
@@ -287,10 +287,6 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.add(btnRight);
 
         panel.repaint();
-    }
-
-    @Override
-    public void exploring(int[][] curMap) {
     }
 
     @Override
@@ -306,7 +302,7 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.removeAll();
 
 		txtpnDisplay.setText(display);
-		txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setBounds(346, 12, 316, 255);
 
 		btnOption1.setText(btn1);
 		btnOption2.setText(btn2);
@@ -364,7 +360,7 @@ public class Gui extends JFrame implements ViewInterface {
     private void messageToMenu(String message) {
 		panel.removeAll();
 
-		txtpnDisplay.setBounds(36, 31, 316, 193);
+		txtpnDisplay.setBounds(346, 36, 316, 193);
 		txtpnDisplay.setText(message);
 
 		panel.add(txtpnDisplay);
@@ -400,7 +396,8 @@ public class Gui extends JFrame implements ViewInterface {
 			panel.add(saveList);
 			panel.add(btnChooseSelected);
 		}
-
+			setQuitBtnToDefaultPos();
+			
 		panel.add(btnBack);
 		panel.add(btnQuit);
 
@@ -416,5 +413,9 @@ public class Gui extends JFrame implements ViewInterface {
     public void deleteSaves(String[] savesList) {
 		viewSaves(savesList, "Delete");
 		panel.add(btnDelAll);
+    }
+    
+    public void setQuitBtnToDefaultPos() {
+        btnQuit.setBounds(384, 379, 166, 33);
     }
 }

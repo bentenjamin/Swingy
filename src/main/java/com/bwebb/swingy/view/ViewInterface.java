@@ -14,8 +14,6 @@ public interface ViewInterface {
 
     void exploring(int[][] curMap, Coordinates playerPos);
 
-    void exploring(int[][] curMap);
-
     void loadingPlayer();
 
     void blockage();
