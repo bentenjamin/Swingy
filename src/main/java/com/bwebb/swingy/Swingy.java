@@ -9,7 +9,7 @@ public class Swingy {
     public static void main(String[] args) throws IOException {
         try {
             views.valueOf(args[0].toUpperCase());
-        } catch(IllegalArgumentException e) {
+        } catch(IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Invalid view argument");
             System.exit(1);
         }
