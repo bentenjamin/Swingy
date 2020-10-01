@@ -29,7 +29,7 @@ public abstract class GSTemplate implements GameState {
         commands.put("h", this::listCommands);
     }
 
-    private void listCommands() {
+    protected void listCommands() {
         Set<String> keys = commands.keySet();
         String commandList = "";
 
@@ -42,8 +42,6 @@ public abstract class GSTemplate implements GameState {
     private void switchDisplay() {
         game.viewController.toggleDisplay();
     }
-
-
 
     private void quitGame() {
         if (game.player != null) {

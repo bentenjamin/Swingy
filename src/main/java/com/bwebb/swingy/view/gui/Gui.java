@@ -33,6 +33,7 @@ public class Gui extends JFrame implements ViewInterface {
 	JButton btnReturn = new JButton("Return to Menu");
 	JComboBox<String> saveList = new JComboBox<String>();
 	JButton btnChooseSelected = new JButton();
+    JButton btnConsole = new JButton("Console");
 
 
 	//menu
@@ -123,6 +124,13 @@ public class Gui extends JFrame implements ViewInterface {
 			}
 		});
 		btnChooseSelected.setBounds(384, 289, 166, 33);
+		
+        btnConsole.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
+				controller.runGuiCommand("l");
+        	}
+        });
+        btnConsole.setBounds(815, 644, 166, 33);
 
 		//generic text output for exploring state
         txtpnTextoutput.setEditable(false);
@@ -237,14 +245,13 @@ public class Gui extends JFrame implements ViewInterface {
 
     public void mainMenu() {
         panel.removeAll();
-        panel.setLayout(null);
-        setQuitBtnToDefaultPos();
 
         panel.add(btnCreateCharacter);
         panel.add(menuTitle);
         panel.add(btnMenuLoad);
         panel.add(btnDelete);
         panel.add(btnQuit);
+        panel.add(btnConsole);
 
         panel.repaint();
     }
@@ -266,6 +273,7 @@ public class Gui extends JFrame implements ViewInterface {
         panel.add(btnBack);
         panel.add(btnCreate);
         panel.add(txtpnCreateChar);
+        panel.add(btnConsole);
 
         panel.repaint();
     }
@@ -285,6 +293,7 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.add(btnDown);
 		panel.add(btnLeft);
 		panel.add(btnRight);
+        panel.add(btnConsole);
 
         panel.repaint();
     }
@@ -310,6 +319,7 @@ public class Gui extends JFrame implements ViewInterface {
 		panel.add(txtpnDisplay);
 		panel.add(btnOption1);
 		panel.add(btnOption2);
+        panel.add(btnConsole);
 
 		panel.repaint();
 	}
@@ -365,6 +375,7 @@ public class Gui extends JFrame implements ViewInterface {
 
 		panel.add(txtpnDisplay);
 		panel.add(btnReturn);
+        panel.add(btnConsole);
 
 		panel.repaint();
 	}
@@ -400,6 +411,7 @@ public class Gui extends JFrame implements ViewInterface {
 			
 		panel.add(btnBack);
 		panel.add(btnQuit);
+        panel.add(btnConsole);
 
 		panel.repaint();
 	}

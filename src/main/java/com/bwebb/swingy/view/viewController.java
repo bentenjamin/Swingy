@@ -5,8 +5,6 @@ import com.bwebb.swingy.controller.views;
 import com.bwebb.swingy.view.gui.Gui;
 import com.bwebb.swingy.view.terminal.TerminalView;
 
-import java.io.IOException;
-
 public class viewController {
     private final GameController controller;
 

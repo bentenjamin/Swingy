@@ -8,10 +8,14 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toSet;
 
 public class Exploring extends GSTemplate {
     private final HashMap<String, Coordinates> keyCoordinateOffsets = new HashMap<>();
-    private static final Set<String> validKeys = new HashSet<>(Arrays.asList("w", "a", "s", "d", "q", "i"));
+    private Set<String> validKeys;
 
     @Override
     public boolean evaluate(String userInput) {
@@ -65,6 +69,17 @@ public class Exploring extends GSTemplate {
         keyCoordinateOffsets.put("d", new Coordinates(1, 0));
 
         commands.put("i", this::viewStats);
+
+
+        //credit to https://stackoverflow.com/users/4556720/ytterrr
+        //https://stackoverflow.com/questions/9062574/is-there-a-better-way-to-combine-two-string-sets-in-java
+        validKeys = Stream.concat(commands.keySet().stream(), keyCoordinateOffsets.keySet().stream())
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    protected void listCommands() {
+        game.viewController.display.listCommands(validKeys.toString());
     }
 
     public void printMe() {
