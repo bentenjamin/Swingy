@@ -10,7 +10,7 @@ public class Swingy {
         try {
             views.valueOf(args[0].toUpperCase());
         } catch(IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Invalid view argument");
+            System.out.println("Invalid view argument, please use 'gui' or 'terminal'");
             System.exit(1);
         }
         GameController controller = new GameController();
