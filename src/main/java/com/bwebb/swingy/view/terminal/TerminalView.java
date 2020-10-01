@@ -27,6 +27,11 @@ public class TerminalView implements ViewInterface {
                         "|   2. Load Save          |\r\n" +
                         "|   3. Delete Save        |\r\n" +
                         "|                         |\r\n" +
+                        "|  universal commands:    |\r\n" +
+                        "|  h: print commands      |\r\n" +
+                        "|  l: switch to GUI       |\r\n" +
+                        "|  q: quit                |\r\n" +
+                        "|                         |\r\n" +
                         "*~~~~~~~~~~~~~~~~~~~~~~~~~*";
 
         System.out.println(mainMenu);
@@ -70,6 +75,7 @@ public class TerminalView implements ViewInterface {
     }
 
     public void exploring(int[][] mapArr, Coordinates playerPos) {
+        System.out.println("Enter 'h' to see available commands");
         System.out.println(strHandler.arrMapToCenteredStrMap(mapArr, playerPos));
     }
 
