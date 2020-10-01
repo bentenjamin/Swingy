@@ -4,14 +4,10 @@ import com.bwebb.swingy.controller.GameAssets;
 import com.bwebb.swingy.controller.gameStates.GSTemplate;
 import com.bwebb.swingy.model.map.Coordinates;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toSet;
 
 public class Exploring extends GSTemplate {
     private final HashMap<String, Coordinates> keyCoordinateOffsets = new HashMap<>();
