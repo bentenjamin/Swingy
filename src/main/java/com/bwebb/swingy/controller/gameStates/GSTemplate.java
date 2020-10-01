@@ -30,13 +30,7 @@ public abstract class GSTemplate implements GameState {
     }
 
     protected void listCommands() {
-        Set<String> keys = commands.keySet();
-        String commandList = "";
-
-        for(String key: keys)
-            commandList += key + ", ";
-
-        game.viewController.display.listCommands(commandList);
+        game.viewController.display.listCommands(commands.keySet().toString());
     }
 
     private void switchDisplay() {
