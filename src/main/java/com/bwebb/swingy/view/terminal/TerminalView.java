@@ -38,7 +38,7 @@ public class TerminalView implements ViewInterface {
     }
 
     public void invalidInput() {
-        String invalidInput = "That is not an option, please try again, or type quit to exit";
+        String invalidInput = "That is not an option, type 'h' for help or 'q' to exit";
         System.out.println(invalidInput);
     }
 
