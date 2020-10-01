@@ -25,6 +25,8 @@ public class Win extends GSTemplate {
         else {
             //set player pos to spawn so it wont crash when saved
             game.player.setPos(game.mapHandler.getSpawn(game.player.getLevel()));
+            game.state = game.states.save;
+            game.state.execute("");
 
             game.player = null;
             game.state = game.states.menu;
