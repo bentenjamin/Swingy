@@ -27,13 +27,19 @@ public class GameController {
             game.viewController.getGuiView().dispose();
     }
 
-    public void readConsole() throws IOException {
+    public void readConsole() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (game.state != null && (game.viewController.display instanceof TerminalView)) {
             game.state.printMe();
+            String line = "";
 
-            String line = br.readLine();
+            try {
+                line = br.readLine();
+            } catch (IOException e) {
+                game.viewController.display.invalidInput();
+            }
+
             if (game.state.evaluate(line))
                 game.state.execute(line);
             else

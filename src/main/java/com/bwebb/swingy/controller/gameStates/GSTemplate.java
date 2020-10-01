@@ -3,6 +3,7 @@ package com.bwebb.swingy.controller.gameStates;
 import com.bwebb.swingy.controller.GameAssets;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public abstract class GSTemplate implements GameState {
     protected HashMap<String, Runnable> commands = new HashMap<>();
@@ -24,13 +25,25 @@ public abstract class GSTemplate implements GameState {
         this.game = game;
 
         commands.put("q", this::quitGame);
-        commands.put("i", this::viewStats);
+        commands.put("l", this::switchDisplay);
+        commands.put("h", this::listCommands);
     }
 
-    private void viewStats() {
-        if (game.player != null)
-            game.viewController.display.stats(game.player);
+    private void listCommands() {
+        Set<String> keys = commands.keySet();
+        String commandList = "";
+
+        for(String key: keys)
+            commandList += key + ", ";
+
+        game.viewController.display.listCommands(commandList);
     }
+
+    private void switchDisplay() {
+        game.viewController.toggleDisplay();
+    }
+
+
 
     private void quitGame() {
         if (game.player != null) {

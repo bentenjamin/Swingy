@@ -232,6 +232,11 @@ public class TerminalView implements ViewInterface {
         System.out.println(deleteSave);
     }
 
+    @Override
+    public void listCommands(String commands) {
+        System.out.println(commands);
+    }
+
     private String makeViewFromArr(String[] list) {
         String view = "";
 

@@ -414,7 +414,12 @@ public class Gui extends JFrame implements ViewInterface {
 		viewSaves(savesList, "Delete");
 		panel.add(btnDelAll);
     }
-    
+
+    @Override
+    public void listCommands(String commands) {
+
+    }
+
     public void setQuitBtnToDefaultPos() {
         btnQuit.setBounds(384, 379, 166, 33);
     }

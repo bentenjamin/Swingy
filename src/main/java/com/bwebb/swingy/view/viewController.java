@@ -21,20 +21,27 @@ public class viewController {
         terminalView = new TerminalView(strHandler);
     }
 
-    public void setDisplay(views view) throws IOException {
+    public void setDisplay(views view) {
         switch (view) {
-            case GUI -> switchGui();
+            case GUI -> switchToGui();
             default -> switchToTerminal();
         }
     }
 
-    private void switchGui() {
+    public void toggleDisplay() {
+        if (display instanceof TerminalView)
+            switchToGui();
+        else
+            switchToTerminal();
+    }
+
+    private void switchToGui() {
         display = guiView;
         guiView.setVisible(true);
         controller.getGame().state.printMe();
     }
 
-    private void switchToTerminal() throws IOException {
+    private void switchToTerminal() {
         guiView.setVisible(false);
         display = terminalView;
         controller.readConsole();

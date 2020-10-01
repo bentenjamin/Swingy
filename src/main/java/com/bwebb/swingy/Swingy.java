@@ -8,15 +8,12 @@ import java.io.IOException;
 public class Swingy {
     public static void main(String[] args) throws IOException {
         try {
-            views.valueOf(args[0]);
+            views.valueOf(args[0].toUpperCase());
         } catch(IllegalArgumentException e) {
             System.out.println("Invalid view argument");
             System.exit(1);
         }
         GameController controller = new GameController();
-        controller.startSwingy(views.valueOf(args[0]));
+        controller.startSwingy(views.valueOf(args[0].toUpperCase()));
     }
-    /* todo
-        handle invalid view input
-     */
 }

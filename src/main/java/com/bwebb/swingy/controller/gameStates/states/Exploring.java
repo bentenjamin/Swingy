@@ -63,10 +63,16 @@ public class Exploring extends GSTemplate {
         keyCoordinateOffsets.put("a", new Coordinates(-1, 0));
         keyCoordinateOffsets.put("s", new Coordinates(0, -1));
         keyCoordinateOffsets.put("d", new Coordinates(1, 0));
+
+        commands.put("i", this::viewStats);
     }
 
     public void printMe() {
-//        game.display.exploring(game.mapHandler.arrMap);
         game.viewController.display.exploring(game.mapHandler.arrMap, game.player.getPos());
+    }
+
+    private void viewStats() {
+        if (game.player != null)
+            game.viewController.display.stats(game.player);
     }
 }

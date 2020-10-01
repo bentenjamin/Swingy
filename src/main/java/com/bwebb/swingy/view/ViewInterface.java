@@ -43,6 +43,8 @@ public interface ViewInterface {
     void askSave();
 
     void deleteSaves(String[] savesList);
+
+    void listCommands(String commands);
 }
 
 /*todo
