@@ -253,6 +253,9 @@ public class Gui extends JFrame implements ViewInterface {
         panel.add(btnQuit);
         panel.add(btnConsole);
 
+        //to clear after a game
+        txtpnTextoutput.setText("");
+
         panel.repaint();
     }
 
