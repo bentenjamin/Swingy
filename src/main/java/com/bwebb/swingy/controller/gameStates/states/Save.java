@@ -9,7 +9,9 @@ public class Save extends GSTemplate {
         super(game);
 
         commands.put("1", this::yesSave);
+        commands.put("y", this::yesSave);
         commands.put("2", this::quit);
+        commands.put("n", this::quit);
     }
 
     @Override
